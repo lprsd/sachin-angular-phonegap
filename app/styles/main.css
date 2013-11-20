@@ -2,3 +2,12 @@
 body {
   margin: 20px 0;
 }
+
+.tileBox{
+	position: relative;
+	float: left;
+	width: 100%;
+	background: blue;
+	height: 200px;
+	margin-bottom: 30px;
+}
