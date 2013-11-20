@@ -1,7 +1,7 @@
 <div class="col-md-12">
   <div class="col-md-6" ng-repeat="tile in tiles">
-    <div class="tileBox" ng-style="{'background': '{{colors[$index]}}'}">
-      
-    </div>
+      <a href="{{tile.url}}">
+        <div class="tileBox" ng-style="{'background': '{{colors[$index]}}'}"></div>
+      </a>
   </div>
 </div>

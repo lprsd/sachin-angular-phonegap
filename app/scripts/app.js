@@ -13,6 +13,10 @@ angular.module('feApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/SachinStats', {
+        templateUrl: 'views/sachin_stats.html',
+        controller: 'SachinStatsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
