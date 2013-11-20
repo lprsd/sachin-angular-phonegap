@@ -7,7 +7,13 @@ body {
 	position: relative;
 	float: left;
 	width: 100%;
-	background: blue;
 	height: 200px;
 	margin-bottom: 30px;
+}
+
+.sachinStat{
+	background: #334D5C;
+	float: left;
+    position: relative;
+    width: 100%;
 }

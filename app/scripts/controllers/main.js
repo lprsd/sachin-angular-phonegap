@@ -12,7 +12,7 @@ angular.module('feApp')
 
     $scope.colors = ['#334D5C','#45b29d','#EFC94C','#E27A3F','#DF5A49'];
     
-    $scope.tiles = [{name: 'Sachin Stats', url: '#/SachinStats'},{name: 'Personal Stuff', url: '#/PersonalStuff'},
-    				{name: 'Awesome Facts', url: '#/AwesomeFacts'},{name: 'Love You God', url: '#/LoveYouGod'}];
+    $scope.tiles = [{name: 'Sachin Stats', url: '#/SachinStats', class:'col-md-12'},{name: 'Personal Stuff', url: '#/PersonalStuff', class:'col-md-6'},
+    				{name: 'Awesome Facts', url: '#/AwesomeFacts', class:'col-md-3'},{name: 'Love You God', url: '#/LoveYouGod', class:'col-md-3'}];
 
   });

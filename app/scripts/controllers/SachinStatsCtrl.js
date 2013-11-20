@@ -12,4 +12,8 @@ angular.module('feApp')
 	
 	$scope.page = "Sachin Stats";
 
+	$(".sachinStat").animate({
+    	height: "550px"
+  	}, 1500 );
+
   });
