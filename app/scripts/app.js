@@ -1,12 +1,11 @@
 'use strict';
 
-angular.module('feApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute',
-  'ui.bootstrap'
-])
+angular.module('app.controllers', []);
+angular.module('app.services', []);
+angular.module('app.directives', []);
+
+
+angular.module('feApp', ['app.controllers', 'app.services', 'app.directives', 'ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ui.bootstrap'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
