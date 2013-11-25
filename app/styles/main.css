@@ -17,3 +17,9 @@ body {
     position: relative;
     width: 100%;
 }
+
+.hc-bars{
+	position: relative;
+	float: left;
+	margin-left: 20px;
+}
