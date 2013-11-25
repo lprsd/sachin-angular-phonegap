@@ -12,6 +12,10 @@ angular.module('feApp', ['app.controllers', 'app.services', 'app.directives', 'n
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/SachinStatsLanding', {
+        templateUrl: 'views/sachin_stats_landing.html',
+        controller: 'SachinStatsLandingCtrl'
+      })
       .when('/SachinStats', {
         templateUrl: 'views/sachin_stats.html',
         controller: 'SachinStatsCtrl'
