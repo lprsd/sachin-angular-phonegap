@@ -1,5 +1,10 @@
 'use strict';
 
+var colors;
+var colorsArray = ['#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC',
+'#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC'
+];
+
 function get_pie_chart_data(data, PieChartOptions){
 	var chart_data = $.extend(true, {}, PieChartOptions.simplePie);
 	chart_data.series[0].data = [];
@@ -223,10 +228,111 @@ function plot_odi_stat_data($scope, Data, chart_options){
     $scope.chosenStat = chart_data;
 }
 
+function custom_chart_settings_by_avg_fare(chart_data){
+    chart_data.xAxis = {
+                        startOnTick: true,
+                        endOnTick: true,
+                        showLastLabel: true,
+                        lineColor: '#aaa',
+                        tickLength: 0,
+                        min: 10,
+                        max: 60,
+                        title: { align: 'middle'},
+                        "labels": {
+                             y: 20,
+                            "style": {
+                                "color": "#666",
+                                "fontFamily": "TitilliumWeb",
+                                "fontSize": "12px"
+                            },
+                            "verticalAlign": "middle"
+                       }
+                   }
+
+    chart_data.yAxis.tickInterval = 100;
+
+    chart_data.legend = {
+                align: 'right',
+                verticalAlign: 'top',
+                layout: 'vertical',
+                x: 0,
+                y: 0,
+                itemMarginTop: 5,
+                itemMarginBottom: 5
+            };
+
+    chart_data.tooltip = {
+            enabled: true,
+            formatter: function() {
+            	console.log(this);
+                return '<b>'+this.point.name+'</b><br>'+
+                	   '<b>Matches: '+this.y+'</b><br>'+
+                	   '<b>Average: '+this.x+'</b><br>'+
+                	   '<b>Runs: '+this.point.runs+'</b>';
+            }
+        };
+    delete chart_data.plotOptions.series;
+    delete chart_data.yAxis.max;
+    chart_data.chart.type = 'scatter';
+    chart_data.series = [];
+    return chart_data;
+}
+
+function get_bubble_chart_data (api_data, colors, ChartOptions) {
+    var chart_data = $.extend(true, {}, ChartOptions.pos);
+    chart_data = custom_chart_settings_by_avg_fare(chart_data);
+    console.log(api_data.length);
+    /*
+    var total_agents;
+    for(var ranges in api_data){
+        total_agents = api_data[ranges].length;
+    }
+    */
+
+    for(var i = 0; i < api_data.length; i++){
+        var seriesObj = {name: '', color: '', data: []};
+        var dataObj =   {x: '', y: '', runs: '', name: '',
+        					marker: {
+	        					radius: '',
+	        					symbol: 'circle'
+    				    	}
+    				    }
+    	dataObj.x = parseInt(api_data[i].average);
+    	dataObj.y = parseInt(api_data[i].matches);
+    	dataObj.marker.radius = parseFloat((api_data[i].runs)/500);
+		dataObj.runs = parseInt(api_data[i].runs);
+		dataObj.name = api_data[i].name;
+        seriesObj.name = api_data[i].name;
+        seriesObj.color = colorsArray[i];
+        seriesObj.data.push(dataObj);
+        chart_data.series.push(seriesObj);
+    }
+    
+    /*
+    var j = 0;
+    for(var range in api_data){
+        chart_data.xAxis.categories.push(range);
+        for(var i = 0; i < api_data[range].length; i++){
+            var seriesObj = {x: '', y: ''}
+            seriesObj.x = j;
+            seriesObj.y = api_data[range][i].percent;
+            if(seriesObj.y != 0){
+                chart_data.series[i].data.push(seriesObj)
+            }
+            chart_data.series[i].color = colors[i].color;
+            chart_data.series[i].name = api_data[range][i].name;
+        }
+        j++;
+    }
+	*/
+	console.log(chart_data)
+    return chart_data;
+}
+
 
 angular.module('app.controllers')
     .controller('SachinStatsCtrl',
-    	function($scope, Data, PieChartOptions){
+    	function($scope, Data, PieChartOptions, ChartOptions){
     		
     		$scope.page = "Sachin Stats";
 
@@ -255,6 +361,9 @@ angular.module('app.controllers')
             Data.get_local('scripts/lib/sachin_odi_summary.json').success(function(api_data){
                 $scope.r_api_data = api_data;
                 plot_odi_stat_data($scope, Data, PieChartOptions)
+            });
 
+            Data.get_local('scripts/lib/record_json.json').success(function(api_data){
+                $scope.recordChart = get_bubble_chart_data(api_data, colors, ChartOptions)
             });
         });
