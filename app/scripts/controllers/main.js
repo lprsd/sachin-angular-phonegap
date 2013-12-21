@@ -47,6 +47,6 @@ angular.module('app.controllers')
       plot_graph();
     });
 
-    
+
 
   });
