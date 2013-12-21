@@ -217,7 +217,7 @@ function plot_odi_stat_data($scope, Data, chart_options){
     var api_data = $scope.r_api_data;
 
     var series_data = get_series_data(Data,api_data,chosen_json,chosen_attr);
-    var chart_data = angular.copy(chart_options.pos);
+    var chart_data = angular.copy(chart_options.simplePie);
     chart_data.series = [{name:chosen_json, type: 'pie', data:series_data}];
     chart_data.title.text = chosen_json;
     $scope.chosenStat = chart_data;
