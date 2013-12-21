@@ -31,8 +31,8 @@ angular.module('app.controllers')
     }
 
     var plot_graph = function(){
-      var chosen_json = 'v Country';
-      var chosen_attr = 'Runs';
+      var chosen_json = $scope.chosen_option.json_option;
+      var chosen_attr = $scope.chosen_option.attr_option;
       var api_data = $scope.r_api_data;
 
       var series_data = get_series_data(api_data,chosen_json,chosen_attr);
@@ -42,6 +42,11 @@ angular.module('app.controllers')
       $scope.chosenStat = chart_data;
     }
 
+    $scope.$watch('chosen_option',function(chosen_option){
+      if ($scope.r_api_data){
+        plot_graph();
+      }
+    },true)
 
     Data.get_local('scripts/lib/sachin_odi_summary.json').success(function(api_data){
       $scope.r_api_data = api_data;
@@ -62,7 +67,7 @@ angular.module('app.controllers')
         }
       }()
 
-      $scope.chosen_options = {
+      $scope.chosen_option = {
         json_option: $scope.charting_options.json_options[0],
         attr_option: $scope.charting_options.attr_options[1]
       }

@@ -3,7 +3,7 @@
         <h2>Career Summary</h2>
 
         <div class="btn-group">
-            <button ng-repeat="item in charting_options.json_options" type="button" class="btn btn-default">{{ item }}</button>
+            <button ng-model="chosen_option.json_option" btn-radio="'{{ item }}'" ng-repeat="item in charting_options.json_options" type="button" class="btn btn-default">{{ item }}</button>
         </div>
 
         <div class="centeredChart">
@@ -11,7 +11,7 @@
         </div>
         <br/>
         <div class="btn-group">
-            <button ng-repeat="item in charting_options.attr_options" type="button" class="btn btn-default">{{ item }}</button>
+            <button ng-model="chosen_option.attr_option" btn-radio="'{{ item }}'" ng-repeat="item in charting_options.attr_options" type="button" class="btn btn-default">{{ item }}</button>
         </div>
 
     </div>
