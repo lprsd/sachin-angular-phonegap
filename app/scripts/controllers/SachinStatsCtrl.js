@@ -67,7 +67,7 @@ function getCenturyVsBattingOrder(matches, PieChartOptions){
 	}
 	chart_data.title.text = "Centuries vs Batting Order"
 	chart_data.tooltip.formatter = function(){
-        return '<b>Batted '+ this.key + ': </b>' + this.y + ' Ceturies';
+        return '<b>Batted '+ this.key + ': </b>' + this.y + ' Centuries';
     }
 
 	return chart_data;
