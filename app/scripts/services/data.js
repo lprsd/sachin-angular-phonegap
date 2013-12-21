@@ -476,7 +476,9 @@ angular.module('app.services').factory('PieChartOptions',[function ($http){
             }
         },
         tooltip: {
-            pointFormat: '<b>{point.percentage:.1f}%</b>'
+            formatter: function(){
+                return '<b>'+ this.key + ': </b>' + this.y;
+            }
         },
         credits: {
             enabled: false
