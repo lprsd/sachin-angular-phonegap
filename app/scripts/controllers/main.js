@@ -45,8 +45,8 @@ angular.module('app.controllers')
     Data.get_local('scripts/lib/sachin_odi_summary.json').success(function(api_data){
       $scope.r_api_data = api_data;
       plot_graph();
-
     });
 
+    
 
   });
