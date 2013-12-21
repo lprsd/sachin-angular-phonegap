@@ -38,7 +38,6 @@ angular.module('app.controllers')
       var series_data = get_series_data(api_data,chosen_json,chosen_attr);
       var chart_data = angular.copy(PieChartOptions.simplePie);
       chart_data.series = [{name:chosen_json, type: 'pie', data:series_data}];
-      chart_data.title.text = chosen_json;
       $scope.chosenStat = chart_data;
     }
 
