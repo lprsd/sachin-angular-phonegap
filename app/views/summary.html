@@ -3,9 +3,7 @@
         <h2>Career Summary</h2>
 
         <div class="btn-group">
-            <button type="button" class="btn btn-default">Left</button>
-            <button type="button" class="btn btn-default">Middle</button>
-            <button type="button" class="btn btn-default">Right</button>
+            <button ng-repeat="item in charting_options.json_options" type="button" class="btn btn-default">{{ item }}</button>
         </div>
 
         <div class="centeredChart">
@@ -13,9 +11,7 @@
         </div>
         <br/>
         <div class="btn-group">
-            <button type="button" class="btn btn-default">Left</button>
-            <button type="button" class="btn btn-default">Middle</button>
-            <button type="button" class="btn btn-default">Right</button>
+            <button ng-repeat="item in charting_options.attr_options" type="button" class="btn btn-default">{{ item }}</button>
         </div>
 
     </div>

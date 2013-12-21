@@ -42,9 +42,35 @@ angular.module('app.controllers')
       $scope.chosenStat = chart_data;
     }
 
+
     Data.get_local('scripts/lib/sachin_odi_summary.json').success(function(api_data){
       $scope.r_api_data = api_data;
+
+      $scope.charting_options = function(){
+        var json_options = _.keys(api_data);
+
+        var get_attr_options = function(){
+          var all_attrs = _.keys(api_data[json_options[0]][0]);
+          console.log(all_attrs);
+          var name_index = all_attrs.indexOf("name");
+          all_attrs.splice(name_index,1);
+          return all_attrs
+        }
+        return {
+          json_options: json_options,
+          attr_options: get_attr_options()
+        }
+      }()
+
+      $scope.chosen_options = {
+        json_option: $scope.charting_options.json_options[0],
+        attr_option: $scope.charting_options.attr_options[1]
+      }
+
+
       plot_graph();
+
+
     });
 
 
