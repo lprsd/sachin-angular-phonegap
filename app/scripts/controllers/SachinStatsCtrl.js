@@ -52,7 +52,8 @@ function get_series_data(Data, api_data, chosen_json, chosen_attr){
         var s = api_data[chosen_json][each_stat];
         series_data.push({
             name : s.name,
-            y :+(+(s[chosen_attr])/total_this_stat*100).toFixed(1),
+            percent_y :+(+(s[chosen_attr])/total_this_stat*100).toFixed(1),
+            y : +(s[chosen_attr]),
             color : colorsArray[i++]
         });
     }
@@ -71,7 +72,7 @@ function plot_odi_stat_data($scope, Data, chart_options){
     var series_data = get_series_data(Data,api_data,chosen_json,chosen_attr);
     var chart_data = angular.copy(chart_options.pos);
     chart_data.series = [{name:chosen_json, type: 'pie', data:series_data}];
-    chart_data.title.text = 'chosen_json';
+    chart_data.title.text = chosen_json;
     $scope.chosenStat = chart_data;
 }
 
