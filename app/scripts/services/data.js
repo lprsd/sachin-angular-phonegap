@@ -461,7 +461,7 @@ angular.module('app.services').factory('ChartOptionsFinancialKPI',['DefaultChart
 
 angular.module('app.services').factory('PieChartOptions',[function ($http){
 
-    traffic_comp_pie_chart = {
+    var simple_pie_chart = {
 
         chart: {
             plotBackgroundColor: null,
@@ -505,7 +505,7 @@ angular.module('app.services').factory('PieChartOptions',[function ($http){
 
     var BCC = {
 
-        pos: traffic_comp_pie_chart
+        simplePie: simple_pie_chart
 
     }
     return BCC;
