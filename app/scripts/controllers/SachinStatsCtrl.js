@@ -40,8 +40,18 @@ function getWonLost(matches, PieChartOptions){
 	return chart_data;
 }
 
+
+function plot_odi_stat_data($scope, Data, chart_options){
+
+    var chosen_json = 'vs Country';
+    var chosen_attr = 'runs';
+
+    var series_data;
+}
+
+
 angular.module('app.controllers')
-    .controller('SachinStatsCtrl', ['$scope', 'Data', 'PieChartOptions',
+    .controller('SachinStatsCtrl',
     	function($scope, Data, PieChartOptions){
     		
     		$scope.page = "Sachin Stats";
@@ -52,12 +62,18 @@ angular.module('app.controllers')
     		
     		Data.get_local('scripts/lib/trafficComp.json').success(function(api_data){
     			$scope.matches = get_pie_chart_data(api_data.res['2013'], PieChartOptions);
-    			$scope.runs = get_pie_chart_data(api_data.res['2012'], PieChartOptions);
-    			$scope.centuries = get_pie_chart_data(api_data.res['2013'], PieChartOptions);
+                $scope.runs = get_pie_chart_data(api_data.res['2012'], PieChartOptions);
+//                $scope.chosenStat = get_pie_chart_data(api_data.res['2012'], PieChartOptions);
 
     		});
 
-    		Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
-    			$scope.winLoss = getWonLost(api_data, PieChartOptions);
-    		});
-    }])
+            Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
+                $scope.winLoss = getWonLost(api_data, PieChartOptions);
+            });
+
+            Data.get_local('scripts/lib/sachin_odi_summary.json').success(function(api_data){
+
+                plot_odi_stat_data($scope, Data, PieChartOptions)
+
+            });
+        });
