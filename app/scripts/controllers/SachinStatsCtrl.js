@@ -235,7 +235,15 @@ function custom_chart_settings_by_avg_fare(chart_data){
                         tickLength: 0,
                         min: 10,
                         max: 60,
-                        title: { align: 'middle'},
+                        title: { 
+                        	text: "Average",
+                        	align: 'middle',
+                        	style:{
+                        		color: "#666",
+                        		fontFamily: "Arial",
+                        		fontSize: "12px"
+                        	}
+                        },
                         "labels": {
                              y: 20,
                             "style": {
@@ -247,8 +255,16 @@ function custom_chart_settings_by_avg_fare(chart_data){
                        }
                    }
 
-    chart_data.yAxis.tickInterval = 100;
-
+    chart_data.yAxis.tickInterval = 50;
+    chart_data.yAxis.title ={
+    							text: "Number of Matches",
+                        		align: 'middle',
+                        		style:{
+	                        		color: "#666",
+	                        		fontFamily: "Arial",
+	                        		fontSize: "12px"
+                        		}
+    						};
     chart_data.legend = {
                 align: 'right',
                 verticalAlign: 'top',
@@ -283,7 +299,8 @@ function custom_chart_settings_by_avg_fare(chart_data){
 								    		symbol: 'circle'
 								    	}
     };
-    delete chart_data.yAxis.max;
+    chart_data.yAxis.max = 500;
+    chart_data.yAxis.min = 250;
     chart_data.chart.type = 'scatter';
     chart_data.series = [];
     return chart_data;
