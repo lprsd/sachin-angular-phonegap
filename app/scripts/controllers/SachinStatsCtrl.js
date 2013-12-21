@@ -2,7 +2,7 @@
 
 var colors;
 var colorsArray = ['#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC',
-'#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC'
+'#7C76B9','#03C7A1','#AEC9EC','#EEB674','#B99076','#348EBA', '#4FCE87', '#EA8B64'
 ];
 
 function get_pie_chart_data(data, PieChartOptions){
@@ -162,8 +162,6 @@ function getWonLost(matches, PieChartOptions){
 	return chart_data;
 }
 
-var colorsArray = ['#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC'];
-
 function get_series_data(Data, api_data, chosen_json, chosen_attr){
 
     var series_data = []
@@ -271,7 +269,20 @@ function custom_chart_settings_by_avg_fare(chart_data){
                 	   '<b>Runs: '+this.point.runs+'</b>';
             }
         };
-    delete chart_data.plotOptions.series;
+
+    chart_data.plotOptions.scatter = {
+				    					states: {
+				                            hover: {
+				                                enabled: false,
+				                                lineColor: 'rgb(100,100,100)'
+				                            }
+                        			 	}
+    };    
+    chart_data.plotOptions.series = {
+								    	marker:{
+								    		symbol: 'circle'
+								    	}
+    };
     delete chart_data.yAxis.max;
     chart_data.chart.type = 'scatter';
     chart_data.series = [];
@@ -281,14 +292,6 @@ function custom_chart_settings_by_avg_fare(chart_data){
 function get_bubble_chart_data (api_data, colors, ChartOptions) {
     var chart_data = $.extend(true, {}, ChartOptions.pos);
     chart_data = custom_chart_settings_by_avg_fare(chart_data);
-    console.log(api_data.length);
-    /*
-    var total_agents;
-    for(var ranges in api_data){
-        total_agents = api_data[ranges].length;
-    }
-    */
-
     for(var i = 0; i < api_data.length; i++){
         var seriesObj = {name: '', color: '', data: []};
         var dataObj =   {x: '', y: '', runs: '', name: '',
@@ -307,25 +310,8 @@ function get_bubble_chart_data (api_data, colors, ChartOptions) {
         seriesObj.data.push(dataObj);
         chart_data.series.push(seriesObj);
     }
-    
-    /*
-    var j = 0;
-    for(var range in api_data){
-        chart_data.xAxis.categories.push(range);
-        for(var i = 0; i < api_data[range].length; i++){
-            var seriesObj = {x: '', y: ''}
-            seriesObj.x = j;
-            seriesObj.y = api_data[range][i].percent;
-            if(seriesObj.y != 0){
-                chart_data.series[i].data.push(seriesObj)
-            }
-            chart_data.series[i].color = colors[i].color;
-            chart_data.series[i].name = api_data[range][i].name;
-        }
-        j++;
-    }
-	*/
-	console.log(chart_data)
+    console.log(colorsArray)
+    console.log(chart_data)
     return chart_data;
 }
 
