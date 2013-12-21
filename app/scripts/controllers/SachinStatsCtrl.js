@@ -40,6 +40,40 @@ function getWonLost(matches, PieChartOptions){
 	return chart_data;
 }
 
+
+function getCenturyVsBattingOrder(matches, PieChartOptions){
+	var battingOrder = {};
+	for(var i = 0; i < matches.length; i++){
+		if(matches[i].sachin_score >= 100){
+			var batting_order = matches[i].batting_order;
+			if(battingOrder[batting_order]){
+				battingOrder[batting_order]++;
+			} else {
+				battingOrder[batting_order] = 1;
+			}
+		}
+	}
+	console.log(battingOrder)
+
+	var chart_data = $.extend(true, {}, PieChartOptions.pos),
+		color = ['','blue', 'orange', 'green', 'purple'];
+	chart_data.series[0].data = [];
+	for(var order in battingOrder){
+		var data = {};
+		data.name = order;
+		data.y = battingOrder[order];
+		data.color = color[parseInt(order)];
+		chart_data.series[0].data.push(data);
+	}
+	chart_data.title.text = "Centuries vs Batting Order"
+	chart_data.tooltip.formatter = function(){
+        return '<b>Batted '+ this.key + ': </b>' + this.y + ' Ceturies';
+    }
+
+	return chart_data;
+}
+
+
 angular.module('app.controllers')
     .controller('SachinStatsCtrl', ['$scope', 'Data', 'PieChartOptions',
     	function($scope, Data, PieChartOptions){
@@ -59,5 +93,6 @@ angular.module('app.controllers')
 
     		Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
     			$scope.winLoss = getWonLost(api_data, PieChartOptions);
+    			$scope.centuryVsBattingOrder = getCenturyVsBattingOrder(api_data, PieChartOptions);
     		});
     }])
