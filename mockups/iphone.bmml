@@ -1,0 +1,31 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="720" measuredH="587" mockupW="282" mockupH="573">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::ButtonBar" x="580" y="124" w="106" h="29" measuredW="106" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>ODI%2C%20Tests</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::MediaControls" x="470" y="120" w="-1" h="-1" measuredW="110" measuredH="36" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::iPhone" x="438" y="14" w="-1" h="-1" measuredW="282" measuredH="573" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <model>IPhone5</model>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::PieChart" x="489" y="244" w="-1" h="-1" measuredW="180" measuredH="180" zOrder="3" locked="false" isInGroup="-1"/>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::DataGrid" x="489" y="433" w="180" h="141" measuredW="122" measuredH="141" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Australia%2C%2020%0APakistan%2C%2030%0ASouth%20Africa%2C%2040%0ANew%20Zealand%2C%2010%0A%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::ComboBox" x="514" y="168" w="-1" h="-1" measuredW="131" measuredH="24" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Filter%20by%20Stadium</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::ComboBox" x="480" y="207" w="-1" h="-1" measuredW="204" measuredH="24" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Show%20Runs/Century/Matches</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

@@ -1,5 +1,10 @@
 'use strict';
 
+var colors;
+var colorsArray = ['#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC',
+'#7C76B9','#03C7A1','#AEC9EC','#EEB674','#B99076','#348EBA', '#4FCE87', '#EA8B64'
+];
+
 function get_pie_chart_data(data, PieChartOptions){
 	var chart_data = $.extend(true, {}, PieChartOptions.simplePie);
 	chart_data.series[0].data = [];
@@ -188,18 +193,116 @@ function getCenturyVsBattingOrder(matches, PieChartOptions){
 	return chart_data;
 }
 
-function plot_odi_stat_data($scope, Data, chart_options){
+function custom_chart_settings_by_avg_fare(chart_data){
+    chart_data.xAxis = {
+                        startOnTick: true,
+                        endOnTick: true,
+                        showLastLabel: true,
+                        lineColor: '#aaa',
+                        tickLength: 0,
+                        min: 10,
+                        max: 60,
+                        title: { 
+                        	text: "Average",
+                        	align: 'middle',
+                        	style:{
+                        		color: "#666",
+                        		fontFamily: "Arial",
+                        		fontSize: "12px"
+                        	}
+                        },
+                        "labels": {
+                             y: 20,
+                            "style": {
+                                "color": "#666",
+                                "fontFamily": "TitilliumWeb",
+                                "fontSize": "12px"
+                            },
+                            "verticalAlign": "middle"
+                       }
+                   }
 
-    var chosen_json = 'vs Country';
-    var chosen_attr = 'runs';
+    chart_data.yAxis.tickInterval = 50;
+    chart_data.yAxis.title ={
+    							text: "Number of Matches",
+                        		align: 'middle',
+                        		style:{
+	                        		color: "#666",
+	                        		fontFamily: "Arial",
+	                        		fontSize: "12px"
+                        		}
+    						};
+    chart_data.legend = {
+                align: 'right',
+                verticalAlign: 'top',
+                layout: 'vertical',
+                x: 0,
+                y: 0,
+                itemMarginTop: 5,
+                itemMarginBottom: 5
+            };
 
-    var series_data;
+    chart_data.tooltip = {
+            enabled: true,
+            formatter: function() {
+            	console.log(this);
+                return '<b>'+this.point.name+'</b><br>'+
+                	   '<b>Matches: '+this.y+'</b><br>'+
+                	   '<b>Average: '+this.x+'</b><br>'+
+                	   '<b>Runs: '+this.point.runs+'</b>';
+            }
+        };
+
+    chart_data.plotOptions.scatter = {
+				    					states: {
+				                            hover: {
+				                                enabled: false,
+				                                lineColor: 'rgb(100,100,100)'
+				                            }
+                        			 	}
+    };    
+    chart_data.plotOptions.series = {
+								    	marker:{
+								    		symbol: 'circle'
+								    	}
+    };
+    chart_data.yAxis.max = 500;
+    chart_data.yAxis.min = 250;
+    chart_data.chart.type = 'scatter';
+    chart_data.series = [];
+    return chart_data;
+}
+
+function get_bubble_chart_data (api_data, colors, ChartOptions) {
+    var chart_data = $.extend(true, {}, ChartOptions.pos);
+    chart_data = custom_chart_settings_by_avg_fare(chart_data);
+    for(var i = 0; i < api_data.length; i++){
+        var seriesObj = {name: '', color: '', data: []};
+        var dataObj =   {x: '', y: '', runs: '', name: '',
+        					marker: {
+	        					radius: '',
+	        					symbol: 'circle'
+    				    	}
+    				    }
+    	dataObj.x = parseInt(api_data[i].average);
+    	dataObj.y = parseInt(api_data[i].matches);
+    	dataObj.marker.radius = parseFloat((api_data[i].runs)/500);
+		dataObj.runs = parseInt(api_data[i].runs);
+		dataObj.name = api_data[i].name;
+        seriesObj.name = api_data[i].name;
+        seriesObj.color = colorsArray[i];
+        seriesObj.data.push(dataObj);
+        chart_data.series.push(seriesObj);
+    }
+    console.log(colorsArray)
+    console.log(chart_data)
+    return chart_data;
 }
 
 
 angular.module('app.controllers')
     .controller('SachinStatsCtrl',
-    	function($scope, Data, PieChartOptions){
+    	function($scope, Data, PieChartOptions, ChartOptions){
     		
     		$scope.page = "Sachin Stats";
 
@@ -221,13 +324,15 @@ angular.module('app.controllers')
 
     		});
     
+        Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
+            $scope.winLoss = getWonLost(api_data, PieChartOptions);
+        });
+
             Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
                 $scope.winLoss = getWonLost(api_data, PieChartOptions);
             });
 
-            Data.get_local('scripts/lib/sachin_odi_summary.json').success(function(api_data){
-
-                plot_odi_stat_data($scope, Data, PieChartOptions)
-
+            Data.get_local('scripts/lib/record_json.json').success(function(api_data){
+                $scope.recordChart = get_bubble_chart_data(api_data, colors, ChartOptions)
             });
         });

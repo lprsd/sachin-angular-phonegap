@@ -39,4 +39,12 @@ angular.module('app.directives')
         }, true);
       }
     };
-});
+})
+
+.directive('summarychart',function(){
+  return {
+    restrict: 'E',
+    template: '<div class="hc-bars"></div>'
+
+  }
+  });
