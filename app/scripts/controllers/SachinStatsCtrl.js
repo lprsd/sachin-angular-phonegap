@@ -282,7 +282,7 @@ function get_bubble_chart_data (api_data, colors, ChartOptions) {
 	        					symbol: 'circle'
     				    	}
     				    }
-    	dataObj.x = parseInt(api_data[i].average);
+    	dataObj.x = parseFloat(api_data[i].average);
     	dataObj.y = parseInt(api_data[i].matches);
     	dataObj.marker.radius = parseFloat((api_data[i].runs)/500);
 		dataObj.runs = parseInt(api_data[i].runs);
@@ -303,7 +303,7 @@ angular.module('app.controllers')
     	function($scope, Data, PieChartOptions, ChartOptions){
     		
     		$scope.page = "Sachin Stats";
-
+    		
 			$(".sachinStat").animate({
 		    	height: "550px"
 		  	}, 1500 );

@@ -1,11 +1,20 @@
 <div class="col-md-12">
 	<div class="sachinStat odiTile">
-		<h2>ODI Stats</h2>
-		<chart height="400" width="600" chart-id="scoreBuckets"></chart>
-		<chart height="280" width="285" chart-id="centuryVsBattingOrder"></chart>
-		<chart height="280" width="285" chart-id="winLoss"></chart>
-        <chart height="280" width="285" chart-id="chosenStat"></chart>
-        <chart height="400" width="800" chart-id="recordChart"></chart>
-
+		<h2>Sachin Stats</h2>
+		<div class="btn-group hc-bars" data-toggle="buttons">
+		  <label class="btn btn-primary active">
+		    <input type="radio" name="formats" value="odi"> ODI
+		  </label>
+		  <label class="btn btn-primary">
+		    <input type="radio" name="formats" value="test"> Test
+		  </label>
+		</div>
+        <div class="chart-container">
+			<chart height="400" width="600" chart-id="scoreBuckets"></chart>
+			<chart height="280" width="285" chart-id="centuryVsBattingOrder"></chart>
+			<chart height="280" width="285" chart-id="winLoss"></chart>
+	        <chart height="280" width="285" chart-id="chosenStat"></chart>
+	        <chart height="400" width="800" chart-id="recordChart"></chart>
+        </div>
 	</div>
 </div>
