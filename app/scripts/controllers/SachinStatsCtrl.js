@@ -200,8 +200,6 @@ function custom_chart_settings_by_avg_fare(chart_data){
                         showLastLabel: true,
                         lineColor: '#aaa',
                         tickLength: 0,
-                        min: 10,
-                        max: 60,
                         title: { 
                         	text: "Average",
                         	align: 'middle',
@@ -222,7 +220,7 @@ function custom_chart_settings_by_avg_fare(chart_data){
                        }
                    }
 
-    chart_data.yAxis.tickInterval = 50;
+    delete chart_data.yAxis.tickInterval;
     chart_data.yAxis.title ={
     							text: "Number of Matches",
                         		align: 'middle',
@@ -266,8 +264,8 @@ function custom_chart_settings_by_avg_fare(chart_data){
 								    		symbol: 'circle'
 								    	}
     };
-    chart_data.yAxis.max = 500;
-    chart_data.yAxis.min = 250;
+    delete chart_data.yAxis.max;
+    delete chart_data.yAxis.min;
     chart_data.chart.type = 'scatter';
     chart_data.series = [];
     return chart_data;
@@ -324,9 +322,9 @@ angular.module('app.controllers')
 
     		});
     
-        Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
-            $scope.winLoss = getWonLost(api_data, PieChartOptions);
-        });
+	        Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
+	            $scope.winLoss = getWonLost(api_data, PieChartOptions);
+	        });
 
             Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
                 $scope.winLoss = getWonLost(api_data, PieChartOptions);

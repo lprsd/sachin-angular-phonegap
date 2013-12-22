@@ -38,6 +38,16 @@ angular.module('app.controllers')
       var series_data = get_series_data(api_data,chosen_json,chosen_attr);
       var chart_data = angular.copy(PieChartOptions.simplePie);
       chart_data.series = [{name:chosen_json, type: 'pie', data:series_data}];
+      chart_data.plotOptions.pie.dataLabels = {
+                                                enabled: true,
+                                                color: '#000000',
+                                                connectorColor: '#000000',
+                                                formatter: function() {
+                                                                        // display only if larger than 1
+                                                                        return '<b>'+ this.point.name +' runs:</b> '+ this.y +'';
+              }
+                                              }
+      console.log(chart_data)
       $scope.chosenStat = chart_data;
     }
 
@@ -70,13 +80,7 @@ angular.module('app.controllers')
         json_option: $scope.charting_options.json_options[0],
         attr_option: $scope.charting_options.attr_options[1]
       }
-
-
+      
       plot_graph();
-
-
     });
-
-
-
   });
