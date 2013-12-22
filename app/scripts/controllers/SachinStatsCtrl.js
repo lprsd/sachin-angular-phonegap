@@ -113,7 +113,7 @@ function getWonLostScoreBuckets(matches){
 		var score = parseInt(matches[i].sachin_score);
 
 		switch(true){
-			case (score <= scoreBuckets[0].split('-')[1]):
+			case (score <= scoreBuckets[0].split('-')[1] || isNaN(score)):
 				matches[i].match_result == 'won'? wonScoreBuckets[0]++ : lostScoreBuckets[0]++;
 				break;
 			case (score <= scoreBuckets[1].split('-')[1]):
