@@ -229,8 +229,8 @@ function getWonLostByBuckets(matches){
 		'1 wicket', '2 wickets', '3 wickets', '4 wickets', '5 wickets',
 		'6 wickets', '7 wickets', '8 wickets', '9 wickets', '10 wickets',
 		'1-49 runs', '50-99 runs', '100-149 runs', '150-199 runs', '200+ runs'],
-		wonByBuckets = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-		lostByBuckets = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		wonByBuckets = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		lostByBuckets = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		wonLostByBuckets = {
 			won: 0, lost: 0, 
 			wonByBuckets: wonByBuckets, lostByBuckets: lostByBuckets,
