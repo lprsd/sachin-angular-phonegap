@@ -142,6 +142,134 @@ function getWonLostScoreBuckets(matches){
 	return wonLostScoreBuckets;
 }
 
+function getResultBuckets(matches, PieChartOptions) {
+
+	var wonLostByBuckets = getWonLostByBuckets(matches),
+		colors = Highcharts.getOptions().colors,
+    categories = ['Won', 'Lost'],
+    name = '',
+    data = [{
+		      y: wonLostByBuckets.won,
+		      color: colors[0],
+		      drilldown: {
+		          name: 'Score Buckets',
+		          categories: wonLostByBuckets.byBuckets,
+		          data: wonLostByBuckets.wonByBuckets,
+		          color: colors[0]
+		      }
+		  }, {
+		      y: wonLostByBuckets.lost,
+		      color: colors[1],
+		      drilldown: {
+		          name: 'Score Buckets',
+		          categories: [].concat(wonLostByBuckets.byBuckets).reverse(),
+		          //categories: ['100+', '90-99', '70-89', '50-70', '20-49', '0-20'],
+		          data: wonLostByBuckets.lostByBuckets.reverse(),
+		          color: colors[1]
+		      }
+		  }];
+
+    var wonLostData = [];
+    var byData = [];
+    for (var i = 0; i < data.length; i++) {
+        wonLostData.push({
+            name: categories[i],
+            y: data[i].y,
+            color: data[i].color
+        });
+
+        for (var j = 0; j < data[i].drilldown.data.length; j++) {
+            var brightness = 0.2 - (j / data[i].drilldown.data.length) / 5 ;
+            byData.push({
+                name: data[i].drilldown.categories[j],
+                y: data[i].drilldown.data[j],
+                color: Highcharts.Color(data[i].color).brighten(brightness).get()
+            });
+        }
+    }
+
+    var chart_data = $.extend(true, {}, PieChartOptions.simplePie);
+    chart_data.series = [{
+		      data: wonLostData,
+		      size: '60%',
+		      dataLabels: {
+		          formatter: function() {
+		              return this.y > 5 ? this.point.name : null;
+		          },
+		          color: 'white',
+		          distance: -30
+		      }
+		  }, {
+		      data: byData,
+		      size: '80%',
+		      innerSize: '60%',
+		      dataLabels: {
+		          formatter: function() {
+		              // display only if larger than 1
+		              return this.y > 1 ? '<b>By '+ this.point.name +':</b> '+ this.y +''  : null;
+		          }
+		      }
+		  }];
+
+		chart_data.title.text = 'India Won/Lost By & Match Counts without Sachin';
+		chart_data.plotOptions = {
+	      pie: {
+	          shadow: false,
+	          center: ['50%', '50%']
+	      }
+	  };
+		chart_data.chart.type = 'pie';
+
+		return chart_data;
+}
+
+function getWonLostByBuckets(matches){
+	
+	var byBuckets = [
+		'1 wicket', '2 wickets', '3 wickets', '4 wickets', '5 wickets',
+		'6 wickets', '7 wickets', '8 wickets', '9 wickets', '10 wickets',
+		'1-49 runs', '50-99 runs', '100-149 runs', '150-199 runs', '200+ runs'],
+		wonByBuckets = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		lostByBuckets = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		wonLostByBuckets = {
+			won: 0, lost: 0, 
+			wonByBuckets: wonByBuckets, lostByBuckets: lostByBuckets,
+			byBuckets: byBuckets
+		};
+
+	for (var i = 0; i < matches.length; i++){
+		if(matches[i].result == 'won') wonLostByBuckets.won++; 
+		if(matches[i].result == 'lost') wonLostByBuckets.lost++;
+		var won_lost_by = matches[i].won_lost_by;
+
+		switch(true){
+			case (matches[i].result == 'won'):
+				if(won_lost_by.indexOf('wicket') > -1){
+					wonByBuckets[parseInt(won_lost_by) - 1]++;	
+				} else 
+				if(won_lost_by.indexOf('run') > -1){
+					var index = 9 + parseInt(parseInt(won_lost_by)/50);
+					index = index > 14 ? 14 : index;
+					wonByBuckets[index]++;	
+				}
+				break;
+			case (matches[i].result == 'lost'):
+				if(won_lost_by.indexOf('wicket') > -1){
+					lostByBuckets[parseInt(won_lost_by) - 1]++;	
+				} else 
+				if(won_lost_by.indexOf('run') > -1){
+					var index = 9 + parseInt(parseInt(won_lost_by)/50);
+					index = index > 14 ? 14 : index;
+					lostByBuckets[index]++;	
+				}
+				break;
+		}
+	}
+	console.log(wonLostByBuckets)
+	return wonLostByBuckets;
+}
+
+
 function getWonLost(matches, PieChartOptions){
 
 	var wonLostScoreBuckets = getWonLostScoreBuckets(matches);
@@ -341,6 +469,10 @@ angular.module('app.controllers')
     			$scope.winLoss = getWonLost(api_data, PieChartOptions);
     			$scope.centuryVsBattingOrder = getCenturyVsBattingOrder(api_data, PieChartOptions);
 
+    		});
+
+    		Data.get_local('scripts/lib/india_wo_sachin_odi.json').success(function(api_data){
+    			$scope.resultBuckets = getResultBuckets(api_data, PieChartOptions);
     		});
     
 	        Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
