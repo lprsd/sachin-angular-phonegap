@@ -426,8 +426,7 @@ function get_bubble_chart_data (api_data, colors, ChartOptions) {
 }
 
 function get_area_chart_data(data, AreaChartOptions){
-	var chart = $.extend(true, {}, AreaChartOptions.simplePie);
-	console.log(AreaChartOptions)
+	var chart = $.extend(true, {}, AreaChartOptions.areaChart);
 	for (var i = 0; i < data.length; i++) {
 		var top_score_array = [];
 		var average = []
@@ -438,13 +437,89 @@ function get_area_chart_data(data, AreaChartOptions){
 		top_score.push(date.getTime());
 		top_score.push(parseInt(data[i].top_score));
 		average.push(date.getTime());
-		average.push(parseInt(data[i].avg));
+		average.push(parseFloat(data[i].avg));
 		chart.series[0].data.push(average);
 		chart.series[1].data.push(top_score_array);
 		chart.series[2].data.push(top_score);
 	}
-	console.log(chart)
 	return chart
+}
+
+function get_win_loss_area_chart(data, AreaChartOptions){
+	var chart_data = $.extend(true, {}, AreaChartOptions.areaChart);
+	chart_data.xAxis = {categories: []}
+	chart_data.xAxis.categories = [];
+	for(var yearVal = 1989; yearVal < 2013; yearVal++){
+		chart_data.xAxis.categories.push(yearVal);
+	}
+	chart_data.series = [
+            {
+                name: 'All',
+                marker: {
+                    enabled: false,
+                    symbol: 'circle'
+                },
+                color: '#4572A7',
+                type: 'area',
+                data: []
+            },
+            {
+                name: 'Win',
+                marker: {
+                    enabled: false,
+                    symbol: 'circle'
+                },
+                color: '#666666',
+                type: 'area',
+                data: []
+            },
+            {
+                name: 'Loss',
+                marker: {
+                    enabled: false,
+                    symbol: 'circle'
+                },
+                color: '#efefef',
+                type: 'area',
+                data: []
+            },
+            {
+                name: 'Matches',
+                marker: {
+                    enabled: false,
+                    symbol: 'circle'
+                },
+                color: '#89A54E',
+                type: 'spline',
+                yAxis: 1,
+                data: []
+            }]
+	var startYear = 1989;
+	while (startYear != 2012){
+		var win = 0, loss = 0, all = 0, total_matches = 0;
+		for (var i = 0; i < data.length; i++) {
+	        var date = new Date(data[i].date);
+	        var year = date.getFullYear(date);
+	        if(year == startYear){
+	        	var score = data[i].sachin_score === "-" ? 0 : data[i].sachin_score;
+	        	if(data[i].match_result == 'won'){
+	        		win = win + parseInt(score);
+	        	}
+	        	else if(data[i].match_result == 'lost'){
+	        		loss = loss + parseInt(score);
+	        	}
+	        	all = all + parseInt(score);
+	        	total_matches++
+	        }		
+	    }
+	    chart_data.series[0].data.push(all); 
+	    chart_data.series[1].data.push(win);
+	    chart_data.series[2].data.push(loss);
+	    chart_data.series[3].data.push(total_matches);
+		startYear++
+	}
+	console.log(chart_data);
+	return chart_data;
 }
 
 angular.module('app.controllers')
@@ -488,8 +563,10 @@ angular.module('app.controllers')
             });
 
             Data.get_local('scripts/lib/sachin_odi_cumulative.json').success(function (api_data){
-            	console.log(api_data.length)
             	$scope.areaChart = get_area_chart_data(api_data, AreaChartOptions);
-            	//$scope.areaChart = AreaChartOptions.simplePie;
+            });
+
+            Data.get_local('scripts/lib/sachin_odi.json').success(function (api_data){
+            	$scope.winLossChart = get_win_loss_area_chart(api_data, AreaChartOptions);
             });
         });

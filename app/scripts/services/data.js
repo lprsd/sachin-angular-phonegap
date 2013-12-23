@@ -819,7 +819,7 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
 
     var BCC = {
 
-        simplePie: area_chart
+        areaChart: area_chart
 
     }
     return BCC;
