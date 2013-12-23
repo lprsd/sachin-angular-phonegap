@@ -719,3 +719,108 @@ angular.module('app.services').factory('BubbleChartOptions',['DefaultChartOption
     }
     return BCC;
 }]);
+
+angular.module('app.services').factory('AreaChartOptions',[function ($http){
+
+    var area_chart = {
+
+        chart: {
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Sachin Lifetime Score Chart'
+            },
+            subtitle: {
+                text: 'God Stats'
+            },
+            xAxis: [{
+                type: 'datetime'
+            }],
+            yAxis: [{ // Primary yAxis
+                labels: {
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'Runs',
+                    style: {
+                        color: ''
+                    }
+                }
+            }, { // Secondary yAxis
+                title: {
+                    text: '',
+                    style: {
+                        color: '#4572A7'
+                    }
+                },
+                labels: {
+                    style: {
+                        color: '#4572A7'
+                    }
+                },
+                opposite: true
+            }],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                floating: false,
+                backgroundColor: '#FFFFFF'
+            },
+            series: [{
+                name: 'Average',
+                marker: {
+                    enabled: false,
+                    symbol: 'circle'
+                },
+                color: '#89A54E',
+                type: 'spline',
+                yAxis: 1,
+                data: [],
+                tooltip: {
+                    valueSuffix: ''
+                }
+    
+            }, {
+                name: 'Runs',
+                marker: {
+                    enabled: false,
+                    symbol: 'circle'
+                },
+                color: '#4572A7',
+                type: 'area',
+                data: [],
+                tooltip: {
+                    valueSuffix: ''
+                }
+            },
+            {
+                name: 'Top Score',
+                marker: {
+                    enabled: false,
+                    symbol: 'circle'
+                },
+                color: 'red',
+                type: 'spline',
+                yAxis: 1,
+                data: [],
+                tooltip: {
+                    valueSuffix: ''
+                }
+            }]
+        
+    }
+
+
+    var BCC = {
+
+        simplePie: area_chart
+
+    }
+    return BCC;
+}]);

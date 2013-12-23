@@ -297,10 +297,31 @@ function get_bubble_chart_data (api_data, colors, ChartOptions) {
     return chart_data;
 }
 
+function get_area_chart_data(data, AreaChartOptions){
+	var chart = $.extend(true, {}, AreaChartOptions.simplePie);
+	console.log(AreaChartOptions)
+	for (var i = 0; i < data.length; i++) {
+		var top_score_array = [];
+		var average = []
+		var top_score = []
+		var date = new Date(data[i].date);
+		top_score_array.push(date.getTime());
+		top_score_array.push(parseInt(data[i].cum_runs));
+		top_score.push(date.getTime());
+		top_score.push(parseInt(data[i].top_score));
+		average.push(date.getTime());
+		average.push(parseInt(data[i].avg));
+		chart.series[0].data.push(average);
+		chart.series[1].data.push(top_score_array);
+		chart.series[2].data.push(top_score);
+	}
+	console.log(chart)
+	return chart
+}
 
 angular.module('app.controllers')
     .controller('SachinStatsCtrl',
-    	function($scope, Data, PieChartOptions, ChartOptions){
+    	function($scope, Data, PieChartOptions, ChartOptions, AreaChartOptions){
     		
     		$scope.page = "Sachin Stats";
     		
@@ -332,5 +353,11 @@ angular.module('app.controllers')
 
             Data.get_local('scripts/lib/record_json.json').success(function(api_data){
                 $scope.recordChart = get_bubble_chart_data(api_data, colors, ChartOptions)
+            });
+
+            Data.get_local('scripts/lib/sachin_odi_cumulative.json').success(function (api_data){
+            	console.log(api_data.length)
+            	$scope.areaChart = get_area_chart_data(api_data, AreaChartOptions);
+            	//$scope.areaChart = AreaChartOptions.simplePie;
             });
         });
