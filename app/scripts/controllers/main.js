@@ -44,8 +44,14 @@ angular.module('app.controllers')
                                                 connectorColor: '#000000',
                                                 formatter: function() {
                                                                         // display only if larger than 1
-                                                                        return '<b>'+ this.point.name +' runs:</b> '+ this.y +'';
-              }
+                                                                        if($scope.chosen_option.attr_option != "Centuries"){
+                                                                          return '<b>'+ this.point.name +' runs:</b> '+ this.y +'';  
+                                                                        }
+                                                                        else{
+                                                                          return '<b>'+ this.point.name +' Centuries:</b> '+ this.y +'';  
+                                                                        }
+                                                                        
+                                                }
                                               }
       console.log(chart_data)
       $scope.chosenStat = chart_data;
