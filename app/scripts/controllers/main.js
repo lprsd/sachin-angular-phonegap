@@ -44,11 +44,14 @@ angular.module('app.controllers')
                                                 connectorColor: '#000000',
                                                 formatter: function() {
                                                                         // display only if larger than 1
-                                                                        if($scope.chosen_option.attr_option != "Centuries"){
-                                                                          return '<b>'+ this.point.name +' runs:</b> '+ this.y +'';  
+                                                                        if($scope.chosen_option.attr_option === "Centuries"){
+                                                                          return '<b>'+ this.point.name +' Centuries:</b> '+ this.y +'';  
+                                                                        }
+                                                                        else if($scope.chosen_option.attr_option === "Matches"){
+                                                                          return '<b>'+ this.point.name +' Matches:</b> '+ this.y +'';  
                                                                         }
                                                                         else{
-                                                                          return '<b>'+ this.point.name +' Centuries:</b> '+ this.y +'';  
+                                                                          return '<b>'+ this.point.name +' runs:</b> '+ this.y +'';   
                                                                         }
                                                                         
                                                 }
