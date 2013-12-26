@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Steroids Tutorial: Begin</title>
+
+  <link rel="stylesheet" href="/vendor/topcoat/css/topcoat-mobile-light.css" />
+  <link rel="stylesheet" href="/stylesheets/application.css" />
+
+  <!-- EXCERCISE 1: You found it! As you can see below, cordova.js is served from http://localhost/ – it doesn't even exist in the project files on your disk. The localhost server is running inside the Steroids app on your device. Since Steroids knows which platform it is running on, it can correctly serve either the iOS or Android version of cordova.js. -->
+  <script src="http://localhost/cordova.js"></script>
+  <script src="/components/steroids-js/steroids.js"></script>
+</head>
+<body>
+  <div class="content-padded">
+
+  <h1>Awesome, welcome!</h1>
+
+  <p>So far you've mastered that:</p>
+
+  <p>1) Pressing <strong>enter</strong> in the Steroids console &mdash; opened by running <strong>$ steroids connect</strong> &mdash; lets you push changes made in your app to all connected devices.</p>
+
+  <p>2) The <strong>steroids.config.location</strong> property in <strong>config/application.coffee</strong> sets up the initial view of your app.</p>
+
+  <p> Let's dig deeper!</p>
+
+  <h2>Accessing Cordova (PhoneGap)</h2>
+
+  <p>Steroids gives you full access to Cordova's APIs. Let's try out one straight away:</p>
+
+  <div class="topcoat-button--cta full center" ontouchend="askForConfirm()">Click me!</div>
+
+  <p>Next, time for a few short excercises.</p>
+
+  <h2>Excercise 1</h2>
+
+  <p>Steroids automatically loads the correct version of <strong>cordova.js</strong>, regardless of your platform (i.e. iOS or Android). Now, find out how we do this by looking at the source code of this document at <strong>www/tutorial.html</strong>.</p>
+
+  <h2>Excercise 2</h2>
+
+  <p>
+    You'll want to share your awesome app with others, so let's practice that. Open a new Terminal window, go to your Steroids project folder and run<br>
+    <br>
+    <strong>$ steroids deploy</strong><br>
+    <br>
+    A build of your app will be uploaded to AppGyver Cloud, and a browser window will open with a QR code and a shareable URL. Anyone can then scan the QR code with AppGyver Scanner to view your app.
+  </p>
+
+  <p>After making changes to your project, simply run the <strong>$ steroids deploy</strong> command again to update your cloud-deployed build.</p>
+
+  <h2>Exercise 3</h2>
+
+  <p><em>Note that after this exercise, you need to change <strong>config/application.coffee</strong>'s <strong>steroids.config.location</strong> property back to <strong>"http://localhost/tutorial.html"</strong> to return to this document, so be prepared!</em></p>
+
+  <p>To jump-start your development, Steroids comes bundled with several examples demonstarting Cordova APIs and other features of Steroids.</p>
+
+  <p>In your project folder, run</p>
+
+  <p><strong>$ steroids generate</strong></p>
+
+  <p>At the end of the output, you get a list of available examples. Let's try the Cordova camera one. Run</p>
+
+  <p><strong>$ steroids generate example camera</strong></p>
+
+  <p>Follow the instructions, test out the camera example and then return to this tutorial.</p>
+
+  <h2>All done!</h2>
+
+  <p>For then next tutorial, run</p>
+
+  <p><strong>$ steroids generate tutorial steroids</strong></p>
+
+  </div>
+
+  <script>
+  // Inlining JavaScript like this is generally a bad idea and done here only for brevity.
+
+  function askForConfirm(){
+    // Steroids-enhanced Cordova API documentation can be found at http://docs.appgyver.com
+    navigator.notification.confirm("This is a native confirm dialogue opened by the Cordova API call navigator.notification.confirm", null, "Cool, huh?", "Yes,No");
+  }
+
+  </script>
+
+</body>
+</html>
