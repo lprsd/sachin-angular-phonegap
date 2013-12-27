@@ -24,7 +24,6 @@ body {
 .hc-bars{
 	position: relative;
 	float: left;
-	margin-left: 20px;
 }
 
 .centeredChart{
@@ -58,7 +57,7 @@ h2{
 }
 
 .col-md-3 {
-	width: 153px;
+	width: 160px;
 	float: left;
 	padding: 7px;
 }
@@ -67,16 +66,18 @@ h2{
 	margin: auto;
 	padding: 0; 
 }
-@media (min-width: 320px) {
+@media (min-width: 480px) {
 .container {
-	width: 320px;
+	width: 480px;
 }	
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
 .container {
-	width: 768px;
+	width: 1024px;
 }	
 }
 
-
+.col-md-12 {
+	padding: 0;
+}
