@@ -5,7 +5,7 @@ angular.module('app.controllers')
     $scope.colors = ['#334D5C','#45b29d','#EFC94C','#E27A3F','#DF5A49'];
     
     $scope.tiles = [{name: 'Sachin Stats', url: '#/SachinStats', class:'col-md-3'},{name: 'Career Summary', url: '#/summary', class:'col-md-3'},
-    				{name: 'Awesome Facts', url: '#/AwesomeFacts', class:'col-md-3'},{name: 'Social Feed', url: '#/SocialFeed', class:'col-md-3'}];
+    				{name: 'Awesome Facts', url: '#/AwesomeFacts', class:'col-md-3'},{name: 'Social Feed', url: '#/SocialFeed', class:'col-md-3'}, {name: 'Dummy', url: '#/SocialFeed', class:'col-md-3'}];
 
   })
 
