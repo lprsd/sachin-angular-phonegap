@@ -70,7 +70,7 @@ function getScoreBuckets(matches, PieChartOptions) {
     var chart_data = $.extend(true, {}, PieChartOptions.simplePie);
     chart_data.series = [{
 		      data: wonLostData,
-		      size: '60%',
+		      size: '40%',
 		      dataLabels: {
 		          formatter: function() {
 		              return this.y > 5 ? this.point.name : null;
@@ -80,8 +80,8 @@ function getScoreBuckets(matches, PieChartOptions) {
 		      }
 		  }, {
 		      data: scoreData,
-		      size: '80%',
-		      innerSize: '60%',
+		      size: '50%',
+		      innerSize: '40%',
 		      dataLabels: {
 		          formatter: function() {
 		              // display only if larger than 1
@@ -191,7 +191,7 @@ function getResultBuckets(matches, PieChartOptions) {
     var chart_data = $.extend(true, {}, PieChartOptions.simplePie);
     chart_data.series = [{
 		      data: wonLostData,
-		      size: '60%',
+		      size: '40%',
 		      dataLabels: {
 		          formatter: function() {
 		              return this.y > 5 ? this.point.name : null;
@@ -201,8 +201,8 @@ function getResultBuckets(matches, PieChartOptions) {
 		      }
 		  }, {
 		      data: byData,
-		      size: '80%',
-		      innerSize: '60%',
+		      size: '50%',
+		      innerSize: '40%',
 		      dataLabels: {
 		          formatter: function() {
 		              // display only if larger than 1
