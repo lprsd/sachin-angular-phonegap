@@ -94,7 +94,7 @@ angular.module('app.controllers')
     });
   });
  
-window.onload = window.onresize = function(){
+window.onload = window.onresize = window.onorientationchange = function(){
   sizeUI();
 }
 
