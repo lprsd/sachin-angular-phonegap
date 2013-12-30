@@ -106,9 +106,9 @@ function sizeUI() {
   if(screenWidth < 320){
     tileCount = 2;
   } else {
-    tileCount = Math.floor(screenWidth / 160);
+    tileCount = Math.round(screenWidth / 160);
   }  
-  tileSize = screenWidth / tileCount - 2;
+  tileSize = (screenWidth - 4) / tileCount;
   chartWidth = screenWidth;
   
   if(screenWidth < 200) {

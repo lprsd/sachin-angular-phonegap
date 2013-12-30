@@ -13,6 +13,7 @@ body, h2 {
 	width: 100%;
 	height: 100%;
 	text-align: center;
+	display: table;
 }
 
 .sachinStat{
@@ -52,6 +53,8 @@ body, h2 {
 h2{
 	color: ivory;
 	font-size: 24px;
+	display: table-cell;
+   	vertical-align: middle;
 }
 
 .chart-container{
