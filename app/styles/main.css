@@ -22,6 +22,7 @@ body {
 }
 
 .hc-bars{
+	width: 100%;
 	position: relative;
 	float: left;
 }
