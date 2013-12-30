@@ -2,17 +2,17 @@
 
 angular.module('app.controllers')
   .controller('MainCtrl', function ($scope) {
-    $scope.colors = ['#334D5C','#45b29d','#EFC94C','#E27A3F','#DF5A49'];
+    $scope.colors = ['#334D5C','#45b29d','#EFC94C','#E27A3F','#DF5A49', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
     
     $scope.tiles = [{name: 'Sachin Stats', url: '#/SachinStats', class:'col-md-3'},{name: 'Career Summary', url: '#/summary', class:'col-md-3'},
-    				{name: 'Awesome Facts', url: '#/AwesomeFacts', class:'col-md-3'},{name: 'Social Feed', url: '#/SocialFeed', class:'col-md-3'}, {name: 'Dummy', url: '#/SocialFeed', class:'col-md-3'}];
+    				{name: 'Awesome Facts', url: '#/AwesomeFacts', class:'col-md-3'},{name: 'Social Feed', url: '#/SocialFeed', class:'col-md-3'}, {name: 'Dummy', url: '#/SocialFeed', class:'col-md-3'}, {name: 'More Such Dummy Tiles & More', url: '#/SocialFeed', class:'col-md-3'}];
 
   })
 
   .controller('SummaryCtrl', function($scope, Data, PieChartOptions){
 
     var get_series_data = function(api_data, chosen_json, chosen_attr){
-      var colorsArray = ['#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC'];
+      var colorsArray = ['#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
       var series_data = []
       var total_this_stat = $.map(api_data[chosen_json], function(x){return +x.Runs}).reduce(function(previousValue, currentValue){ return previousValue + currentValue;})
       console.log(total_this_stat);
@@ -93,3 +93,33 @@ angular.module('app.controllers')
       plot_graph();
     });
   });
+ 
+window.onload = window.onresize = window.onorientationchange = function(){
+  sizeUI();
+}
+
+var screenWidth, tileCount, tileSize, chartWidth, fontSize;
+
+function sizeUI() {
+  fontSize = '22px';
+  screenWidth = window.innerWidth;
+  if(screenWidth < 320){
+    tileCount = 2;
+  } else {
+    tileCount = Math.round(screenWidth / 160);
+  }  
+  tileSize = (screenWidth - 4) / tileCount;
+  chartWidth = screenWidth;
+  
+  if(screenWidth < 200) {
+    fontSize = '12px';  
+  } else if(screenWidth < 270) {
+    fontSize = '18px';
+  }
+
+  $('h2').css({'font-size': fontSize});
+  console.log(screenWidth, tileCount, tileSize)
+
+
+  $('.col-md-3').css({'width': tileSize+'px', 'height': tileSize+'px'});
+}
