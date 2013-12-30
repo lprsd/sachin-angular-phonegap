@@ -101,11 +101,23 @@ window.onload = window.onresize = window.onorientationchange = function(){
 var screenWidth, tileCount, tileSize, chartWidth;
 
 function sizeUI() {
+  $('h2').css({'font-size': '24px'});
   screenWidth = window.innerWidth;
-  tileCount = Math.floor(screenWidth / 160); //320px is min width; so 2 tiles min
+  if(screenWidth < 320){
+    tileCount = 2;
+  } else {
+    tileCount = Math.floor(screenWidth / 160);
+  }  
   tileSize = screenWidth / tileCount - 2;
   chartWidth = screenWidth;
+  
+  if(screenWidth < 200) {
+    $('h2').css({'font-size': '12px'});
+  } else if(screenWidth < 270) {
+    $('h2').css({'font-size': '18px'});
+  }
   console.log(screenWidth, tileCount, tileSize)
+
 
   $('.col-md-3').css({'width': tileSize+'px', 'height': tileSize+'px'});
 }
