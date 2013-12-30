@@ -5,7 +5,7 @@ angular.module('app.controllers')
     $scope.colors = ['#334D5C','#45b29d','#EFC94C','#E27A3F','#DF5A49', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
     
     $scope.tiles = [{name: 'Sachin Stats', url: '#/SachinStats', class:'col-md-3'},{name: 'Career Summary', url: '#/summary', class:'col-md-3'},
-    				{name: 'Awesome Facts', url: '#/AwesomeFacts', class:'col-md-3'},{name: 'Social Feed', url: '#/SocialFeed', class:'col-md-3'}, {name: 'Dummy', url: '#/SocialFeed', class:'col-md-3'}, {name: 'Dummy 2', url: '#/SocialFeed', class:'col-md-3'}];
+    				{name: 'Awesome Facts', url: '#/AwesomeFacts', class:'col-md-3'},{name: 'Social Feed', url: '#/SocialFeed', class:'col-md-3'}, {name: 'Dummy', url: '#/SocialFeed', class:'col-md-3'}, {name: 'More Such Dummy Tiles & More', url: '#/SocialFeed', class:'col-md-3'}];
 
   })
 
@@ -98,10 +98,10 @@ window.onload = window.onresize = window.onorientationchange = function(){
   sizeUI();
 }
 
-var screenWidth, tileCount, tileSize, chartWidth;
+var screenWidth, tileCount, tileSize, chartWidth, fontSize;
 
 function sizeUI() {
-  $('h2').css({'font-size': '24px'});
+  fontSize = '22px';
   screenWidth = window.innerWidth;
   if(screenWidth < 320){
     tileCount = 2;
@@ -112,10 +112,12 @@ function sizeUI() {
   chartWidth = screenWidth;
   
   if(screenWidth < 200) {
-    $('h2').css({'font-size': '12px'});
+    fontSize = '12px';  
   } else if(screenWidth < 270) {
-    $('h2').css({'font-size': '18px'});
+    fontSize = '18px';
   }
+
+  $('h2').css({'font-size': fontSize});
   console.log(screenWidth, tileCount, tileSize)
 
 
