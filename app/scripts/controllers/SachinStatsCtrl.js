@@ -317,9 +317,9 @@ function getCenturyVsBattingOrder(matches, PieChartOptions){
 		data.color = color[parseInt(order)];
 		chart_data.series[0].data.push(data);
 	}
-	chart_data.title.text = "Centuries vs Batting Order"
+	chart_data.title.text = "Centuries vs Inning"
 	chart_data.tooltip.formatter = function(){
-        return '<b>Batted '+ this.key + ': </b>' + this.y + ' Centuries';
+        return '<b>'+ this.key + ' Inning: </b>' + this.y + ' Centuries';
     }
 
 	return chart_data;
