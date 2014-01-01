@@ -1,12 +1,15 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $location, $rootScope) {
     $scope.colors = ['#334D5C','#45b29d','#EFC94C','#E27A3F','#DF5A49', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
     
-    $scope.tiles = [{name: 'Sachin Stats', url: '#/SachinStats', class:'col-md-3'},{name: 'Career Summary', url: '#/summary', class:'col-md-3'},
-    				{name: 'Awesome Facts', url: '#/AwesomeFacts', class:'col-md-3'},{name: 'Social Feed', url: '#/SocialFeed', class:'col-md-3'}, {name: 'Dummy', url: '#/SocialFeed', class:'col-md-3'}, {name: 'More Such Dummy Tiles & More', url: '#/SocialFeed', class:'col-md-3'}];
+    $scope.tiles = [{name: 'Career Summary', url: '#/summary', class:'col-md-3'},{name: 'Score Buckets<br/>&<br/>Won/Lost Counts', url: '#/ScoreBuckets', class:'col-md-3'},{name: 'Won/Lost By<br/>&<br/>Match Counts', url: '#/ResultBuckets', class:'col-md-3'},{name: 'Won/Lost<br/>&<br/>Centuries vs Inning', url: '#/WonLostCenturiesInnning', class:'col-md-3'},{name: 'Life Time<br/>Chart', url: '#/LifeTimeChart', class:'col-md-3'}, {name: 'Sachin<br/>vs<br/>Other Batsmen', url: '#/RecordChart', class:'col-md-3'}, {name: 'Social<br/>Feed', url: '#/SocialFeed', class:'col-md-3'}];
 
+    $scope.$watch(function(){ return $location.path()}, function(value){
+      $rootScope.currentView = value;
+      console.log($rootScope.currentView);
+    })
   })
 
   .controller('SummaryCtrl', function($scope, Data, PieChartOptions){
@@ -118,8 +121,5 @@ function sizeUI() {
   }
 
   $('h2').css({'font-size': fontSize});
-  console.log(screenWidth, tileCount, tileSize)
-
-
   $('.col-md-3').css({'width': tileSize+'px', 'height': tileSize+'px'});
 }

@@ -533,7 +533,7 @@ angular.module('app.controllers')
     		$scope.page = "Sachin Stats";
     		
 			$(".sachinStat").animate({
-		    	height: "550px"
+		    	height: "auto"
 		  	}, 1500 );
     		
     		Data.get_local('scripts/lib/trafficComp.json').success(function(api_data){

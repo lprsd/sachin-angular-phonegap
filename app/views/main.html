@@ -1,7 +1,7 @@
 <div class="{{tile.class}}" ng-repeat="tile in tiles" tile>
   <a href="{{tile.url}}">
     <div class="tileBox" ng-style="{'background': '{{colors[$index]}}'}">
-      <h2>{{tile.name}}</h2>
+      <h2 ng-bind-html="tile.name"></h2>
     </div>
   </a>
 </div>
