@@ -23,6 +23,7 @@ body, h2 {
     width: 100%;
     transition: min-height 2s;
 	-webkit-transition:min-height 2s; /* Safari */ 
+	padding-bottom: 10px;
 }
 
 .hc-bars{
@@ -59,6 +60,7 @@ h2{
 
 .chart-container{
 	position: relative;
+	width: 100%;
 	float: left;
 	margin-top: 15px;
 }

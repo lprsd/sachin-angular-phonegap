@@ -12,14 +12,36 @@ angular.module('feApp', ['app.controllers', 'app.services', 'app.directives', 'n
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/SachinStats', {
-          templateUrl: 'views/sachin_stats.html',
-          controller: 'SachinStatsCtrl'
-      })
       .when('/summary', {
           templateUrl: 'views/summary.html',
           controller: 'SummaryCtrl'
       })
+      .when('/SachinStats', {
+          templateUrl: 'views/sachin_stats.html',
+          controller: 'SachinStatsCtrl'
+      })
+      .when('/ScoreBuckets', {
+          templateUrl: 'views/sachin_stats.html',
+          controller: 'SachinStatsCtrl'
+      })
+      .when('/ResultBuckets', {
+          templateUrl: 'views/sachin_stats.html',
+          controller: 'SachinStatsCtrl'
+      })
+      .when('/WonLostCenturiesInnning', {
+          templateUrl: 'views/sachin_stats.html',
+          controller: 'SachinStatsCtrl'
+      })
+      .when('/RecordChart', {
+          templateUrl: 'views/sachin_stats.html',
+          controller: 'SachinStatsCtrl'
+      })
+      .when('/LifeTimeChart', {
+          templateUrl: 'views/sachin_stats.html',
+          controller: 'SachinStatsCtrl'
+      })
+      
+      
       .when('/SocialFeed', {
         templateUrl: 'views/social_feed.html',
         controller: 'SocialFeedCtrl'

@@ -70,23 +70,25 @@ function getScoreBuckets(matches, PieChartOptions) {
     var chart_data = $.extend(true, {}, PieChartOptions.simplePie);
     chart_data.series = [{
 		      data: wonLostData,
-		      size: '40%',
+		      size: '35%',
 		      dataLabels: {
 		          formatter: function() {
-		              return this.y > 5 ? this.point.name : null;
+		              return this.point.name;
 		          },
 		          color: 'white',
-		          distance: -30
+		          distance: -25
 		      }
 		  }, {
 		      data: scoreData,
-		      size: '50%',
-		      innerSize: '40%',
+		      size: '40%',
+		      innerSize: '35%',
 		      dataLabels: {
+		      		style : {fontSize: 10},
 		          formatter: function() {
 		              // display only if larger than 1
-		              return this.y > 1 ? '<b>'+ this.point.name +' runs:</b> '+ this.y +''  : null;
-		          }
+		              return this.y >= 1 ? '<b>'+ this.point.name +' runs:</b> '+ this.y +''  : null;
+		          },
+		          distance: 10
 		      }
 		  }];
 
@@ -191,23 +193,25 @@ function getResultBuckets(matches, PieChartOptions) {
     var chart_data = $.extend(true, {}, PieChartOptions.simplePie);
     chart_data.series = [{
 		      data: wonLostData,
-		      size: '40%',
+		      size: '35%',
 		      dataLabels: {
 		          formatter: function() {
-		              return this.y > 5 ? this.point.name : null;
+		              return this.point.name;
 		          },
 		          color: 'white',
-		          distance: -30
+		          distance: -25
 		      }
 		  }, {
 		      data: byData,
-		      size: '50%',
-		      innerSize: '40%',
+		      size: '40%',
+		      innerSize: '35%',
 		      dataLabels: {
+		      		style : {fontSize: 10},
 		          formatter: function() {
 		              // display only if larger than 1
-		              return this.y > 1 ? '<b>By '+ this.point.name +':</b> '+ this.y +''  : null;
-		          }
+		              return this.y >= 1 ? '<b>By '+ this.point.name +':</b> '+ this.y +''  : null;
+		          },
+		          distance: 10
 		      }
 		  }];
 
@@ -226,8 +230,8 @@ function getResultBuckets(matches, PieChartOptions) {
 function getWonLostByBuckets(matches){
 	
 	var byBuckets = [
-		'1 wicket', '2 wickets', '3 wickets', '4 wickets', '5 wickets',
-		'6 wickets', '7 wickets', '8 wickets', '9 wickets', '10 wickets',
+		'1 wkt', '2 wkts', '3 wkts', '4 wkts', '5 wkts',
+		'6 wkts', '7 wkts', '8 wkts', '9 wkts', '10 wkts',
 		'1-49 runs', '50-99 runs', '100-149 runs', '150-199 runs', '200+ runs'],
 		wonByBuckets = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		lostByBuckets = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -313,9 +317,9 @@ function getCenturyVsBattingOrder(matches, PieChartOptions){
 		data.color = color[parseInt(order)];
 		chart_data.series[0].data.push(data);
 	}
-	chart_data.title.text = "Centuries vs Batting Order"
+	chart_data.title.text = "Centuries vs Inning"
 	chart_data.tooltip.formatter = function(){
-        return '<b>Batted '+ this.key + ': </b>' + this.y + ' Centuries';
+        return '<b>'+ this.key + ' Inning: </b>' + this.y + ' Centuries';
     }
 
 	return chart_data;
@@ -529,7 +533,7 @@ angular.module('app.controllers')
     		$scope.page = "Sachin Stats";
     		
 			$(".sachinStat").animate({
-		    	height: "550px"
+		    	height: "auto"
 		  	}, 1500 );
     		
     		Data.get_local('scripts/lib/trafficComp.json').success(function(api_data){
