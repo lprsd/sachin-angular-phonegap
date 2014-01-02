@@ -42,7 +42,6 @@ function getScoreBuckets(matches, PieChartOptions) {
 		      drilldown: {
 		          name: 'Score Buckets',
 		          categories: [].concat(wonLostScoreBuckets.scoreBuckets).reverse(),
-		          //categories: ['100+', '90-99', '70-89', '50-70', '20-49', '0-20'],
 		          data: wonLostScoreBuckets.lostScoreBuckets.reverse(),
 		          color: colors[1]
 		      }
@@ -532,9 +531,9 @@ angular.module('app.controllers')
     		
     		$scope.page = "Sachin Stats";
     		
-			$(".sachinStat").animate({
-		    	height: "auto"
-		  	}, 1500 );
+				$(".sachinStat").animate({
+			    	height: "auto"
+			  	}, 1500 );
     		
     		Data.get_local('scripts/lib/trafficComp.json').success(function(api_data){
     			$scope.matches = get_pie_chart_data(api_data.res['2013'], PieChartOptions);
@@ -547,6 +546,8 @@ angular.module('app.controllers')
     			$scope.scoreBuckets = getScoreBuckets(api_data, PieChartOptions);
     			$scope.winLoss = getWonLost(api_data, PieChartOptions);
     			$scope.centuryVsBattingOrder = getCenturyVsBattingOrder(api_data, PieChartOptions);
+    			$scope.winLoss = getWonLost(api_data, PieChartOptions);
+    			$scope.winLossChart = get_win_loss_area_chart(api_data, AreaChartOptions);
 
     		});
 
@@ -554,23 +555,18 @@ angular.module('app.controllers')
     			$scope.resultBuckets = getResultBuckets(api_data, PieChartOptions);
     		});
     
-	        Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
-	            $scope.winLoss = getWonLost(api_data, PieChartOptions);
-	        });
-
-            Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
-                $scope.winLoss = getWonLost(api_data, PieChartOptions);
-            });
-
-            Data.get_local('scripts/lib/record_json.json').success(function(api_data){
-                $scope.recordChart = get_bubble_chart_data(api_data, colors, ChartOptions)
-            });
-
-            Data.get_local('scripts/lib/sachin_odi_cumulative.json').success(function (api_data){
-            	$scope.areaChart = get_area_chart_data(api_data, AreaChartOptions);
-            });
-
-            Data.get_local('scripts/lib/sachin_odi.json').success(function (api_data){
-            	$scope.winLossChart = get_win_loss_area_chart(api_data, AreaChartOptions);
-            });
+        Data.get_local('scripts/lib/record_json.json').success(function(api_data){
+            $scope.recordChart = get_bubble_chart_data(api_data, colors, ChartOptions)
         });
+
+        Data.get_local('scripts/lib/sachin_odi_cumulative.json').success(function (api_data){
+        	$scope.areaChart = get_area_chart_data(api_data, AreaChartOptions);
+        });
+
+        $scope.scoreWonLostPercent = function(score) {
+        	$scope.timesScoreAt = getTimesScoreAt(score);
+        }
+
+      });
+			
+
