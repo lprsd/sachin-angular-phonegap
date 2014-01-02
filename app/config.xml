@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Sachin Tendulkar Stats Visualized</name>
+<widget id="com.stats.sachin" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Tendulkar Stats</name>
     <description>
         This app visualises the scores of Sachin Tendulkar in his career.
     </description>
     <author email="lakshman@lakshmanprasad.com" href="">
-        Lakshman Prasad, Pinakin Mistry, Aditya Sethi
+        Lakshman Prasad Pinakin Mistry Aditya Sethi
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />
