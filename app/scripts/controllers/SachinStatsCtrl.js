@@ -164,7 +164,6 @@ function getResultBuckets(matches, PieChartOptions) {
 		      drilldown: {
 		          name: 'Score Buckets',
 		          categories: [].concat(wonLostByBuckets.byBuckets).reverse(),
-		          //categories: ['100+', '90-99', '70-89', '50-70', '20-49', '0-20'],
 		          data: wonLostByBuckets.lostByBuckets.reverse(),
 		          color: colors[1]
 		      }
@@ -272,6 +271,141 @@ function getWonLostByBuckets(matches){
 	return wonLostByBuckets;
 }
 
+function getAboveBelowWonLostPercentAt(matches, score, PieChartOptions) {
+
+	var wonLostPercent = getWonLostPercent(matches, score),
+		colors = Highcharts.getOptions().colors,
+    categories = ['>= ' + score, '< ' + score],
+    name = '',
+    data = [{
+		      y: wonLostPercent.aboveScorePercent,
+		      color: colors[0],
+		      drilldown: {
+		          name: 'Won Lost Percent',
+		          categories: wonLostPercent.wonLost,
+		          data: wonLostPercent.wonLostAboveScore,
+		          color: colors[0]
+		      }
+		  }, {
+		      y: wonLostPercent.belowScorePercent,
+		      color: colors[1],
+		      drilldown: {
+		          name: 'Won Lost Percent',
+		          categories: [].concat(wonLostPercent.wonLost).reverse(),
+		          data: wonLostPercent.wonLostBelowScore.reverse(),
+		          color: colors[1]
+		      }
+		  }];
+
+    var aboveBelowScorePercent = [];
+    var wonLostPercentData = [];
+    for (var i = 0; i < data.length; i++) {
+        aboveBelowScorePercent.push({
+            name: categories[i],
+            y: data[i].y,
+            color: data[i].color
+        });
+
+        for (var j = 0; j < data[i].drilldown.data.length; j++) {
+            var brightness = 0.2 - (j / data[i].drilldown.data.length) / 5 ;
+            wonLostPercentData.push({
+                name: data[i].drilldown.categories[j],
+                y: data[i].drilldown.data[j],
+                color: Highcharts.Color(data[i].color).brighten(brightness).get()
+            });
+        }
+    }
+
+    var chart_data = $.extend(true, {}, PieChartOptions.simplePie);
+    chart_data.series = [{
+		      data: aboveBelowScorePercent,
+		      size: '35%',
+		      dataLabels: {
+		          formatter: function() {
+		              return this.point.name;
+		          },
+		          color: 'white',
+		          distance: -25
+		      }
+		  }, {
+		      data: wonLostPercentData,
+		      size: '40%',
+		      innerSize: '35%',
+		      dataLabels: {
+		      		style : {fontSize: 10},
+		          formatter: function() {
+		              // display only if larger than 1
+		              return this.y >= 1 ? '<b>'+ this.point.name +':</b> '+ this.y +' matches'  : null;
+		          },
+		          distance: 10
+		      }
+		  }];
+
+		chart_data.title.text = 'Sachin Score and India Won Lost Match Counts';
+		chart_data.plotOptions = {
+	      pie: {
+	          shadow: false,
+	          center: ['50%', '50%']
+	      }
+	  };
+		chart_data.chart.type = 'pie';
+
+		return chart_data;
+}
+
+function getWonLostPercent(matches, score){
+	
+	var wonLost = ['India Won', 'India Lost'],
+		wonLostAboveScore = [0,0],
+		wonLostBelowScore = [0,0],
+		wonLostPercent = {
+			aboveScorePercent: 0, belowScorePercent: 0, 
+			wonLostAboveScore: wonLostAboveScore, wonLostBelowScore: wonLostBelowScore,
+			wonLost: wonLost
+		};
+
+	for (var i = 0; i < matches.length; i++){
+		if('won lost'.indexOf(matches[i].match_result) == -1) continue;
+		if(matches[i].sachin_score >= score) {
+			wonLostPercent.aboveScorePercent++;
+			if(matches[i].match_result == 'won') {
+				wonLostAboveScore[0]++;
+			} else if(matches[i].match_result == 'lost') {
+				wonLostAboveScore[1]++;
+			}
+		} else {
+			wonLostPercent.belowScorePercent++;
+			if(matches[i].match_result == 'won') {
+				wonLostBelowScore[0]++;
+			} else if(matches[i].match_result == 'lost') {
+				wonLostBelowScore[1]++;
+			}
+		}
+			
+	}
+	console.log(wonLostPercent)
+	return wonLostPercent;
+}
+
+function getWonLostAt(matches, score, PieChartOptions){
+
+	var wonLostPercent = getWonLostPercent(matches, score);
+	
+	var chart_data = $.extend(true, {}, PieChartOptions.simplePie);
+	chart_data.series[0].data = [];
+	var wonData = {name: '', y: '', color: ''}
+	wonData.name = "Won";
+	wonData.y = wonLostPercent.wonLostAboveScore[0];
+	wonData.color = "#ff0dff";
+	chart_data.series[0].data.push(wonData);
+	var lostData = {name: '', y: '', color: ''}
+	lostData.name = "Lost";
+	lostData.y = wonLostPercent.wonLostAboveScore[1];
+	lostData.color = "#f00";
+	chart_data.series[0].data.push(lostData);
+	chart_data.title.text = "Won Lost Match Counts at Specific Score";
+	return chart_data;
+}
 
 function getWonLost(matches, PieChartOptions){
 
@@ -548,6 +682,15 @@ angular.module('app.controllers')
     			$scope.centuryVsBattingOrder = getCenturyVsBattingOrder(api_data, PieChartOptions);
     			$scope.winLoss = getWonLost(api_data, PieChartOptions);
     			$scope.winLossChart = get_win_loss_area_chart(api_data, AreaChartOptions);
+    			$scope.scoreWonLostPercent = function(score) {
+    				if(!score || isNaN(score) || score < 0) {
+    					alert('Enter valid score!');
+    					return;
+    				}
+
+	        	$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt(api_data, score, PieChartOptions);
+	        	$scope.wonLostAt = getWonLostAt(api_data, score, PieChartOptions);
+	        }
 
     		});
 
@@ -563,9 +706,7 @@ angular.module('app.controllers')
         	$scope.areaChart = get_area_chart_data(api_data, AreaChartOptions);
         });
 
-        $scope.scoreWonLostPercent = function(score) {
-        	$scope.timesScoreAt = getTimesScoreAt(score);
-        }
+        
 
       });
 			
