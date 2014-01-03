@@ -326,7 +326,7 @@ function getAboveBelowWonLostPercentAt(matches, score, PieChartOptions) {
 		          // },
 		          format: '{point.name}: {point.percentage:.1f} %',
 		          color: 'white',
-		          distance: -25
+		          distance: -30
 		      }
 		  }, {
 		      data: wonLostPercentData,
@@ -339,7 +339,7 @@ function getAboveBelowWonLostPercentAt(matches, score, PieChartOptions) {
 		          //     return this.y >= 1 ? '<b>'+ this.point.name +':</b> '+ this.y +' matches'  : null;
 		          // },
 		          format: '<b>{point.name}:</b> {point.percentage:.1f} %',
-		          distance: 10
+		          distance: 2
 		      }
 		  }];
 
