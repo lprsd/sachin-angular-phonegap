@@ -321,9 +321,10 @@ function getAboveBelowWonLostPercentAt(matches, score, PieChartOptions) {
 		      data: aboveBelowScorePercent,
 		      size: '35%',
 		      dataLabels: {
-		          formatter: function() {
-		              return this.point.name;
-		          },
+		          // formatter: function() {
+		          //     return this.point.name;
+		          // },
+		          format: '{point.name}: {point.percentage:.1f} %',
 		          color: 'white',
 		          distance: -25
 		      }
@@ -333,10 +334,11 @@ function getAboveBelowWonLostPercentAt(matches, score, PieChartOptions) {
 		      innerSize: '35%',
 		      dataLabels: {
 		      		style : {fontSize: 10},
-		          formatter: function() {
-		              // display only if larger than 1
-		              return this.y >= 1 ? '<b>'+ this.point.name +':</b> '+ this.y +' matches'  : null;
-		          },
+		          // formatter: function() {
+		          //     // display only if larger than 1
+		          //     return this.y >= 1 ? '<b>'+ this.point.name +':</b> '+ this.y +' matches'  : null;
+		          // },
+		          format: '<b>{point.name}:</b> {point.percentage:.1f} %',
 		          distance: 10
 		      }
 		  }];
@@ -682,6 +684,9 @@ angular.module('app.controllers')
     			$scope.centuryVsBattingOrder = getCenturyVsBattingOrder(api_data, PieChartOptions);
     			$scope.winLoss = getWonLost(api_data, PieChartOptions);
     			$scope.winLossChart = get_win_loss_area_chart(api_data, AreaChartOptions);
+    			$scope.score = 100;
+    			$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt(api_data, $scope.score, PieChartOptions);
+	        $scope.wonLostAt = getWonLostAt(api_data, $scope.score, PieChartOptions);
     			$scope.scoreWonLostPercent = function(score) {
     				if(!score || isNaN(score) || score < 0) {
     					alert('Enter valid score!');
