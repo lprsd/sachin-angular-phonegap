@@ -115,7 +115,10 @@ function getWonLostScoreBuckets(matches){
 		};
 
 	for (var i = 0; i < matches.length; i++){
-		matches[i].match_result == 'won' ? wonLostScoreBuckets.won++ : wonLostScoreBuckets.lost++;
+		var result = matches[i].result ? matches[i].result : matches[i].match_result;
+		if("won lost".indexOf(result) == -1) continue;
+		
+		result == 'won' ? wonLostScoreBuckets.won++ : wonLostScoreBuckets.lost++;
 		var score = parseInt(matches[i].sachin_score);
 
 		switch(true){
@@ -143,7 +146,7 @@ function getWonLostScoreBuckets(matches){
 	return wonLostScoreBuckets;
 }
 
-function getResultBuckets(matches, PieChartOptions) {
+function getResultBuckets(matches, PieChartOptions, title) {
 
 	var wonLostByBuckets = getWonLostByBuckets(matches),
 		colors = Highcharts.getOptions().colors,
@@ -213,7 +216,7 @@ function getResultBuckets(matches, PieChartOptions) {
 		      }
 		  }];
 
-		chart_data.title.text = 'India Won/Lost By & Match Counts without Sachin';
+		chart_data.title.text = 'India Won/Lost By & Match Counts ' + title;
 		chart_data.plotOptions = {
 	      pie: {
 	          shadow: false,
@@ -240,12 +243,16 @@ function getWonLostByBuckets(matches){
 		};
 
 	for (var i = 0; i < matches.length; i++){
-		if(matches[i].result == 'won') wonLostByBuckets.won++; 
-		if(matches[i].result == 'lost') wonLostByBuckets.lost++;
-		var won_lost_by = matches[i].won_lost_by;
+		var won_lost_by = matches[i].won_lost_by,
+			result = matches[i].result ? matches[i].result : matches[i].match_result;
 
+		if("won lost".indexOf(result) == -1) continue;
+
+		if(result == 'won') wonLostByBuckets.won++; 
+		if(result == 'lost') wonLostByBuckets.lost++;
+		
 		switch(true){
-			case (matches[i].result == 'won'):
+			case (result == 'won'):
 				if(won_lost_by.indexOf('wicket') > -1){
 					wonByBuckets[parseInt(won_lost_by) - 1]++;	
 				} else 
@@ -255,7 +262,7 @@ function getWonLostByBuckets(matches){
 					wonByBuckets[index]++;	
 				}
 				break;
-			case (matches[i].result == 'lost'):
+			case (result == 'lost'):
 				if(won_lost_by.indexOf('wicket') > -1){
 					lostByBuckets[parseInt(won_lost_by) - 1]++;	
 				} else 
@@ -684,9 +691,10 @@ angular.module('app.controllers')
     			$scope.centuryVsBattingOrder = getCenturyVsBattingOrder(api_data, PieChartOptions);
     			$scope.winLoss = getWonLost(api_data, PieChartOptions);
     			$scope.winLossChart = get_win_loss_area_chart(api_data, AreaChartOptions);
+    			$scope.resultBucketsWithSachin = getResultBuckets(api_data, PieChartOptions, 'with Sachin');
     			$scope.score = 100;
     			$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt(api_data, $scope.score, PieChartOptions);
-	        $scope.wonLostAt = getWonLostAt(api_data, $scope.score, PieChartOptions);
+	        	$scope.wonLostAt = getWonLostAt(api_data, $scope.score, PieChartOptions);
     			$scope.scoreWonLostPercent = function(score) {
     				if(!score || isNaN(score) || score < 0) {
     					alert('Enter valid score!');
@@ -700,7 +708,7 @@ angular.module('app.controllers')
     		});
 
     		Data.get_local('scripts/lib/india_wo_sachin_odi.json').success(function(api_data){
-    			$scope.resultBuckets = getResultBuckets(api_data, PieChartOptions);
+    			$scope.resultBucketsWithoutSachin = getResultBuckets(api_data, PieChartOptions, 'without Sachin');
     		});
     
         Data.get_local('scripts/lib/record_json.json').success(function(api_data){
