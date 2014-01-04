@@ -1,6 +1,6 @@
 <div class="col-md-12">
 	<div class="sachinStat odiTile">
-		<div class="btn-group hc-bars" data-toggle="buttons">
+		<div class="btn-group hc-bars" data-toggle="buttons" ng-hide="currentView=='/FarewellSpeech'">
 		  <label class="btn btn-primary active">
 		    <input type="radio" name="formats" value="odi"> ODI
 		  </label>
@@ -34,6 +34,12 @@
 	       		<button ng-click="scoreWonLostPercent(score)">Get Won Lost % Charts</button>
 		        <chart height="320" chart-id="aboveBelowWonLostPercentAt"></chart>
 		        <chart height="320" chart-id="wonLostAt"></chart>
+	       	</div>
+	       	<div ng-show="currentView=='/FarewellSpeech'"> 
+				<iframe width="100%" height="320" 
+					src="http://www.youtube.com/embed/CfCBWUkWzXM?autoplay=true" 
+					frameborder="0" allowfullscreen>
+				</iframe>
 	       	</div>
 	       	
         </div>

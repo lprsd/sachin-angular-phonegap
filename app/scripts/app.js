@@ -44,7 +44,10 @@ angular.module('feApp', ['app.controllers', 'app.services', 'app.directives', 'n
           templateUrl: 'views/sachin_stats.html',
           controller: 'SachinStatsCtrl'
       })
-      
+      .when('/FarewellSpeech', {
+          templateUrl: 'views/sachin_stats.html',
+          controller: 'SachinStatsCtrl'
+      })
       
       .when('/SocialFeed', {
         templateUrl: 'views/social_feed.html',
