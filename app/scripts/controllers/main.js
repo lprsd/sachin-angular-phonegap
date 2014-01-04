@@ -4,7 +4,7 @@ angular.module('app.controllers')
   .controller('MainCtrl', function ($scope, $location, $rootScope) {
     $scope.colors = ['#334D5C','#45b29d','#EFC94C','#E27A3F','#DF5A49', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
     
-    $scope.tiles = [{name: 'Career Summary', url: '#/summary', class:'col-md-3'},{name: 'Score Buckets<br/>&<br/>Won/Lost Counts', url: '#/ScoreBuckets', class:'col-md-3'},{name: 'Won/Lost By<br/>&<br/>Match Counts', url: '#/ResultBuckets', class:'col-md-3'},{name: 'Won/Lost<br/>&<br/>Centuries vs Inning', url: '#/WonLostCenturiesInnning', class:'col-md-3'},{name: 'Life Time<br/>Chart', url: '#/LifeTimeChart', class:'col-md-3'}, {name: 'Sachin<br/>vs<br/>Other Batsmen', url: '#/RecordChart', class:'col-md-3'}, {name: 'Find Out Yourself', url: '#/FindOutYourSelf', class:'col-md-3'}, {name: 'Social<br/>Feed', url: '#/SocialFeed', class:'col-md-3'}];
+    $scope.tiles = [{name: 'Career<br/>Summary', url: '#/summary', class:'col-md-3'},{name: 'Score Buckets<br/>&<br/>Won/Lost Counts', url: '#/ScoreBuckets', class:'col-md-3'},{name: 'Won/Lost By<br/>&<br/>Match Counts', url: '#/ResultBuckets', class:'col-md-3'},{name: 'Won/Lost<br/>&<br/>Centuries vs Inning', url: '#/WonLostCenturiesInnning', class:'col-md-3'},{name: 'Life Time<br/>Chart', url: '#/LifeTimeChart', class:'col-md-3'}, {name: 'Sachin<br/>vs<br/>Other Batsmen', url: '#/RecordChart', class:'col-md-3'}, {name: 'Find Out<br/>Yourself', url: '#/FindOutYourSelf', class:'col-md-3'}, {name: 'Farewell<br/>Speech', url: '#/FarewellSpeech', class:'col-md-3'}, {name: 'Social<br/>Feed', url: '#/SocialFeed', class:'col-md-3'}];
 
     $scope.$watch(function(){ return $location.path()}, function(value){
       $rootScope.currentView = value;
@@ -43,22 +43,15 @@ angular.module('app.controllers')
       chart_data.series = [{name:chosen_json, type: 'pie', data:series_data}];
       chart_data.plotOptions.pie.dataLabels = {
                                                 enabled: true,
-                                                color: '#000000',
-                                                connectorColor: '#000000',
+                                                style: { fontFamily: "OpenSansCondLight,Georgia,Times,serif",
+                                                  fontSize: 13
+                                                },
                                                 formatter: function() {
-                                                                        // display only if larger than 1
-                                                                        if($scope.chosen_option.attr_option === "Centuries"){
-                                                                          return '<b>'+ this.point.name +' Centuries:</b> '+ this.y +'';  
-                                                                        }
-                                                                        else if($scope.chosen_option.attr_option === "Matches"){
-                                                                          return '<b>'+ this.point.name +' Matches:</b> '+ this.y +'';  
-                                                                        }
-                                                                        else{
-                                                                          return '<b>'+ this.point.name +' runs:</b> '+ this.y +'';   
-                                                                        }
-                                                                        
-                                                }
+                                                  return '<b>'+ this.point.name +': </b> '+ this.y +'';
+                                                },
+                                                distance: 10
                                               }
+      chart_data.plotOptions.pie.center = ['50%', '50%'],
       console.log(chart_data)
       $scope.chosenStat = chart_data;
     }
@@ -104,7 +97,7 @@ window.onload = window.onresize = window.onorientationchange = function(){
 var screenWidth, tileCount, tileSize, chartWidth, fontSize;
 
 function sizeUI() {
-  fontSize = '22px';
+  fontSize = '24px';
   screenWidth = window.innerWidth;
   if(screenWidth < 320){
     tileCount = 2;
@@ -115,9 +108,9 @@ function sizeUI() {
   chartWidth = screenWidth;
   
   if(screenWidth < 200) {
-    fontSize = '12px';  
+    fontSize = '14px';  
   } else if(screenWidth < 270) {
-    fontSize = '18px';
+    fontSize = '20px';
   }
 
   $('h2').css({'font-size': fontSize});

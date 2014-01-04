@@ -1,10 +1,19 @@
+@font-face {
+  font-family: 'OpenSansCondLight';
+  src: url('fonts/OpenSans-CondLight.ttf');
+}
+
 /* Space out content a bit */
 body {
   margin: 0;
 }
 
 body, h2 {
-	font-family: Georgia,"Times New Roman",Times,serif !important;
+	font-family: 'OpenSansCondLight', Georgia,"Times New Roman",Times,serif !important;
+}
+
+h2 {
+	font-family: 'OpenSansCondLight', Georgia,"Times New Roman",Times,serif !important;
 }
 
 .tileBox{

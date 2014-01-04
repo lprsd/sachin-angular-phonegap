@@ -74,6 +74,7 @@ function getScoreBuckets(matches, PieChartOptions) {
 		          formatter: function() {
 		              return this.point.name;
 		          },
+		          style : {fontSize: 13},
 		          color: 'white',
 		          distance: -25
 		      }
@@ -82,7 +83,7 @@ function getScoreBuckets(matches, PieChartOptions) {
 		      size: '40%',
 		      innerSize: '35%',
 		      dataLabels: {
-		      		style : {fontSize: 10},
+		      		style : {fontSize: 13},
 		          formatter: function() {
 		              // display only if larger than 1
 		              return this.y >= 1 ? '<b>'+ this.point.name +' runs:</b> '+ this.y +''  : null;
@@ -95,10 +96,12 @@ function getScoreBuckets(matches, PieChartOptions) {
 		chart_data.plotOptions = {
 	      pie: {
 	          shadow: false,
-	          center: ['50%', '50%']
+	          center: ['50%', '50%'],
+	          dataLabels: {style: ''}
 	      }
 	  };
 		chart_data.chart.type = 'pie';
+		chart_data.plotOptions.pie.dataLabels.style = { fontFamily: "OpenSansCondLight,Georgia,Times,serif"}
 
 		return chart_data;
 }
@@ -199,6 +202,7 @@ function getResultBuckets(matches, PieChartOptions, title) {
 		          formatter: function() {
 		              return this.point.name;
 		          },
+		          style : {fontSize: 13},
 		          color: 'white',
 		          distance: -25
 		      }
@@ -207,7 +211,7 @@ function getResultBuckets(matches, PieChartOptions, title) {
 		      size: '40%',
 		      innerSize: '35%',
 		      dataLabels: {
-		      		style : {fontSize: 10},
+		      		style : {fontSize: 13},
 		          formatter: function() {
 		              // display only if larger than 1
 		              return this.y >= 1 ? '<b>By '+ this.point.name +':</b> '+ this.y +''  : null;
@@ -220,10 +224,12 @@ function getResultBuckets(matches, PieChartOptions, title) {
 		chart_data.plotOptions = {
 	      pie: {
 	          shadow: false,
-	          center: ['50%', '50%']
+	          center: ['50%', '50%'],
+	          dataLabels: {style: ''}
 	      }
 	  };
 		chart_data.chart.type = 'pie';
+		chart_data.plotOptions.pie.dataLabels.style = { fontFamily: "OpenSansCondLight,Georgia,Times,serif"}
 
 		return chart_data;
 }
@@ -328,10 +334,11 @@ function getAboveBelowWonLostPercentAt(matches, score, PieChartOptions) {
 		      data: aboveBelowScorePercent,
 		      size: '35%',
 		      dataLabels: {
-		          // formatter: function() {
-		          //     return this.point.name;
-		          // },
-		          format: '{point.name}: {point.percentage:.1f} %',
+		          formatter: function() {
+		              return this.point.name;
+		          },
+		          style : {fontSize: 13},
+		          //format: '{point.name}: {point.percentage:.1f} %',
 		          color: 'white',
 		          distance: -30
 		      }
@@ -340,12 +347,12 @@ function getAboveBelowWonLostPercentAt(matches, score, PieChartOptions) {
 		      size: '40%',
 		      innerSize: '35%',
 		      dataLabels: {
-		      		style : {fontSize: 10},
-		          // formatter: function() {
-		          //     // display only if larger than 1
-		          //     return this.y >= 1 ? '<b>'+ this.point.name +':</b> '+ this.y +' matches'  : null;
-		          // },
-		          format: '<b>{point.name}:</b> {point.percentage:.1f} %',
+		      		style : {fontSize: 13},
+		          formatter: function() {
+		              // display only if larger than 1
+		              return this.y >= 1 ? '<b>'+ this.point.name +':</b> '+ this.y +' matches'  : null;
+		          },
+		          //format: '<b>{point.name}:</b> {point.percentage:.1f} %',
 		          distance: 2
 		      }
 		  }];
@@ -354,10 +361,12 @@ function getAboveBelowWonLostPercentAt(matches, score, PieChartOptions) {
 		chart_data.plotOptions = {
 	      pie: {
 	          shadow: false,
-	          center: ['50%', '50%']
+	          center: ['50%', '50%'],
+	          dataLabels: {style: ''}
 	      }
 	  };
 		chart_data.chart.type = 'pie';
+		chart_data.plotOptions.pie.dataLabels.style = { fontFamily: "OpenSansCondLight,Georgia,Times,serif"}
 
 		return chart_data;
 }

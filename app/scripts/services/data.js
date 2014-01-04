@@ -28,11 +28,22 @@ angular.module('app.services').factory('Data',['$http', '$rootScope', function (
 angular.module('app.services').factory('DefaultChartOptions', [function(){
     var defaultChartOptions = {
 
-        "chart": {
-            "style": {
-                "fontFamily": 'TitilliumWeb',
-                "fontSize": '12px',
+        chart: {
+            style: {
+                "fontFamily": "OpenSansCondLight",
+                "fontSize": '16px',
                 "color": "#666"
+            },
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: '',
+            style: {
+                "fontFamily": "OpenSansCondLight",
+                fontSize: 16,
+                color: "#777"
             }
         },
         "xAxis": {
@@ -41,7 +52,7 @@ angular.module('app.services').factory('DefaultChartOptions', [function(){
              "labels": {
                  "style": {
                     "color": "#666",
-                    "fontFamily": "TitilliumWeb",
+                    "fontFamily": "OpenSansCondLight",
                     "fontSize": "12px"
                 },
                 "verticalAlign": "middle"
@@ -52,7 +63,7 @@ angular.module('app.services').factory('DefaultChartOptions', [function(){
              "labels": {
                 "style": {
                     "color": "#666",
-                    "fontFamily" : "TitilliumWeb",
+                    "fontFamily" : "OpenSansCondLight",
                     "fontSize": "12px"
                 }
             },
@@ -60,7 +71,7 @@ angular.module('app.services').factory('DefaultChartOptions', [function(){
                 align: 'middle',
                 "style":{
                     "color": "#666",
-                    "fontFamily" : "TitilliumWeb",
+                    "fontFamily" : "OpenSansCondLight",
                     "fontSize": "12px",
                     "fontWeight": 100
                 }
@@ -70,12 +81,6 @@ angular.module('app.services').factory('DefaultChartOptions', [function(){
             "gridLineWidth": 0,
             "minTickInterval": 20
         },
-//        tooltip: {
-//            enabled: true,
-//            formatter: function() {
-//                return '<b>'+this.y+'</b>';
-//            }
-//        },
         "plotOptions": {
         },
         "credits" : {
@@ -85,7 +90,7 @@ angular.module('app.services').factory('DefaultChartOptions', [function(){
             itemMarginBottom: 7,
             itemStyle: {
                     color: '#666',
-                    fontFamily: 'TitilliumWeb',
+                    fontFamily: 'OpenSansCondLight',
                     fontSize: '13px'
             }
         }
@@ -107,7 +112,12 @@ angular.module('app.services').factory('ChartOptions', ['DefaultChartOptions', f
             align: 'right',
             verticalAlign: 'top',
             y:-20,
-            borderWidth:0
+            borderWidth:0,
+            itemStyle: {
+                fontFamily: "OpenSansCondLight",
+                "fontSize": '16px',
+                "color": "#666"
+            }
         },
         "title": {
             "text": ''
@@ -464,6 +474,7 @@ angular.module('app.services').factory('PieChartOptions',[function ($http){
     var simple_pie_chart = {
 
         chart: {
+            style: {"fontFamily": "OpenSansCondLight"},
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false
@@ -471,7 +482,8 @@ angular.module('app.services').factory('PieChartOptions',[function ($http){
         title: {
             text: '',
             style: {
-                fontSize: 12,
+                "fontFamily": "OpenSansCondLight",
+                fontSize: 16,
                 color: "#777"
             }
         },
@@ -491,7 +503,8 @@ angular.module('app.services').factory('PieChartOptions',[function ($http){
                     enabled: false,
                     color: '#000000',
                     connectorColor: '#000000',
-                    format: '{point.percentage:.1f} %'
+                    format: '{point.percentage:.1f} %',
+                    style: { fontFamily: "OpenSansCondLight,Georgia,Times,serif"}
                 }
             }
         },
