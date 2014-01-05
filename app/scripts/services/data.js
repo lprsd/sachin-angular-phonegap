@@ -512,7 +512,8 @@ angular.module('app.services').factory('PieChartOptions',[function ($http){
         },
         series: [{
             type: 'pie',
-            data: []
+            data: [],
+            size: '50%'
         }]
         
     }

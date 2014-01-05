@@ -373,7 +373,7 @@ function getAboveBelowWonLostPercentAt(matches, score, PieChartOptions) {
 
 function getWonLostPercent(matches, score){
 	
-	var wonLost = ['India Won', 'India Lost'],
+	var wonLost = ['Won', 'Lost'],
 		wonLostAboveScore = [0,0],
 		wonLostBelowScore = [0,0],
 		wonLostPercent = {
