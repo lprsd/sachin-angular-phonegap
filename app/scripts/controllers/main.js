@@ -61,7 +61,8 @@ angular.module('app.controllers')
                                                 },
                                                 distance: 10
                                               }
-      chart_data.plotOptions.pie.center = ['50%', '50%'],
+      chart_data.plotOptions.pie.center = ['50%', '50%'];
+      chart_data.chart.marginTop = chart_data.chart.marginBottom = 50;
       console.log(chart_data)
       $scope.chosenStat = chart_data;
     }

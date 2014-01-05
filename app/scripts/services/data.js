@@ -485,7 +485,9 @@ angular.module('app.services').factory('PieChartOptions',[function ($http){
                 "fontFamily": "OpenSansCondLight",
                 fontSize: 16,
                 color: "#777"
-            }
+            },
+            align: 'center',
+            verticalAlign: 'bottom'
         },
         tooltip: {
             formatter: function(){

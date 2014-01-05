@@ -1,6 +1,6 @@
 <div class="col-md-12">
 	<div class="sachinStat odiTile">
-		<div class="btn-group hc-bars" data-toggle="buttons" ng-hide="currentView=='/FarewellSpeech'">
+		<div class="btn-group topBar" data-toggle="buttons" ng-hide="currentView=='/FarewellSpeech'">
 		  <label class="btn btn-primary active">
 		    <input type="radio" name="formats" value="odi"> ODI
 		  </label>
@@ -29,8 +29,8 @@
 		        <chart height="320" chart-id="areaChart"></chart>
 		        <chart height="320" chart-id="winLossChart"></chart>
 	       	</div>
-	       	<div ng-show="currentView=='/FindOutYourSelf'"> 
-	       		Sachin's Score: <input type=number width="3" ng-model="score"/>
+	       	<div ng-show="currentView=='/FindOutYourSelf'">
+	       		Sachin's Score: <input type=number length="30" ng-model="score"/>
 	       		<button ng-click="scoreWonLostPercent(score)">Get Won Lost % Charts</button>
 		        <chart height="320" chart-id="aboveBelowWonLostPercentAt"></chart>
 		        <chart height="320" chart-id="wonLostAt"></chart>
