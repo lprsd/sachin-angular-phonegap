@@ -102,7 +102,17 @@ h2{
 	top: 0;
 }
 
+.subBar {
+	position: absolute;
+	top: 35px;
+	z-index: 10;
+}
+
 .bottomBar {
 	position: absolute;
 	bottom: 0;
+}
+
+.inputBox {
+	width: 50px;
 }
