@@ -125,3 +125,8 @@ h2{
 .inputBox {
 	width: 50px;
 }
+
+iframe {
+	min-height: 320px;
+	max-height: 480px;
+}
