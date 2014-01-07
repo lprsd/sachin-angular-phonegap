@@ -82,6 +82,7 @@ h2{
 	margin: auto;
 	padding: 2px; 
 	width: 100%;
+	max-width: 1024px;
 }
 
 .col-md-12 {
