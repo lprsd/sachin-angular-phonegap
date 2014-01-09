@@ -776,7 +776,9 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
                         color: '#4572A7'
                     }
                 },
-                opposite: true
+              maxPadding: 0,
+              minPadding:0,
+              opposite: true
             }],
             tooltip: {
                 shared: true
