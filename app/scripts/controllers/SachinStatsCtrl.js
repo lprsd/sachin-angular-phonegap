@@ -477,6 +477,7 @@ function getCenturyVsBattingOrder(matches, PieChartOptions){
 }
 
 function custom_chart_settings_by_avg_fare(chart_data){
+    chart_data.chart.marginTop = 140;
     chart_data.xAxis = {
                         startOnTick: true,
                         endOnTick: true,
@@ -502,7 +503,7 @@ function custom_chart_settings_by_avg_fare(chart_data){
                             "verticalAlign": "middle"
                        }
                    }
-
+    chart_data.yAxis.max = 500;
     delete chart_data.yAxis.tickInterval;
     chart_data.yAxis.title ={
     							text: "Number of Matches",
@@ -516,7 +517,8 @@ function custom_chart_settings_by_avg_fare(chart_data){
     chart_data.legend = {
                 align: 'right',
                 verticalAlign: 'top',
-                layout: 'vertical',
+                layout: 'horizontal',
+                floating: true,
                 x: 0,
                 y: 0,
                 itemMarginTop: 5,
@@ -547,7 +549,7 @@ function custom_chart_settings_by_avg_fare(chart_data){
 								    		symbol: 'circle'
 								    	}
     };
-    delete chart_data.yAxis.max;
+    
     delete chart_data.yAxis.min;
     chart_data.chart.type = 'scatter';
     chart_data.series = [];
