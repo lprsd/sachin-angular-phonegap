@@ -1,25 +1,35 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('MainCtrl', function ($scope, $location, $rootScope) {
+  .controller('MainCtrl', function ($scope, $location, $rootScope, $timeout) {
     $scope.colors = ['#334D5C','#45b29d','#EFC94C','#E27A3F','#DF5A49', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
     
     $scope.tiles = [
-      {name: 'Career <br/> Summary', url: '#/summary', class:'col-md-3'},
-      {name: 'Score Buckets <br/> & <br/> Won/Lost Counts', url: '#/ScoreBuckets', class:'col-md-3'},
-      {name: 'Won/Lost By <br/> & <br/> Match Counts', url: '#/ResultBuckets', class:'col-md-3'},
-      {name: 'Won/Lost <br/> & <br/> Centuries vs Inning', url: '#/WonLostCenturiesInnning', class:'col-md-3'},
-      {name: 'Life Time <br/> Chart', url: '#/LifeTimeChart', class:'col-md-3'},
-      {name: 'Sachin <br/> vs <br/> Other Batsmen', url: '#/RecordChart', class:'col-md-3'},
-      {name: 'Find Out <br/> Yourself', url: '#/FindOutYourSelf', class:'col-md-3'},
-      {name: 'Farewell <br/> Speech', url: '#/FarewellSpeech', class:'col-md-3'},
-      {name: 'Social <br/> Feed', url: '#/SocialFeed', class:'col-md-3'}
+      {name: 'Career <br/> Summary', url: '/summary', class:'col-md-3'},
+      {name: 'Score Buckets <br/> & <br/> Won/Lost Counts', url: '/ScoreBuckets', class:'col-md-3'},
+      {name: 'Won/Lost By <br/> & <br/> Match Counts', url: '/ResultBuckets', class:'col-md-3'},
+      {name: 'Won/Lost <br/> & <br/> Centuries vs Inning', url: '/WonLostCenturiesInnning', class:'col-md-3'},
+      {name: 'Life Time <br/> Chart', url: '/LifeTimeChart', class:'col-md-3'},
+      {name: 'Sachin <br/> vs <br/> Other Batsmen', url: '/RecordChart', class:'col-md-3'},
+      {name: 'Find Out <br/> Yourself', url: '/FindOutYourSelf', class:'col-md-3'},
+      {name: 'Farewell <br/> Speech', url: '/FarewellSpeech', class:'col-md-3'},
+      {name: 'Social <br/> Feed', url: '/SocialFeed', class:'col-md-3'}
     ];
 
     $scope.$watch(function(){ return $location.path()}, function(value){
       $rootScope.currentView = value;
       console.log($rootScope.currentView);
     })
+
+    $scope.flipped = false;
+
+    $scope.flipEffect = function(href){
+      $scope.flipped = true;
+      $timeout(function(){
+        $location.path(href);
+      }, 700);
+      
+    }
   })
 
   .controller('SummaryCtrl', function($scope, Data, PieChartOptions){

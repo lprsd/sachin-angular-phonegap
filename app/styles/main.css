@@ -26,6 +26,16 @@ h2 {
 	display: table;
 }
 
+.container {
+	-webkit-backface-visibility: hidden;
+	-webkit-transition:all 1.2s ease-in-out;
+	-webkit-perspective: 800px;
+}
+
+.flipped {
+	-webkit-transform: rotateY(180deg);
+}
+
 .sachinStat{
 	float: left;
     position: relative;
