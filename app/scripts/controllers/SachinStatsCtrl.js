@@ -477,6 +477,7 @@ function getCenturyVsBattingOrder(matches, PieChartOptions){
 }
 
 function custom_chart_settings_by_avg_fare(chart_data){
+    chart_data.chart.marginTop = 140;
     chart_data.xAxis = {
                         startOnTick: true,
                         endOnTick: true,
@@ -516,7 +517,8 @@ function custom_chart_settings_by_avg_fare(chart_data){
     chart_data.legend = {
                 align: 'right',
                 verticalAlign: 'top',
-                layout: 'vertical',
+                layout: 'horizontal',
+                floating: true,
                 x: 0,
                 y: 0,
                 itemMarginTop: 5,
