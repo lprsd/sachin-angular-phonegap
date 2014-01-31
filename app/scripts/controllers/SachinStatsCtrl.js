@@ -730,7 +730,14 @@ angular.module('app.controllers')
         	$scope.areaChart = get_area_chart_data(api_data, AreaChartOptions);
         });
 
-        
+        $scope.getHighchartImage = function(){
+        	var chart = $('.hc-bars').highcharts();
+		    var svg = chart.getSVG();   
+		    var base_image = new Image();
+		    svg = "data:image/svg+xml,"+svg;
+		    base_image.src = svg;
+		    $scope.imageFeel = svg;
+        }
 
       });
 			

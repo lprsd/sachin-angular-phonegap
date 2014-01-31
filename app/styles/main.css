@@ -64,6 +64,7 @@ h2 {
 .topHolder{
 	position: relative;
 	width: 100%;
+	float: left;
 }
 
 .center-align{
@@ -160,4 +161,33 @@ iframe {
 	font-size: 35px;
 	margin: 0px 20px 0 0;
 	top: 12px;
+}
+
+.info-button{
+	height: 30px !important;
+	line-height: 0px;
+}
+
+.icon-container{
+	margin: auto;
+	margin-top: 20px;
+	width: 70px;
+	position: relative;
+}
+
+.facebook-icon{
+	width: 29px;
+	height: 29px;
+	background: url(../res/social-media/FB-f-Logo__blue_29.png);
+	float: left;
+	cursor: pointer;
+}
+
+.twitter-icon{
+	width: 29px;
+	height: 29px;
+	background: url(../res/social-media/Twitter_logo_blue.png) no-repeat;
+	background-size: 100% 100%;
+	float: right;
+	cursor: pointer;
 }
