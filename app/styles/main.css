@@ -27,7 +27,6 @@ h2 {
 }
 
 .sachinStat{
-	background: #334D5C;
 	float: left;
     position: relative;
     width: 100%;
@@ -52,12 +51,15 @@ h2 {
 	margin-top: 30px;
 }
 
-.odiTile{
-	background: #367173;
+.topHolder{
+	position: relative;
+	width: 100%;
 }
 
-.testTile{
-	background: #3A4B73;
+.center-align{
+	position: relative;
+	width: 165px;
+	margin: 0 auto;
 }
 
 h2{
@@ -99,27 +101,38 @@ h2{
 }
 
 .topBar {
-	position: absolute;
-	top: 0;
+	position: relative;
+	margin: auto;
+	width: 100px;
 }
 
 .subBar {
-	position: absolute;
+	position: relative;
 	top: 35px;
+	margin: auto;
 	z-index: 10;
+	width: 275px;
 }
 
 .bottomBar {
-	position: absolute;
-	bottom: 0;
+	position: relative;
 	width: 100%;
+	float: left;
 }
 
 .bottomBarContainer {
 	position: relative;
 	margin: auto;
-	min-width: 320px;
-	max-width: 450px; 
+}
+
+.width-big{
+	width: 255px;
+	margin-top: 5px;
+}
+
+.width-small{
+	width: 230px;
+	margin-top: 15px;
 }
 
 .inputBox {
@@ -127,6 +140,14 @@ h2{
 }
 
 iframe {
+	margin-top: 20px;
 	min-height: 320px;
 	max-height: 480px;
+}
+
+.home-icon{
+	cursor: pointer;
+	font-size: 35px;
+	margin: 0px 20px 0 0;
+	top: 12px;
 }
