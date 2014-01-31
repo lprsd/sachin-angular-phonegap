@@ -503,7 +503,7 @@ function custom_chart_settings_by_avg_fare(chart_data){
                             "verticalAlign": "middle"
                        }
                    }
-
+    chart_data.yAxis.max = 500;
     delete chart_data.yAxis.tickInterval;
     chart_data.yAxis.title ={
     							text: "Number of Matches",
@@ -549,7 +549,7 @@ function custom_chart_settings_by_avg_fare(chart_data){
 								    		symbol: 'circle'
 								    	}
     };
-    delete chart_data.yAxis.max;
+    
     delete chart_data.yAxis.min;
     chart_data.chart.type = 'scatter';
     chart_data.series = [];
