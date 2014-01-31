@@ -41,7 +41,7 @@
 	       	<div class="topHolder" ng-show="currentView=='/FindOutYourSelf'">
 	       		<div class="subBar">
 		       		Sachin's Score: <input type=number class="inputBox" ng-model="score"/>
-		       		<button ng-click="scoreWonLostPercent(score)">Get Won Lost % Charts</button>
+		       		<button ng-click="scoreWonLostPercent(score)" class="btn btn-info info-button">Get Won Lost % Charts</button>
 		       	</div>
 		        <chart chart-id="wonLostAt"></chart>
 		        <chart chart-id="aboveBelowWonLostPercentAt"></chart>
@@ -52,7 +52,13 @@
 					frameborder="0" allowfullscreen>
 				</iframe>
 	       	</div>
-	       	
+	       	<img src="{{imageFeel}}" />
+	       	<div class="topHolder">
+	       		<div class="icon-container">
+	       			<div class="facebook-icon"></div>
+	       			<div ng-click="getHighchartImage()" class="twitter-icon"></div>
+	       		</div>
+	       	</div>
         </div>
 	</div>
 </div>
