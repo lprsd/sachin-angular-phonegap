@@ -9,8 +9,8 @@ angular.module('feApp', ['app.controllers', 'app.services', 'app.directives', 'n
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/main.html'
+        //controller: 'MainCtrl'
       })
       .when('/summary', {
           templateUrl: 'views/summary.html',

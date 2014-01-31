@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('MainCtrl', function ($scope, $location, $rootScope, $timeout) {
+  .controller('MainCtrl', function ($scope, $location, $timeout) {
     $scope.colors = ['#334D5C','#45b29d','#EFC94C','#E27A3F','#DF5A49', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
     
     $scope.tiles = [
@@ -18,8 +18,8 @@ angular.module('app.controllers')
     ];
 
     $scope.$watch(function(){ return $location.path()}, function(value){
-      $rootScope.currentView = value;
-      console.log($rootScope.currentView);
+      $scope.currentView = value;
+      console.log($scope.currentView);
     })
 
     $scope.flipped = false;
@@ -28,7 +28,14 @@ angular.module('app.controllers')
       $scope.flipped = true;
       $timeout(function(){
         $location.path(href);
+        $scope.flipped = false;
       }, 700);
+
+    $scope.charting_options = {
+      w_wo_options: ['With Sachin', 'Without Sachin']
+    }
+
+    $scope.chosen_optn = 'With Sachin';
       
     }
   })
@@ -99,7 +106,8 @@ angular.module('app.controllers')
         }
         return {
           json_options: json_options,
-          attr_options: get_attr_options()
+          attr_options: get_attr_options(),
+          w_wo_options: ['With Sachin', 'Without Sachin']
         }
       }()
 

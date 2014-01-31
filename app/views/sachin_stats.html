@@ -21,8 +21,21 @@
             	<chart chart-id="scoreBuckets"></chart>
         	</div>
         	<div ng-show="currentView=='/ResultBuckets'">
-        		<chart chart-id="resultBucketsWithSachin"></chart>
-            	<chart chart-id="resultBucketsWithoutSachin"></chart>
+            	<div class="bottomBar">
+	            	<div class="bottomBarContainer width-big">
+		                <div class="btn-group">
+		                    <button ng-model="chosen_option" btn-radio="'{{ item }}'" 
+		                    ng-repeat="item in charting_options.w_wo_options" type="button" 
+		                    class="btn btn-default">{{ item }}</button>
+		                </div>
+		            </div>
+	        	</div>
+	        	<div ng-show="chosen_option=='With Sachin'">
+	        		<chart chart-id="resultBucketsWithSachin"></chart>
+	        	</div>
+	        	<div ng-show="chosen_option=='Without Sachin'">
+            		<chart chart-id="resultBucketsWithoutSachin"></chart>
+            	</div>
         	</div>
         	<div ng-show="currentView=='/WonLostCenturiesInnning'"> 
 				<chart chart-id="winLoss"></chart>
