@@ -8,7 +8,7 @@ angular.module('app.controllers')
       {name: 'Career <br/> Summary', url: '/summary', class:'col-md-3'},
       {name: 'Score Buckets <br/> & <br/> Won/Lost Counts', url: '/ScoreBuckets', class:'col-md-3'},
       {name: 'Won/Lost By <br/> & <br/> Match Counts', url: '/ResultBuckets', class:'col-md-3'},
-      {name: 'Won/Lost <br/> & <br/> Centuries vs Inning', url: '/WonLostCenturiesInnning', class:'col-md-3'},
+      //{name: 'Won/Lost <br/> & <br/> Centuries vs Inning', url: '/WonLostCenturiesInnning', class:'col-md-3'},
       {name: 'Life Time <br/> Chart', url: '/LifeTimeChart', class:'col-md-3'},
       {name: 'Sachin <br/> vs <br/> Other Batsmen', url: '/RecordChart', class:'col-md-3'},
       {name: 'Win/Lost <br/> Areachart', url: '/WinLossChart', class:'col-md-3'},
