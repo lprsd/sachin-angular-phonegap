@@ -477,7 +477,10 @@ angular.module('app.services').factory('PieChartOptions',[function ($http){
             style: {"fontFamily": "OpenSansCondLight"},
             plotBackgroundColor: null,
             plotBorderWidth: null,
-            plotShadow: false
+            plotShadow: false,
+            animation: {
+                duration: 2000
+            }
         },
         title: {
             text: '',

@@ -33,7 +33,11 @@ angular.module('app.directives')
               chart = new Highcharts.Chart(newSettings);
             } else {
               for (var i = 0; i < chart.series.length; i++) {
-                chart.series[i].setData(scope.chartData.series[i].data)
+                // chart.series[i].setData(scope.chartData.series[i].data);
+                var new_data = scope.chartData.series[i].data;
+                for (var j=0;j<new_data.length;i++){
+                  chart.series[i].data[j].update(new_data[j]);
+                }
               }
             }
         }, true);
