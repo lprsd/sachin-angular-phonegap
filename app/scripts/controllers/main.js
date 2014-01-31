@@ -11,6 +11,7 @@ angular.module('app.controllers')
       {name: 'Won/Lost <br/> & <br/> Centuries vs Inning', url: '/WonLostCenturiesInnning', class:'col-md-3'},
       {name: 'Life Time <br/> Chart', url: '/LifeTimeChart', class:'col-md-3'},
       {name: 'Sachin <br/> vs <br/> Other Batsmen', url: '/RecordChart', class:'col-md-3'},
+      {name: 'Win/Lost <br/> Areachart', url: '/WinLossChart', class:'col-md-3'},
       {name: 'Find Out <br/> Yourself', url: '/FindOutYourSelf', class:'col-md-3'},
       {name: 'Farewell <br/> Speech', url: '/FarewellSpeech', class:'col-md-3'},
       {name: 'Social <br/> Feed', url: '/SocialFeed', class:'col-md-3'}
