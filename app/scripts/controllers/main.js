@@ -35,7 +35,7 @@ angular.module('app.controllers')
       w_wo_options: ['With Sachin', 'Without Sachin']
     }
 
-    $scope.chosen_optn = 'With Sachin';
+    $scope.chosen_option = 'With Sachin';
       
     }
   })
