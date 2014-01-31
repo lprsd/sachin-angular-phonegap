@@ -784,10 +784,10 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
                 shared: true
             },
             legend: {
-                layout: 'vertical',
+                layout: 'horizontal',
+                floating: true,
                 align: 'right',
                 verticalAlign: 'top',
-                floating: false,
                 backgroundColor: '#FFFFFF'
             },
             series: [{
