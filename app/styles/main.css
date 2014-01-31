@@ -176,17 +176,17 @@ iframe {
 }
 
 .facebook-icon{
-	width: 29px;
-	height: 29px;
-	background: url(../res/social-media/FB-f-Logo__blue_29.png);
+	width: 48px;
+	height: 48px;
+	background: url(../images/f.png);
 	float: left;
 	cursor: pointer;
 }
 
 .twitter-icon{
-	width: 29px;
-	height: 29px;
-	background: url(../res/social-media/Twitter_logo_blue.png) no-repeat;
+	width: 48px;
+	height: 48px;
+	background: url(../images/t.png) no-repeat;
 	background-size: 100% 100%;
 	float: right;
 	cursor: pointer;
