@@ -26,6 +26,16 @@ h2 {
 	display: table;
 }
 
+.container {
+	-webkit-backface-visibility: hidden;
+	-webkit-transition:all 1.2s ease-in-out;
+	-webkit-perspective: 800px;
+}
+
+.flipped {
+	-webkit-transform: rotateY(180deg);
+}
+
 .sachinStat{
 	background: #334D5C;
 	float: left;
@@ -129,4 +139,13 @@ h2{
 iframe {
 	min-height: 320px;
 	max-height: 480px;
+}
+
+.homeIcon {
+	position: absolute;
+	background: url('../images/images.jpg');
+	background-size: 100% 100%;
+	width: 35px;
+	height: 35px;
+	display: inline-block;
 }
