@@ -52,9 +52,7 @@
 		        <chart chart-id="winLossChart"></chart>
 	       	</div>
 	       	<div class="topHolder" ng-show="currentView=='/FindOutYourSelf'">
-	       		<div class="subBar">
-		       		Sachin's Score: <input type=number class="inputBox" ng-model="score"/>
-		       		<button ng-click="scoreWonLostPercent(score)" class="btn btn-info info-button">Get Won Lost % Charts</button>
+	       		<div class="subBar"><b>Sachin @ {{score}}</b><slider floor="0" ceiling="200" step="0.5" ng-model="score" translate="scoreText"></slider>
 		       	</div>
 		        <chart chart-id="wonLostAt"></chart>
 		        <chart chart-id="aboveBelowWonLostPercentAt"></chart>

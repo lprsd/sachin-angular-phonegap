@@ -3,7 +3,7 @@ angular.module('app.services', []);
 angular.module('app.directives', []);
 
 
-angular.module('feApp', ['app.controllers', 'app.services', 'app.directives', 'ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ui.bootstrap'])
+angular.module('feApp', ['app.controllers', 'app.services', 'app.directives', 'ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ui.bootstrap', 'uiSlider'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

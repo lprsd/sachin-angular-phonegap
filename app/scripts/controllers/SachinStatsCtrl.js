@@ -401,7 +401,6 @@ function getWonLostPercent(matches, score){
 		}
 			
 	}
-	console.log(wonLostPercent)
 	return wonLostPercent;
 }
 
@@ -416,6 +415,16 @@ function getWonLostAt(matches, score, PieChartOptions){
 	wonData.y = wonLostPercent.wonLostAboveScore[0];
 	wonData.color = "#ff0dff";
 	chart_data.series[0].data.push(wonData);
+	chart_data.plotOptions.pie.dataLabels = {
+		enabled: true,
+		style: { fontFamily: "OpenSansCondLight",
+          	fontSize: 13
+        },
+	    formatter: function() {
+	        return '<b>'+ this.point.name +': </b> '+ this.y +' matches';
+	    },
+	    distance: 10
+	};
 	var lostData = {name: '', y: '', color: ''}
 	lostData.name = "Lost";
 	lostData.y = wonLostPercent.wonLostAboveScore[1];
@@ -685,10 +694,12 @@ angular.module('app.controllers')
     		
     		$scope.page = "Sachin Stats";
     		
-				$(".sachinStat").animate({
-			    	height: "auto"
-			  	}, 1500 );
-    		
+			$(".sachinStat").animate({
+		    	height: "auto"
+		  	}, 1500 );
+
+			$scope.score = 100;  
+
     		Data.get_local('scripts/lib/trafficComp.json').success(function(api_data){
     			$scope.matches = get_pie_chart_data(api_data.res['2013'], PieChartOptions);
                 $scope.runs = get_pie_chart_data(api_data.res['2012'], PieChartOptions);
@@ -697,6 +708,7 @@ angular.module('app.controllers')
     		});
 
     		Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
+    			$scope.api_data = api_data;
     			$scope.scoreBuckets = getScoreBuckets(api_data, PieChartOptions);
     			$scope.winLoss = getWonLost(api_data, PieChartOptions);
     			$scope.centuryVsBattingOrder = getCenturyVsBattingOrder(api_data, PieChartOptions);
@@ -704,17 +716,25 @@ angular.module('app.controllers')
     			$scope.winLossChart = get_win_loss_area_chart(api_data, AreaChartOptions);
     			$scope.resultBucketsWithSachin = getResultBuckets(api_data, PieChartOptions, 'with Sachin');
     			$scope.score = 100;
-    			$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt(api_data, $scope.score, PieChartOptions);
-	        	$scope.wonLostAt = getWonLostAt(api_data, $scope.score, PieChartOptions);
+				//$scope.scoreText = function(value){ console.log('hi'); return 'Sachin @ ' + value.toString(); };
+    			$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt($scope.api_data, $scope.score, PieChartOptions);
+	        	$scope.wonLostAt = getWonLostAt($scope.api_data, $scope.score, PieChartOptions);
     			$scope.scoreWonLostPercent = function(score) {
     				if(!score || isNaN(score) || score < 0) {
     					alert('Enter valid score!');
     					return;
     				}
 
-	        	$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt(api_data, score, PieChartOptions);
-	        	$scope.wonLostAt = getWonLostAt(api_data, score, PieChartOptions);
-	        }
+		        	$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt($scope.api_data, score, PieChartOptions);
+		        	$scope.wonLostAt = getWonLostAt($scope.api_data, score, PieChartOptions);
+		        }
+
+		        $scope.$watch('score', function(newScore, oldScore) {
+		        	if(newScore == oldScore) {console.log(newScore); return};
+		        	if($scope.wonLostAt) {
+		        		$scope.scoreWonLostPercent(+newScore);	
+		        	}
+		        });
 
     		});
 
