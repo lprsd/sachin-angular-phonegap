@@ -30,13 +30,14 @@ angular.module('app.controllers')
         $location.path(href);
         $scope.flipped = false;
       }, 700);
+    }
 
     $scope.charting_options = {
       w_wo_options: ['With Sachin', 'Without Sachin']
     }
 
-    $scope.chosen_option = 'With Sachin';
-      
+    $scope.chosen_option = {
+      without: $scope.charting_options.w_wo_options[0] 
     }
   })
 
@@ -106,8 +107,7 @@ angular.module('app.controllers')
         }
         return {
           json_options: json_options,
-          attr_options: get_attr_options(),
-          w_wo_options: ['With Sachin', 'Without Sachin']
+          attr_options: get_attr_options()
         }
       }()
 
