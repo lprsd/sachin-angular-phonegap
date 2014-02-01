@@ -56,8 +56,13 @@ angular.module('app.directives')
 .directive('fbshare',function(){
   return function(scope,element,attrs){
     element.bind("click", function(){
-      console.log('Facebook Share');
-      window.plugins.socialsharing.share('Message, image and link', null, 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
+        var chart = $('.hc-bars').filter(':visible').highcharts();
+        var svg = chart.getSVG();   
+        var base_image = new Image();
+        svg = "data:image/svg+xml,"+svg;
+        base_image.src = svg;
+        $(".chartImage").attr("src", svg); 
+      //window.plugins.socialsharing.share('Message, image and link', null, 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
     })
   }
 })
