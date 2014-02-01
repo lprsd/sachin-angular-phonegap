@@ -1,21 +1,20 @@
+<header class="bar-title">
+	<ul class="segmented-controller" ng-hide="currentView=='/FarewellSpeech'">
+	    <li class="active">
+	      <a href="#">ODI</a>
+	    </li>
+	    <li>
+	      <a href="#">TEST</a>
+	    </li>
+	</ul>
+	<a class="button-prev" href="./">
+		<div class="glyphicon glyphicon-home home-icon"></div>
+	</a>
+	<div class="appTitle">Sachin Stats</div>
+</header>
+
 <div class="col-md-12">
-	<div class="sachinStat odiTile">
-		<div class="topHolder">
-            <div class="center-align" >
-                <a href="/">
-                    <div class="glyphicon glyphicon-home home-icon"></div>
-                </a>
-				<div class="btn-group topBar" data-toggle="buttons" ng-hide="currentView=='/FarewellSpeech'">
-				  <label class="btn btn-primary active">
-				    <input type="radio" name="formats" value="odi"> ODI
-				  </label>
-				  <label class="btn btn-primary">
-				    <input type="radio" name="formats" value="test"> Test
-				  </label>
-				</div>
-			</div>
-		</div>		
-		{{view}}
+	<div class="sachinStat">
         <div class="chart-container">
         	<div ng-show="currentView=='/ScoreBuckets'">
             	<chart chart-id="scoreBuckets"></chart>
