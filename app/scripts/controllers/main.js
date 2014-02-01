@@ -3,7 +3,7 @@
 angular.module('app.controllers')
   .controller('MainCtrl', function ($scope, $location, $timeout) {
     $scope.colors = ['#334D5C','#45b29d','#EFC94C','#E27A3F','#DF5A49', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
-    
+    $scope.heightSize = sizeYoutube(); 
     $scope.tiles = [
       {name: 'Career <br/> Summary', url: '/summary', class:'col-md-3'},
       {name: 'Score Buckets <br/> & <br/> Won/Lost Counts', url: '/ScoreBuckets', class:'col-md-3'},
@@ -124,9 +124,18 @@ angular.module('app.controllers')
  
 window.onload = window.onresize = window.onorientationchange = function(){
   sizeUI();
+  sizeYoutube();
 }
 
 var screenWidth, tileCount, tileSize, chartWidth, fontSize;
+
+function sizeYoutube(){
+  screenWidth = window.innerWidth;
+  console.log(screenWidth)
+  var heightSize = screenWidth*66.66/100;
+  $('iframe').css({'height' : heightSize+'px'});
+  return heightSize;
+}
 
 function sizeUI() {
   fontSize = '24px';
