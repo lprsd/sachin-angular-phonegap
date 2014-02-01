@@ -17,6 +17,28 @@ h2 {
 	font-family: 'OpenSansCondLight', Georgia,"Times New Roman",Times,serif !important;
 }
 
+@media only screen and (width:320px) and (device-width:320px) and (device-height:480px) and (orientation: landscape) {
+	body {
+		-webkit-transform: scale(0.667);
+		-webkit-transform-origin: top right;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 480px;
+	}
+}
+/* iPad */
+@media only screen and (width:768px) and (device-width:768px) and (device-height:1024px) and (orientation: landscape) {
+	body {
+		-webkit-transform: scale(0.75);
+		-webkit-transform-origin: top right;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 1024px;
+	}
+}
+
 .tileBox{
 	position: relative;
 	float: left;
