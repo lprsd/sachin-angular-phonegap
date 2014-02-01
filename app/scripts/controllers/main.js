@@ -3,7 +3,7 @@
 angular.module('app.controllers')
   .controller('MainCtrl', function ($scope, $location, $timeout) {
     $scope.colors = ['#334D5C','#45b29d','#EFC94C','#E27A3F','#DF5A49', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
-    
+    $scope.heightSize = sizeYoutube(); 
     $scope.tiles = [
       {name: 'Career <br/> Summary', url: '/summary', class:'col-md-3'},
       {name: 'Score Buckets <br/> & <br/> Won/Lost Counts', url: '/ScoreBuckets', class:'col-md-3'},
@@ -30,13 +30,16 @@ angular.module('app.controllers')
         $location.path(href);
         $scope.flipped = false;
       }, 700);
-
-    $scope.charting_options = {
-      w_wo_options: ['With Sachin', 'Without Sachin']
     }
 
-    $scope.chosen_option = 'With Sachin';
-      
+    $scope.charting_options = {
+      w_wo_options: ['With Sachin', 'Without Sachin'],
+      findout_options: ['Simple', 'Advanced']
+    }
+
+    $scope.chosen_option = {
+      without: $scope.charting_options.w_wo_options[0],
+      findout: $scope.charting_options.findout_options[0],
     }
   })
 
@@ -106,8 +109,7 @@ angular.module('app.controllers')
         }
         return {
           json_options: json_options,
-          attr_options: get_attr_options(),
-          w_wo_options: ['With Sachin', 'Without Sachin']
+          attr_options: get_attr_options()
         }
       }()
 
@@ -122,9 +124,18 @@ angular.module('app.controllers')
  
 window.onload = window.onresize = window.onorientationchange = function(){
   sizeUI();
+  sizeYoutube();
 }
 
 var screenWidth, tileCount, tileSize, chartWidth, fontSize;
+
+function sizeYoutube(){
+  screenWidth = window.innerWidth;
+  console.log(screenWidth)
+  var heightSize = screenWidth*66.66/100;
+  $('iframe').css({'height' : heightSize+'px'});
+  return heightSize;
+}
 
 function sizeUI() {
   fontSize = '24px';
