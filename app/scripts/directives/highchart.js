@@ -51,4 +51,13 @@ angular.module('app.directives')
     template: '<div class="hc-bars"></div>'
 
   }
-  });
+  })
+
+.directive('fbshare',function(){
+  return function(scope,element,attrs){
+    element.bind("click", function(){
+      console.log('Facebook Share');
+      window.plugins.socialsharing.share('Message, image and link', null, 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
+    })
+  }
+})

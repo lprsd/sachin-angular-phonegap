@@ -6,7 +6,7 @@
 /* Space out content a bit */
 body {
   margin: 0;
-  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body, h2 {
@@ -171,21 +171,22 @@ iframe {
 .icon-container{
 	margin: auto;
 	margin-top: 20px;
-	width: 70px;
+	width: 75px;
 	position: relative;
 }
 
 .facebook-icon{
-	width: 48px;
-	height: 48px;
+	width: 30px;
+	height: 30px;
 	background: url(../images/f.png);
+	background-size: 100% 100%;
 	float: left;
 	cursor: pointer;
 }
 
 .twitter-icon{
-	width: 48px;
-	height: 48px;
+	width: 30px;
+	height: 30px;
 	background: url(../images/t.png) no-repeat;
 	background-size: 100% 100%;
 	float: right;
