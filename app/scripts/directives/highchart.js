@@ -35,8 +35,15 @@ angular.module('app.directives')
               for (var i = 0; i < chart.series.length; i++) {
                 // chart.series[i].setData(scope.chartData.series[i].data);
                 var new_data = scope.chartData.series[i].data;
-                for (var j=0;j<new_data.length;i++){
-                  chart.series[i].data[j].update(new_data[j]);
+                if (new_data.length == chart.series[i].data.length){
+                  for (var j=0;j<new_data.length;j++){
+                    // console.log('new_data');
+                    // console.log(new_data[j]);
+                    chart.series[i].data[j].update(new_data[j]);
+                  }                
+                } else{
+                  chart.series[i].setData(scope.chartData.series[i].data, false);
+                  chart.redraw();
                 }
               }
             }

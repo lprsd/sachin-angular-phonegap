@@ -479,7 +479,7 @@ angular.module('app.services').factory('PieChartOptions',[function ($http){
             plotBorderWidth: null,
             plotShadow: false,
             animation: {
-                duration: 2000
+                duration: 1800
             }
         },
         title: {
