@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('app.controllers', []);
 angular.module('app.services', []);
 angular.module('app.directives', []);
@@ -9,8 +7,8 @@ angular.module('feApp', ['app.controllers', 'app.services', 'app.directives', 'n
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/main.html'
+        //controller: 'MainCtrl'
       })
       .when('/summary', {
           templateUrl: 'views/summary.html',
@@ -37,6 +35,10 @@ angular.module('feApp', ['app.controllers', 'app.services', 'app.directives', 'n
           controller: 'SachinStatsCtrl'
       })
       .when('/LifeTimeChart', {
+          templateUrl: 'views/sachin_stats.html',
+          controller: 'SachinStatsCtrl'
+      })
+      .when('/WinLossChart', {
           templateUrl: 'views/sachin_stats.html',
           controller: 'SachinStatsCtrl'
       })

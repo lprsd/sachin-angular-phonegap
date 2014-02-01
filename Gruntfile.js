@@ -234,12 +234,15 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>',
           src: [
             '*.{ico,png,txt}',
-            '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{gif,webp}',
             'fonts/*',
-            'scripts/lib/*',
-            'config.xml'
+            'scripts/**/*',
+            'vendor/*',
+            'config.xml',
+            'styles/*',
+            'styles/fonts/*',
+            'images/*'
           ]
         }, {
           expand: true,
@@ -355,7 +358,7 @@ module.exports = function (grunt) {
       grunt.task.run([
         'clean:phonegap',
         'copy:phonegap',
-        'shell:phonegapBuild'
+        // 'shell:phonegapBuild'
       ]);
     }
   });
