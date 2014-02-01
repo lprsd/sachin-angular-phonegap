@@ -720,7 +720,7 @@ angular.module('app.controllers')
     			$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt($scope.api_data, $scope.score, PieChartOptions);
 	        	$scope.wonLostAt = getWonLostAt($scope.api_data, $scope.score, PieChartOptions);
     			$scope.scoreWonLostPercent = function(score) {
-    				if(!score || isNaN(score) || score < 0) {
+    				if(isNaN(score) || score < 0) {
     					alert('Enter valid score!');
     					return;
     				}
