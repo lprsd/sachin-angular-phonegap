@@ -33,11 +33,13 @@ angular.module('app.controllers')
     }
 
     $scope.charting_options = {
-      w_wo_options: ['With Sachin', 'Without Sachin']
+      w_wo_options: ['With Sachin', 'Without Sachin'],
+      findout_options: ['Simple', 'Advanced']
     }
 
     $scope.chosen_option = {
-      without: $scope.charting_options.w_wo_options[0] 
+      without: $scope.charting_options.w_wo_options[0],
+      findout: $scope.charting_options.findout_options[0],
     }
   })
 
