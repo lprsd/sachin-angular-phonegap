@@ -1,33 +1,38 @@
+<header class="bar-title">
+    <ul class="segmented-controller goRight" ng-hide="currentView=='/FarewellSpeech'">
+        <li class="active">
+          <a href="#">ODI</a>
+        </li>
+        <li>
+          <a href="#">TEST</a>
+        </li>
+    </ul>
+    <a class="button-prev" href="#/">
+        <div class="glyphicon glyphicon-home home-icon"></div>
+    </a>
+    <div class="appTitle">Sachin Stats</div>
+</header>
+<div class="bar-title blackBackground">
+  <ul class="segmented-controller">
+    <li class="{active: $first}" ng-repeat="item in charting_options.json_options">
+    <button ng-model="chosen_option.json_option" btn-radio="'{{ item }}'" 
+        type="button"
+        class="btn btn-default">{{ item }}</button>
+    </li>
+  </ul>
+</div>
 <div class="col-md-12">
     <div class="sachinStat testTile">
-        <div class="topHolder">
-            <div class="center-align" >
-                <a href="/">
-                    <div class="glyphicon glyphicon-home home-icon"></div>
-                </a>
-                <div class="btn-group" data-toggle="buttons" ng-hide="currentView=='/FarewellSpeech'">
-                  <label class="btn btn-primary active">
-                    <input type="radio" name="formats" value="odi"> ODI
-                  </label>
-                  <label class="btn btn-primary">
-                    <input type="radio" name="formats" value="test"> Test
-                  </label>
-                </div>
-            </div>
-            <div class="bottomBarContainer width-small">
-                <div class="btn-group">
-                    <button ng-model="chosen_option.json_option" btn-radio="'{{ item }}'" ng-repeat="item in charting_options.json_options" type="button" class="btn btn-default">{{ item }}</button>
-                </div>
-            </div>
-        </div>
         <div class="centeredChart">
             <chart chart-id="chosenStat"></chart>
         </div>
         <div class="bottomBar">
-            <div class="bottomBarContainer width-big">
-                <div class="btn-group">
-                    <button ng-model="chosen_option.attr_option" btn-radio="'{{ item }}'" ng-repeat="item in charting_options.attr_options" type="button" class="btn btn-default">{{ item }}</button>
-                </div>
+            <div class="bar-title blackBackground">
+              <ul class="segmented-controller">
+                <li class="{active: $first}" ng-repeat="item in charting_options.attr_options">
+                <button ng-model="chosen_option.attr_option" btn-radio="'{{ item }}'" type="button" class="btn btn-default">{{ item }}</button>
+                </li>
+              </ul>
             </div>
         </div>
         <img class="chartImage">

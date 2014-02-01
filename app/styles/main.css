@@ -198,3 +198,12 @@ iframe {
 	font-weight: bold;
 	color: #fff;
 }
+
+.blackBackground {
+	background: #000;
+}
+
+.btn, .btn.active, .btn-default.active, .btn:hover, .btn-default {
+	background: none;
+	border-color: none;
+}

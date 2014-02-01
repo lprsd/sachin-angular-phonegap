@@ -1,5 +1,5 @@
 <header class="bar-title">
-	<ul class="segmented-controller" ng-hide="currentView=='/FarewellSpeech'">
+	<ul class="segmented-controller goRight" ng-hide="currentView=='/FarewellSpeech'">
 	    <li class="active">
 	      <a href="#">ODI</a>
 	    </li>
@@ -20,15 +20,15 @@
             	<chart chart-id="scoreBuckets"></chart>
         	</div>
         	<div ng-show="currentView=='/ResultBuckets'">
-            	<div class="bottomBar">
-	            	<div class="bottomBarContainer width-big">
-		                <div class="btn-group">
-		                    <button ng-model="chosen_option.without" btn-radio="'{{ item }}'" 
-		                    ng-repeat="item in charting_options.w_wo_options" type="button" 
-		                    class="btn btn-default">{{ item }}</button>
-		                </div>
-		            </div>
-	        	</div>
+	        	<div class="bar-title blackBackground">
+				  <ul class="segmented-controller">
+				    <li class="{active: $first}" ng-repeat="item in charting_options.w_wo_options">
+				      <button ng-model="chosen_option.without" btn-radio="'{{ item }}'" 
+				        type="button" 
+				        class="btn btn-default">{{ item }}</button>
+				    </li>
+				  </ul>
+				</div>
 	        	<div ng-show="chosen_option.without=='With Sachin'">
 	        		<chart chart-id="resultBucketsWithSachin"></chart>
 	        	</div>

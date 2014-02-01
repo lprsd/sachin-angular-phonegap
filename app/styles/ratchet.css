@@ -449,8 +449,6 @@ a {
   border: 1px solid #0e5895;
   border-radius: 3px;
   box-shadow: 0 1px rgba(255, 255, 255, .25);
-  //-webkit-box-flex: 1;
-  //        box-flex: 1;
 }
 
 .goRight {
@@ -462,7 +460,7 @@ a {
 .bar-title .segmented-controller li {
   border-left: 1px solid #0e5895;
   box-shadow: inset 1px 0 rgba(255, 255, 255, .25);
-  width: 60px;
+  width: 75px;
 }
 
 /* Remove inset shadow from first tab or one to the right of the active tab  */
