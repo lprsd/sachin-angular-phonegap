@@ -206,4 +206,14 @@ iframe {
 .btn, .btn.active, .btn-default.active, .btn:hover, .btn-default {
 	background: none;
 	border-color: none;
+	font-size: 22px !important;
+	line-height: 16px !important;
+}
+
+.bar-title span{
+	border: 0px!important;
+}
+
+.bar-title span.active{
+	color: #1eb0e9 !important;
 }
