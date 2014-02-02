@@ -242,7 +242,7 @@ module.exports = function (grunt) {
             'styles/*',
             'styles/fonts/*',
             'images/*',
-            'res/*/*'
+            'res/*/*/*'
           ]
         }, {
           expand: true,
