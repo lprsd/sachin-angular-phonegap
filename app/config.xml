@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.stats.sachin" version="2.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Tendulkar Stats</name>
+    <name>Sachin Stats</name>
     <description>
         This app visualises the scores of Sachin Tendulkar in his career.
     </description>
@@ -48,4 +48,7 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="http://127.0.0.1/" />
+    <gap:plugin name="nl.x-services.plugins.socialsharing" />
+    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" />
+    <gap:plugin name="com.adobe.plugins.gaplugin" />
 </widget>
