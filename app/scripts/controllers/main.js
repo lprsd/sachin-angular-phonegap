@@ -34,12 +34,14 @@ angular.module('app.controllers')
 
     $scope.charting_options = {
       w_wo_options: ['With Sachin', 'Without Sachin'],
-      findout_options: ['Simple', 'Advanced']
+      findout_options: ['Simple', 'Advanced'],
+      format_options: ['ODI', 'Test']
     }
 
     $scope.chosen_option = {
       without: $scope.charting_options.w_wo_options[0],
       findout: $scope.charting_options.findout_options[0],
+      format: $scope.charting_options.format_options[0]
     }
   })
 
@@ -112,10 +114,11 @@ angular.module('app.controllers')
           attr_options: get_attr_options()
         }
       }()
-
+      $scope.charting_options.format_options = ['ODI', 'Test'];
       $scope.chosen_option = {
         json_option: $scope.charting_options.json_options[0],
-        attr_option: $scope.charting_options.attr_options[1]
+        attr_option: $scope.charting_options.attr_options[1],
+        format: $scope.charting_options.format_options[0]
       }
       
       plot_graph();

@@ -451,11 +451,6 @@ a {
   box-shadow: 0 1px rgba(255, 255, 255, .25);
 }
 
-.goRight {
-  position: absolute;
-  right: 10px;
-}
-
 /* Set color for tab border and highlight */
 .bar-title .segmented-controller li {
   border-left: 1px solid #0e5895;
