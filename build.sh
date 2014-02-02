@@ -7,3 +7,8 @@ mv dist www
 git add www
 git commit -am "Recent changes"
 git push
+cd ../fe
+git add --all dist
+git commit -am 'Updated compiled files.'
+git push
+ 
