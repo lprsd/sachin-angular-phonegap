@@ -8,19 +8,23 @@
     </div>
 </header>
 <div class="bar-title blackBackground">
-    <span ng-model="chosen_option.json_option" btn-radio="'{{ item }}'" type="button" ng-repeat="item in charting_options.json_options" class="btn btn-default">{{ item }}</span>
+    <div class="centerBar">
+        <span ng-model="chosen_option.json_option" btn-radio="'{{ item }}'" type="button" ng-repeat="item in charting_options.json_options" class="btn btn-default">{{ item }}</span>
+    </div>
 </div>
 <div class="col-md-12">
     <div class="sachinStat testTile">
         <div class="centeredChart">
-            <chart chart-id="chosenStat"></chart>
+            <summarychart chart-id="chosenStat"></summarychart>
         </div>
         <div class="bottomBar">
             <div class="bar-title blackBackground">
-                <span ng-model="chosen_option.attr_option" btn-radio="'{{ item }}'" type="button" ng-repeat="item in charting_options.attr_options" class="btn btn-default">{{ item }}</span>
+                <div class="centerBar">
+                    <span ng-model="chosen_option.attr_option" btn-radio="'{{ item }}'" type="button" ng-repeat="item in charting_options.attr_options" class="btn btn-default">{{ item }}</span>
+                </div>
             </div>
         </div>
-        <!-- <img class="chartImage"> -->
+        <img class="chartImage">
         <div class="topHolder">
             <div class="icon-container">
                 <div fbshare="" class="facebook-icon"></div>
