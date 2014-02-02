@@ -16,14 +16,11 @@
         	</div>
         	<div ng-show="currentView=='/ResultBuckets'">
 	        	<div class="bar-title blackBackground">
-			      <span ng-model="chosen_option.without" btn-radio="'{{ item }}'" type="button" ng-repeat="item in charting_options.w_wo_options" class="btn btn-default">{{ item }}</span>
+	        		<div class="centerBar">
+						<span ng-model="chosen_option.without" btn-radio="'{{ item }}'" type="button" ng-repeat="item in charting_options.w_wo_options" class="btn btn-default">{{ item }}</span>
+					</div>
 				</div>
-	        	<div ng-show="chosen_option.without=='With Sachin'">
-	        		<chart chart-id="resultBucketsWithSachin"></chart>
-	        	</div>
-	        	<div ng-show="chosen_option.without=='Without Sachin'">
-            		<chart chart-id="resultBucketsWithoutSachin"></chart>
-            	</div>
+	        	<chart chart-id="chartWithWithoutSachin"></chart>
         	</div>
         	<div ng-show="currentView=='/WonLostCenturiesInnning'"> 
 				<chart chart-id="winLoss"></chart>
@@ -42,17 +39,14 @@
 	       	<div class="topHolder" ng-show="currentView=='/FindOutYourSelf'">
 	       		<div class="bottomBar">	
 	                <div class="bar-title blackBackground">
-	                    <span ng-model="chosen_option.findout" btn-radio="'{{ item }}'" ng-repeat="item in charting_options.findout_options" type="button" class="btn btn-default">{{ item }}</span>
+	                	<div class="smallBar">
+		                    <span ng-model="chosen_option.findout" btn-radio="'{{ item }}'" ng-repeat="item in charting_options.findout_options" type="button" class="btn btn-default">{{ item }}</span>
+	                   	</div>
 	                </div>	            
 	        	</div>
 	       		<div class="subBar"><b>Sachin @ {{score}}</b><slider floor="0" ceiling="200" step="0.5" ng-model="score" translate="scoreText"></slider>
 		       	</div>
-		       	<div ng-show="chosen_option.findout=='Simple'">
-		        	<chart chart-id="wonLostAt"></chart>
-		        </div>	
-		        <div ng-show="chosen_option.findout=='Advanced'">
-		        	<chart chart-id="aboveBelowWonLostPercentAt"></chart>
-		        </div>	
+		       	<summarychart chart-id="findOutYourselfChart"></summarychart>
 	       	</div>
 	       	<div ng-show="currentView=='/FarewellSpeech'"> 
 				<iframe height="{{heightSize}}" src="http://www.youtube.com/embed/CfCBWUkWzXM?autoplay=true" frameborder="0" allowfullscreen="">
