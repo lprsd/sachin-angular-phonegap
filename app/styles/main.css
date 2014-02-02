@@ -28,6 +28,7 @@ h2 {
 
 .container {
 	-webkit-backface-visibility: hidden;
+	-webkit-transform-origin: 0 0;
 	-webkit-transition:all 1.2s ease-in-out;
 	-webkit-perspective: 800px;
 }
