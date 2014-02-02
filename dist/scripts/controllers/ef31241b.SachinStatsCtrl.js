@@ -700,13 +700,6 @@ angular.module('app.controllers')
 
 			$scope.score = 100;  
 
-    		Data.get_local('scripts/lib/trafficComp.json').success(function(api_data){
-    			$scope.matches = get_pie_chart_data(api_data.res['2013'], PieChartOptions);
-                $scope.runs = get_pie_chart_data(api_data.res['2012'], PieChartOptions);
-//                $scope.chosenStat = get_pie_chart_data(api_data.res['2012'], PieChartOptions);
-
-    		});
-
     		Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
     			$scope.api_data = api_data;
     			$scope.scoreBuckets = getScoreBuckets(api_data, PieChartOptions);
