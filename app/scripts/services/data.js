@@ -750,10 +750,14 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
     var area_chart = {
 
         chart: {
-                zoomType: 'xy'
+                zoomType: 'xy',
+                marginBottom: 60
             },
             title: {
-                text: 'Sachin Lifetime Score Chart'
+                text: 'Sachin Lifetime Score Chart',
+                style: {
+                    "fontFamily": "OpenSansCondLight",
+                }
             },
             subtitle: {
                 text: 'God Stats'
@@ -761,6 +765,9 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
             xAxis: [{
                 type: 'datetime'
             }],
+            credits: {
+                enabled: false
+            },
             yAxis: [{ // Primary yAxis
                 labels: {
                     style: {
@@ -794,10 +801,14 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
             },
             legend: {
                 layout: 'horizontal',
-                floating: true,
-                align: 'right',
-                verticalAlign: 'top',
-                backgroundColor: '#FFFFFF'
+                floating: false,
+                align: 'center',
+                verticalAlign: 'bottom',
+                backgroundColor: '#FFFFFF',
+                y: 5
+            },
+            exporting: {
+                enabled: false
             },
             series: [{
                 name: 'Average',
