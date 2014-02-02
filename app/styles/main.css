@@ -47,7 +47,7 @@ h2 {
 
 .hc-bars{
 	width: 100%;
-	min-height: 400px;
+	min-height: 350px;
 	position: relative;
 	float: left;
 }
@@ -166,7 +166,6 @@ iframe {
 
 .icon-container{
 	margin: auto;
-	margin-top: 20px;
 	width: 125px;
 	position: relative;
 }
