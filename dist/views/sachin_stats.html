@@ -1,0 +1,70 @@
+<header class="bar-title">
+	<a class="button-prev" href="#">
+		<div class="glyphicon glyphicon-home home-icon"></div>
+	</a>
+	<div class="appTitle">Sachin Stats</div>
+	<div class="goRight">
+		<span ng-model="chosen_option.format" btn-radio="'{{ item }}'" ng-repeat="item in charting_options.format_options" type="button" class="btn btn-default">{{ item }}</span>
+	</div>
+</header>
+
+<div class="col-md-12">
+	<div class="sachinStat">
+        <div class="chart-container">
+        	<div ng-show="currentView=='/ScoreBuckets'">
+            	<chart chart-id="scoreBuckets"></chart>
+        	</div>
+        	<div ng-show="currentView=='/ResultBuckets'">
+	        	<div class="bar-title blackBackground">
+			      <span ng-model="chosen_option.without" btn-radio="'{{ item }}'" type="button" ng-repeat="item in charting_options.w_wo_options" class="btn btn-default">{{ item }}</span>
+				</div>
+	        	<div ng-show="chosen_option.without=='With Sachin'">
+	        		<chart chart-id="resultBucketsWithSachin"></chart>
+	        	</div>
+	        	<div ng-show="chosen_option.without=='Without Sachin'">
+            		<chart chart-id="resultBucketsWithoutSachin"></chart>
+            	</div>
+        	</div>
+        	<div ng-show="currentView=='/WonLostCenturiesInnning'"> 
+				<chart chart-id="winLoss"></chart>
+				<chart chart-id="centuryVsBattingOrder"></chart>
+			</div>
+	        <!-- <chart chart-id="chosenStat"></chart> -->
+	        <div ng-show="currentView=='/RecordChart'"> 
+	        	<chart height="500" chart-id="recordChart"></chart>
+	        </div>
+	        <div ng-show="currentView=='/LifeTimeChart'"> 
+		        <chart chart-id="areaChart"></chart>
+	       	</div>
+	       	<div ng-show="currentView=='/WinLossChart'"> 
+		        <chart chart-id="winLossChart"></chart>
+	       	</div>
+	       	<div class="topHolder" ng-show="currentView=='/FindOutYourSelf'">
+	       		<div class="bottomBar">	
+	                <div class="bar-title blackBackground">
+	                    <span ng-model="chosen_option.findout" btn-radio="'{{ item }}'" ng-repeat="item in charting_options.findout_options" type="button" class="btn btn-default">{{ item }}</span>
+	                </div>	            
+	        	</div>
+	       		<div class="subBar"><b>Sachin @ {{score}}</b><slider floor="0" ceiling="200" step="0.5" ng-model="score" translate="scoreText"></slider>
+		       	</div>
+		       	<div ng-show="chosen_option.findout=='Simple'">
+		        	<chart chart-id="wonLostAt"></chart>
+		        </div>	
+		        <div ng-show="chosen_option.findout=='Advanced'">
+		        	<chart chart-id="aboveBelowWonLostPercentAt"></chart>
+		        </div>	
+	       	</div>
+	       	<div ng-show="currentView=='/FarewellSpeech'"> 
+				<iframe height="{{heightSize}}" src="http://www.youtube.com/embed/CfCBWUkWzXM?autoplay=true" frameborder="0" allowfullscreen="">
+				</iframe>
+	       	</div>
+	       	<!-- <img class="chartImage"> -->
+	       	<div class="topHolder">
+	       		<div class="icon-container">
+	       			<div fbshare="" class="facebook-icon"></div>
+	       			<div ng-click="getHighchartImage()" class="twitter-icon"></div>
+	       		</div>
+	       	</div>
+        </div>
+	</div>
+</div>
