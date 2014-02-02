@@ -217,6 +217,7 @@ iframe {
 	border-color: none;
 	font-size: 16px !important;
 	line-height: 16px !important;
+	color: #1eb0e9 !important;
 }
 
 .bar-title span{
@@ -224,11 +225,11 @@ iframe {
 }
 
 .bar-title span.active{
-	color: #1eb0e9 !important;
+	color: #ffffff !important;
 }
 
 .formatThing span.active{
-	color: #000000 !important;
+	color: #ffffff !important;
 }
 
 .goRight {
@@ -237,10 +238,14 @@ iframe {
   top: 3px;
 }
 
+.goRight .btn{
+	color: #000000 !important;
+}
+
 .goRight span.active{
 	border: 0px !important;
 	box-shadow: none !important;
-	color: #000000 !important;
+	color: #ffffff !important;
 }
 
 .centerBar {
