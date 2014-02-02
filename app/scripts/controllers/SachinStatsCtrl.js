@@ -721,6 +721,7 @@ angular.module('app.controllers')
 
     			$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt($scope.api_data, $scope.score, PieChartOptions);
 	        	$scope.wonLostAt = getWonLostAt($scope.api_data, $scope.score, PieChartOptions);
+	        	$scope.findOutYourselfChart = $scope.wonLostAt;
     			$scope.scoreWonLostPercent = function(score) {
     				if(isNaN(score) || score < 0) {
     					alert('Enter valid score!');
@@ -729,6 +730,11 @@ angular.module('app.controllers')
 
 		        	$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt($scope.api_data, score, PieChartOptions);
 		        	$scope.wonLostAt = getWonLostAt($scope.api_data, score, PieChartOptions);
+		        	if($scope.$parent.chosen_option.findout =='Simple') {
+		        		$scope.findOutYourselfChart = $scope.wonLostAt;
+		        	} else {
+		        		$scope.findOutYourselfChart = $scope.aboveBelowWonLostPercentAt;
+		        	}
 		        }
 
 		        $scope.$watch('score', function(newScore, oldScore) {
@@ -744,6 +750,15 @@ angular.module('app.controllers')
 		        		$scope.chartWithWithoutSachin = $scope.resultBucketsWithSachin;
 		        	} else {
 		        		$scope.chartWithWithoutSachin = $scope.resultBucketsWithoutSachin;
+		        	}
+		        });
+
+		        $scope.$watch(function() {return $scope.$parent.chosen_option.findout}, function(value) {
+		        	if(!value) return;
+		        	if(value =='Simple') {
+		        		$scope.findOutYourselfChart = $scope.wonLostAt;
+		        	} else {
+		        		$scope.findOutYourselfChart = $scope.aboveBelowWonLostPercentAt;
 		        	}
 		        });
 
