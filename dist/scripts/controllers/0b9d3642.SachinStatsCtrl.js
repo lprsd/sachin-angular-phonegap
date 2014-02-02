@@ -486,7 +486,7 @@ function getCenturyVsBattingOrder(matches, PieChartOptions){
 }
 
 function custom_chart_settings_by_avg_fare(chart_data){
-    chart_data.chart.marginTop = 140;
+    chart_data.chart.marginTop = 15;
     chart_data.xAxis = {
                         startOnTick: true,
                         endOnTick: true,
@@ -513,6 +513,7 @@ function custom_chart_settings_by_avg_fare(chart_data){
                        }
                    }
     chart_data.yAxis.max = 500;
+    chart_data.xAxis.max = 46;
     delete chart_data.yAxis.tickInterval;
     chart_data.yAxis.title ={
     							text: "Number of Matches",
@@ -524,6 +525,7 @@ function custom_chart_settings_by_avg_fare(chart_data){
                         		}
     						};
     chart_data.legend = {
+    			enabled: false,
                 align: 'right',
                 verticalAlign: 'top',
                 layout: 'horizontal',
@@ -569,7 +571,13 @@ function get_bubble_chart_data (api_data, colors, ChartOptions) {
     var chart_data = $.extend(true, {}, ChartOptions.pos);
     chart_data = custom_chart_settings_by_avg_fare(chart_data);
     for(var i = 0; i < api_data.length; i++){
-        var seriesObj = {name: '', color: '', data: []};
+        var seriesObj = {name: '', color: '', data: [], dataLabels: {
+            enabled: true,
+            formatter:function() {
+                return this.point.name;
+            },
+            style:{color:"black"}
+        }};
         var dataObj =   {x: '', y: '', runs: '', name: '',
         					marker: {
 	        					radius: '',
@@ -580,7 +588,7 @@ function get_bubble_chart_data (api_data, colors, ChartOptions) {
     	dataObj.y = parseInt(api_data[i].matches);
     	dataObj.marker.radius = parseFloat((api_data[i].runs)/500);
 		dataObj.runs = parseInt(api_data[i].runs);
-		dataObj.name = api_data[i].name;
+		dataObj.name = (api_data[i].name).split("(")[0];
         seriesObj.name = api_data[i].name;
         seriesObj.color = colorsArray[i];
         seriesObj.data.push(dataObj);

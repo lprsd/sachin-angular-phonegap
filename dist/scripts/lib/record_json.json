@@ -45,15 +45,6 @@
         "centuries": "30"
     },
     {
-        "runs": "7514",
-        "span": "1996-2013",
-        "name": "Shahid Afridi (Asia/ICC/Pak)",
-        "matches": "371",
-        "average": "23.40",
-        "top_score": "124",
-        "centuries": "6"
-    },
-    {
         "runs": "12029",
         "span": "2000-2013",
         "name": "KC Sangakkara (Asia/ICC/SL)",
@@ -61,24 +52,6 @@
         "average": "40.23",
         "top_score": "169",
         "centuries": "16"
-    },
-    {
-        "runs": "3717",
-        "span": "1984-2003",
-        "name": "Wasim Akram (Pak)",
-        "matches": "356",
-        "average": "16.52",
-        "top_score": "86",
-        "centuries": "0"
-    },
-    {
-        "runs": "674",
-        "span": "1993-2011",
-        "name": "M Muralitharan (Asia/ICC/SL)",
-        "matches": "350",
-        "average": "6.80",
-        "top_score": "33*",
-        "centuries": "0"
     },
     {
         "runs": "10889",
@@ -115,15 +88,6 @@
         "average": "32.90",
         "top_score": "120*",
         "centuries": "3"
-    },
-    {
-        "runs": "2025",
-        "span": "1994-2008",
-        "name": "WPUJC Vaas (Asia/SL)",
-        "matches": "322",
-        "average": "13.68",
-        "top_score": "50*",
-        "centuries": "0"
     },
     {
         "runs": "11363",

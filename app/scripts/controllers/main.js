@@ -66,10 +66,10 @@ angular.module('app.controllers')
       return series_data;
     }
 
-    var plot_graph = function(){
+    var plot_graph = function(data, format){
       var chosen_json = $scope.chosen_option.json_option;
       var chosen_attr = $scope.chosen_option.attr_option;
-      var api_data = $scope.r_api_data;
+      var api_data = data;
 
       var series_data = get_series_data(api_data,chosen_json,chosen_attr);
       var chart_data = angular.copy(PieChartOptions.simplePie);
@@ -87,17 +87,22 @@ angular.module('app.controllers')
       chart_data.plotOptions.pie.center = ['50%', '50%'];
       chart_data.chart.marginTop = chart_data.chart.marginBottom = 50;
       console.log(chart_data)
-      $scope.chosenStat = chart_data;
+      $scope['chosenStat' + format] = chart_data;
     }
 
     $scope.$watch('chosen_option',function(chosen_option){
-      if ($scope.r_api_data){
-        plot_graph();
+      if ($scope.odi_data){
+        plot_graph($scope.odi_data, 'odi');
       }
+      if ($scope.test_data){
+        plot_graph($scope.test_data, 'test');
+      }
+
+      $scope.chosenStat = $scope['chosenStat' + chosen_option.format.toLowerCase()];
     },true)
 
     Data.get_local('scripts/lib/sachin_odi_summary.json').success(function(api_data){
-      $scope.r_api_data = api_data;
+      $scope.odi_data = api_data;
 
       $scope.charting_options = function(){
         var json_options = _.keys(api_data);
@@ -114,6 +119,7 @@ angular.module('app.controllers')
           attr_options: get_attr_options()
         }
       }()
+      
       $scope.charting_options.format_options = ['ODI', 'Test'];
       $scope.chosen_option = {
         json_option: $scope.charting_options.json_options[0],
@@ -121,8 +127,40 @@ angular.module('app.controllers')
         format: $scope.charting_options.format_options[0]
       }
       
-      plot_graph();
+      plot_graph($scope.odi_data, 'odi');
     });
+
+
+    Data.get_local('scripts/lib/test/sachin_test_summary.json').success(function(api_data){
+      $scope.test_data = api_data;
+
+      $scope.charting_options = function(){
+        var json_options = _.keys(api_data);
+
+        var get_attr_options = function(){
+          var all_attrs = _.keys(api_data[json_options[0]][0]);
+          console.log(all_attrs);
+          var name_index = all_attrs.indexOf("name");
+          all_attrs.splice(name_index,1);
+          return all_attrs
+        }
+        return {
+          json_options: json_options,
+          attr_options: get_attr_options()
+        }
+      }()
+      
+      $scope.charting_options.format_options = ['ODI', 'Test'];
+      $scope.chosen_option = {
+        json_option: $scope.charting_options.json_options[0],
+        attr_option: $scope.charting_options.attr_options[1],
+        format: $scope.charting_options.format_options[0]
+      }
+      
+      plot_graph($scope.odi_data, 'test');
+    });
+
+
   });
  
 window.onload = window.onresize = window.onorientationchange = function(){

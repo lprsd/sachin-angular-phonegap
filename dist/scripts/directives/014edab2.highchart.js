@@ -118,16 +118,16 @@ angular.module('app.directives')
         // var base_image = new Image();
         // svg = "data:image/svg+xml,"+svg;
         // base_image.src = svg;
-        
+
         if(window.plugins != undefined){
           if(currentType == 'facebook'){
-            window.plugins.socialsharing.shareViaFacebook('Sachin is great because', '', image, 'http://j.mp/sachins');  
+            window.plugins.socialsharing.shareViaFacebook('Sachin is great because #SachinStats', '', image, 'http://j.mp/sachins');  
           }
           else if(currentType == 'twitter'){
-            window.plugins.socialsharing.shareViaTwitter('Sachin is great because', '', image, 'http://j.mp/sachins');  
+            window.plugins.socialsharing.shareViaTwitter('Sachin is great because #SachinStats', '', image, 'http://j.mp/sachins');  
           }
           else{
-            window.plugins.socialsharing.share('Sachin is great because', '', image, 'http://j.mp/sachins');  
+            window.plugins.socialsharing.share('Sachin is great because #SachinStats', '', image, 'http://j.mp/sachins');  
           }
         }
         else{
