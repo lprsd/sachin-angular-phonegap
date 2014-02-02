@@ -235,8 +235,14 @@ iframe {
 	color: #000000 !important;
 }
 
-.summaryBar {
+.centerBar {
 	width: 260px;
+	position: relative;
+	margin: auto;
+}
+
+.smallBar {
+	width: 160px;
 	position: relative;
 	margin: auto;
 }
