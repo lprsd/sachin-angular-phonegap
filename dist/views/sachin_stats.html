@@ -4,9 +4,7 @@
 	</a>
 	<div class="appTitle">Sachin Stats</div>
 	<div class="goRight" ng-hide="currentView=='/FarewellSpeech'">
-		<span ng-model="chosen_option.format" btn-radio="'{{ item }}'" 
-        ng-repeat="item in charting_options.format_options" type="button" 
-        class="btn btn-default">{{ item }}</span>
+		<span ng-model="chosen_option.format" btn-radio="'{{ item }}'" ng-repeat="item in charting_options.format_options" type="button" class="btn btn-default">{{ item }}</span>
 	</div>
 </header>
 
@@ -19,9 +17,7 @@
         	<div ng-show="currentView=='/ResultBuckets'">
 	        	<div class="bar-title blackBackground">
 	        		<div class="centerBar">
-						<span ng-model="chosen_option.without" btn-radio="'{{ item }}'" 
-							type="button" ng-repeat="item in charting_options.w_wo_options"
-							class="btn btn-default">{{ item }}</span>
+						<span ng-model="chosen_option.without" btn-radio="'{{ item }}'" type="button" ng-repeat="item in charting_options.w_wo_options" class="btn btn-default">{{ item }}</span>
 					</div>
 				</div>
 	        	<chart chart-id="chartWithWithoutSachin"></chart>
@@ -44,9 +40,7 @@
 	       		<div class="bottomBar">	
 	                <div class="bar-title blackBackground">
 	                	<div class="smallBar">
-		                    <span ng-model="chosen_option.findout" btn-radio="'{{ item }}'" 
-		                    ng-repeat="item in charting_options.findout_options" type="button" 
-		                    class="btn btn-default">{{ item }}</span>
+		                    <span ng-model="chosen_option.findout" btn-radio="'{{ item }}'" ng-repeat="item in charting_options.findout_options" type="button" class="btn btn-default">{{ item }}</span>
 	                   	</div>
 	                </div>	            
 	        	</div>
@@ -55,19 +49,16 @@
 		       	<summarychart chart-id="findOutYourselfChart"></summarychart>
 	       	</div>
 	       	<div ng-show="currentView=='/FarewellSpeech'"> 
-				<iframe height="{{heightSize}}"
-					src="http://www.youtube.com/embed/CfCBWUkWzXM?autoplay=true" 
-					frameborder="0" allowfullscreen>
+				<iframe height="{{heightSize}}" src="http://www.youtube.com/embed/CfCBWUkWzXM?autoplay=true" frameborder="0" allowfullscreen="">
 				</iframe>
 	       	</div>
 	       	<!-- <img class="chartImage"> -->
 	       	<div class="topHolder">
 	       		<div class="icon-container">
-	       			<div fbshare class="facebook-icon"></div>
+	       			<div fbshare="" class="facebook-icon"></div>
 	       			<div ng-click="getHighchartImage()" class="twitter-icon"></div>
 	       		</div>
 	       	</div>
         </div>
 	</div>
 </div>
-
