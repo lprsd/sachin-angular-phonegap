@@ -207,7 +207,7 @@ iframe {
 .btn, .btn.active, .btn-default.active, .btn:hover, .btn-default {
 	background: none;
 	border-color: none;
-	font-size: 22px !important;
+	font-size: 16px !important;
 	line-height: 16px !important;
 }
 
@@ -217,4 +217,20 @@ iframe {
 
 .bar-title span.active{
 	color: #1eb0e9 !important;
+}
+
+.formatThing span.active{
+	color: #000000 !important;
+}
+
+.goRight {
+  position: absolute;
+  right: 10px;
+  top: 3px;
+}
+
+.goRight span.active{
+	border: 0px !important;
+	box-shadow: none !important;
+	color: #000000 !important;
 }
