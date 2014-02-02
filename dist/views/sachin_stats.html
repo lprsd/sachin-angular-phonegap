@@ -36,7 +36,7 @@
 	       	<div ng-show="currentView=='/WinLossChart'"> 
 		        <chart chart-id="winLossChart"></chart>
 	       	</div>
-	       	<div class="topHolder" ng-show="currentView=='/FindOutYourSelf'">
+	       	<div ng-show="currentView=='/FindOutYourSelf'">
 	       		<div class="bottomBar">	
 	                <div class="bar-title blackBackground">
 	                	<div class="smallBar">
@@ -45,8 +45,10 @@
 	                </div>	            
 	        	</div>
 		       	<summarychart chart-id="findOutYourselfChart"></summarychart>
-		       	<div class="subBar"><b>Score >= {{score}}</b><slider floor="0" ceiling="200" step="0.5" ng-model="score" translate="scoreText"></slider>
-		       	</div>
+		       	<div class="topHolder">
+			       	<div class="subBar"><b>Score >= {{score}}</b><slider floor="0" ceiling="200" step="0.5" ng-model="score" translate="scoreText"></slider>
+			       	</div>
+			    </div>
 	       	</div>
 	       	<div ng-show="currentView=='/FarewellSpeech'"> 
 				<iframe height="{{heightSize}}" src="http://www.youtube.com/embed/CfCBWUkWzXM?autoplay=true" frameborder="0" allowfullscreen="">
