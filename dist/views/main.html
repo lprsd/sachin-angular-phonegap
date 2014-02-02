@@ -1,0 +1,7 @@
+<div tile="" class="tile {{tile.class}}" ng-repeat="tile in tiles">
+  <a href="" ng-click="flipEffect(tile.url)">
+    <div class="tileBox" ng-style="{'background': '{{colors[$index]}}'}">
+      <h2 ng-bind-html="tile.name"></h2>
+    </div>
+  </a>
+</div>

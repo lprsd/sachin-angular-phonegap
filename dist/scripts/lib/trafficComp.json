@@ -1,0 +1,69 @@
+{
+    "status": true,
+    "res": {
+        "2012": {
+            "point-to-point": {
+                "percent": 73.69,
+                "pos": [
+                    {
+                        "percent": 67.85,
+                        "name": "BLR"
+                    },
+                    {
+                        "percent": 28.35,
+                        "name": "DLH"
+                    },
+                    {
+                        "percent": 3.8,
+                        "name": "MUM"
+                    }
+                ]
+            },
+            "connecting": {
+                "percent": 26.31,
+                "pos": [
+                    {
+                        "percent": 73.76,
+                        "name": "BLR"
+                    },
+                    {
+                        "percent": 26.24,
+                        "name": "DLH"
+                    }
+                ]
+            }
+        },
+        "2013": {
+            "point-to-point": {
+                "percent": 73.69,
+                "pos": [
+                    {
+                        "percent": 67.85,
+                        "name": "BLR"
+                    },
+                    {
+                        "percent": 28.35,
+                        "name": "DLH"
+                    },
+                    {
+                        "percent": 3.8,
+                        "name": "MUM"
+                    }
+                ]
+            },
+            "connecting": {
+                "percent": 26.31,
+                "pos": [
+                    {
+                        "percent": 73.76,
+                        "name": "BLR"
+                    },
+                    {
+                        "percent": 26.24,
+                        "name": "DLH"
+                    }
+                ]
+            }
+        }
+    }
+}
