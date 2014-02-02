@@ -94,7 +94,6 @@ angular.module('app.directives')
 .directive('fbshare',function(){
   return function(scope,element,attrs, $location){
     var currentType = attrs.sharetype;
-
     element.bind("click", function(){
         var chart = $('.hc-bars').filter(':visible').highcharts();
         var svg = chart.getSVG();
@@ -121,17 +120,25 @@ angular.module('app.directives')
 
         if(window.plugins != undefined){
           if(currentType == 'facebook'){
-            window.plugins.socialsharing.shareViaFacebook('Sachin is great because:   #SachinStats', '', image, 'http://j.mp/sachins');  
+            window.plugins.socialsharing.share('Sachin is great because:   #SachinStats', '', image, 'http://j.mp/sachins');
           }
           else if(currentType == 'twitter'){
-            window.plugins.socialsharing.shareViaTwitter('Sachin is great because:   #SachinStats', '', image, 'http://j.mp/sachins');  
+            window.plugins.socialsharing.share('Sachin is great because:   #SachinStats', '', image, 'http://j.mp/sachins');  
           }
           else{
             window.plugins.socialsharing.share('Sachin is great because:   #SachinStats', '', image, 'http://j.mp/sachins');  
           }
         }
         else{
-          window.open("http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fj.mp%2Fsachins&p[image][0]="+image+"&p[title]=Sachin%27s%20Stats&p[summary]=Sachin%20is%20great%20because:%20%23SachinStatsApp", '_blank')
+          if(currentType == 'facebook'){
+            window.open('http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://j.mp/sachinst&p[images][0]=&p[title]=&p[summary]=%3C3%20Sachin%20because:%20%20%20%23SachinStats');  
+          }
+          else if(currentType == 'twitter'){
+            window.open('http://twitter.com/home?status=%3C3%20Sachin%20because:%20%20%20%23SachinStats');  
+          }
+          else{
+            window.open('http://twitter.com/home?status=%3C3%20Sachin%20because:%20%20%20%23SachinStats');  
+          }
         }
     })
   }
