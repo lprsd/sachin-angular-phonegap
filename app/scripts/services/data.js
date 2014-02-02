@@ -756,14 +756,19 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
             title: {
                 text: 'Sachin Lifetime Score Chart',
                 style: {
-                    "fontFamily": "OpenSansCondLight",
+                    "fontFamily": "OpenSansCondLight"
                 }
             },
             subtitle: {
                 text: 'God Stats'
             },
             xAxis: [{
-                type: 'datetime'
+                type: 'datetime',
+                title: {
+                    style: {
+                        "fontFamily": "OpenSansCondLight"
+                    }   
+                }
             }],
             credits: {
                 enabled: false
@@ -777,7 +782,8 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
                 title: {
                     text: 'Runs',
                     style: {
-                        color: ''
+                        color: '',
+                        "fontFamily": "OpenSansCondLight",
                     }
                 }
             }, { // Secondary yAxis
@@ -789,7 +795,8 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
                 },
                 labels: {
                     style: {
-                        color: '#4572A7'
+                        color: '#4572A7',
+                        "fontFamily": "OpenSansCondLight"
                     }
                 },
               maxPadding: 0,
@@ -805,7 +812,10 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
                 align: 'center',
                 verticalAlign: 'bottom',
                 backgroundColor: '#FFFFFF',
-                y: 5
+                y: 5,
+                style: {
+                    "fontFamily": "OpenSansCondLight"
+                }
             },
             exporting: {
                 enabled: false
