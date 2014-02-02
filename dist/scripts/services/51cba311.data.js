@@ -750,17 +750,29 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
     var area_chart = {
 
         chart: {
-                zoomType: 'xy'
+                zoomType: 'xy',
+                marginBottom: 60
             },
             title: {
-                text: 'Sachin Lifetime Score Chart'
+                text: 'Sachin Lifetime Score Chart',
+                style: {
+                    "fontFamily": "OpenSansCondLight"
+                }
             },
             subtitle: {
                 text: 'God Stats'
             },
             xAxis: [{
-                type: 'datetime'
+                type: 'datetime',
+                title: {
+                    style: {
+                        "fontFamily": "OpenSansCondLight"
+                    }   
+                }
             }],
+            credits: {
+                enabled: false
+            },
             yAxis: [{ // Primary yAxis
                 labels: {
                     style: {
@@ -770,7 +782,8 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
                 title: {
                     text: 'Runs',
                     style: {
-                        color: ''
+                        color: '',
+                        "fontFamily": "OpenSansCondLight",
                     }
                 }
             }, { // Secondary yAxis
@@ -782,7 +795,8 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
                 },
                 labels: {
                     style: {
-                        color: '#4572A7'
+                        color: '#4572A7',
+                        "fontFamily": "OpenSansCondLight"
                     }
                 },
               maxPadding: 0,
@@ -794,10 +808,17 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
             },
             legend: {
                 layout: 'horizontal',
-                floating: true,
-                align: 'right',
-                verticalAlign: 'top',
-                backgroundColor: '#FFFFFF'
+                floating: false,
+                align: 'center',
+                verticalAlign: 'bottom',
+                backgroundColor: '#FFFFFF',
+                y: 5,
+                style: {
+                    "fontFamily": "OpenSansCondLight"
+                }
+            },
+            exporting: {
+                enabled: false
             },
             series: [{
                 name: 'Average',
