@@ -90,9 +90,11 @@ angular.module('app.directives')
 })
 
 
+
 .directive('fbshare',function(){
   return function(scope,element,attrs, $location){
-    var sachinStat = "SachinStats";
+    var currentType = attrs.sharetype;
+
     element.bind("click", function(){
         var chart = $('.hc-bars').filter(':visible').highcharts();
         var svg = chart.getSVG();
@@ -113,12 +115,20 @@ angular.module('app.directives')
             alert ("Your browser doesn't support this feature, please use a modern browser");
         }
 
-        var base_image = new Image();
-        svg = "data:image/svg+xml,"+svg;
-        base_image.src = svg;
-
+        // var base_image = new Image();
+        // svg = "data:image/svg+xml,"+svg;
+        // base_image.src = svg;
+        
         if(window.plugins != undefined){
-          window.plugins.socialsharing.share('Sachin is great because', '', image, 'http://j.mp/sachins');  
+          if(currentType == 'facebook'){
+            window.plugins.socialsharing.shareViaFacebook('Sachin is great because', '', image, 'http://j.mp/sachins');  
+          }
+          else if(currentType == 'twitter'){
+            window.plugins.socialsharing.shareViaTwitter('Sachin is great because', '', image, 'http://j.mp/sachins');  
+          }
+          else{
+            window.plugins.socialsharing.share('Sachin is great because', '', image, 'http://j.mp/sachins');  
+          }
         }
         else{
           window.open("http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fj.mp%2Fsachins&p[image][0]="+image+"&p[title]=Sachin%27s%20Stats&p[summary]=Sachin%20is%20great%20because:%20%23SachinStatsApp", '_blank')

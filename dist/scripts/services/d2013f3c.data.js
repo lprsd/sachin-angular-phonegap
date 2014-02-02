@@ -496,7 +496,7 @@ angular.module('app.services').factory('PieChartOptions',[function ($http){
                 color: "#777"
             },
             align: 'center',
-            verticalAlign: 'bottom'
+            verticalAlign: 'top'
         },
         tooltip: {
             formatter: function(){

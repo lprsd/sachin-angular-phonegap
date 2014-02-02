@@ -44,9 +44,9 @@
 	                   	</div>
 	                </div>	            
 	        	</div>
-	       		<div class="subBar"><b>Sachin @ {{score}}</b><slider floor="0" ceiling="200" step="0.5" ng-model="score" translate="scoreText"></slider>
-		       	</div>
 		       	<summarychart chart-id="findOutYourselfChart"></summarychart>
+		       	<div class="subBar"><b>Score >= {{score}}</b><slider floor="0" ceiling="200" step="0.5" ng-model="score" translate="scoreText"></slider>
+		       	</div>
 	       	</div>
 	       	<div ng-show="currentView=='/FarewellSpeech'"> 
 				<iframe height="{{heightSize}}" src="http://www.youtube.com/embed/CfCBWUkWzXM?autoplay=true" frameborder="0" allowfullscreen="">
@@ -55,9 +55,10 @@
 	       	<!-- <img class="chartImage"> -->
 	       	<div class="topHolder">
 	       		<div class="icon-container">
-	       			<div fbshare="" class="facebook-icon"></div>
-	       			<div ng-click="getHighchartImage()" class="twitter-icon"></div>
-	       		</div>
+	                <div fbshare="" sharetype="facebook" class="facebook-icon"></div>
+	                <div fbshare="" sharetype="normal" class="normal-share"></div>
+	                <div fbshare="" sharetype="twitter" class="twitter-icon"></div>
+	            </div>
 	       	</div>
         </div>
 	</div>

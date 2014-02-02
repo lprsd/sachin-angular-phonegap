@@ -121,9 +121,7 @@ h2{
 
 .subBar {
 	position: relative;
-	top: 35px;
 	margin: auto;
-	z-index: 10;
 	width: 275px;
 }
 
@@ -169,7 +167,7 @@ iframe {
 .icon-container{
 	margin: auto;
 	margin-top: 20px;
-	width: 75px;
+	width: 125px;
 	position: relative;
 }
 
@@ -189,6 +187,16 @@ iframe {
 	background-size: 100% 100%;
 	float: right;
 	cursor: pointer;
+}
+
+.normal-share{
+	width: 30px;
+	height: 30px;
+	margin-left: 20px;
+	background: url(../images/sh.png) no-repeat;
+	background-size: 100% 100%;
+	float: right;
+	cursor: pointer;	
 }
 
 .appTitle {
