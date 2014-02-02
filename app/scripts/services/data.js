@@ -751,7 +751,7 @@ angular.module('app.services').factory('AreaChartOptions',[function ($http){
 
         chart: {
                 zoomType: 'xy',
-                marginBottom: 80
+                marginBottom: 90
             },
             title: {
                 text: 'Sachin Lifetime Score Chart',
