@@ -47,7 +47,7 @@ h2 {
 
 .hc-bars{
 	width: 100%;
-	min-height: 350px;
+	min-height: 370px;
 	position: relative;
 	float: left;
 }
@@ -168,6 +168,7 @@ iframe {
 	margin: auto;
 	width: 125px;
 	position: relative;
+	margin-top: 5px;
 }
 
 .facebook-icon{
