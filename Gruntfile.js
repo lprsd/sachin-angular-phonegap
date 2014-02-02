@@ -241,7 +241,8 @@ module.exports = function (grunt) {
             'config.xml',
             'styles/*',
             'styles/fonts/*',
-            'images/*'
+            'images/*',
+            'res/*/*'
           ]
         }, {
           expand: true,
