@@ -487,6 +487,12 @@ function getCenturyVsBattingOrder(matches, PieChartOptions){
 
 function custom_chart_settings_by_avg_fare(chart_data){
     chart_data.chart.marginTop = 15;
+    chart_data.title =  {
+                text: '*Radius of circle denotes the total number of runs scored',
+                style: {
+                    "fontFamily": "OpenSansCondLight"
+                }
+            };
     chart_data.xAxis = {
                         startOnTick: true,
                         endOnTick: true,
