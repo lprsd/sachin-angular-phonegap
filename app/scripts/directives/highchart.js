@@ -58,17 +58,33 @@ angular.module('app.directives')
     var sachinStat = "SachinStats";
     element.bind("click", function(){
         var chart = $('.hc-bars').filter(':visible').highcharts();
-        var svg = chart.getSVG();   
+        var svg = chart.getSVG();
+        var width = parseInt(svg.match(/width="([0-9]+)"/)[1]),
+        height = parseInt(svg.match(/height="([0-9]+)"/)[1]),
+        canvas = document.createElement('canvas');
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
+
+        if (canvas.getContext && canvas.getContext('2d')) {
+        
+            canvg(canvas, svg);
+            
+            var image = canvas.toDataURL("image/png");
+    
+            console.log(image);
+        } else {
+            alert ("Your browser doesn't support this feature, please use a modern browser");
+        }
+
         var base_image = new Image();
         svg = "data:image/svg+xml,"+svg;
         base_image.src = svg;
-        //$(".chartImage").attr("src", svg); 
-        
+
         if(window.plugins != undefined){
-          window.plugins.socialsharing.share('Sachin is great because', '', svg, 'http://j.mp/sachins');  
+          window.plugins.socialsharing.share('Sachin is great because', '', image, 'http://j.mp/sachins');  
         }
         else{
-          window.open("http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fj.mp%2Fsachins&p[title]=Sachin%27s%20Stats&p[summary]=Sachin%20is%20great%20because:%20%23SachinStatsApp", '_blank')
+          window.open("http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fj.mp%2Fsachins&p[image][0]="+image+"&p[title]=Sachin%27s%20Stats&p[summary]=Sachin%20is%20great%20because:%20%23SachinStatsApp", '_blank')
         }
     })
   }
