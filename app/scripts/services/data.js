@@ -38,6 +38,9 @@ angular.module('app.services').factory('DefaultChartOptions', [function(){
             plotBorderWidth: null,
             plotShadow: false
         },
+        exporting: {
+            enabled: false
+        },
         title: {
             text: '',
             style: {
@@ -481,6 +484,9 @@ angular.module('app.services').factory('PieChartOptions',[function ($http){
             animation: {
                 duration: 1800
             }
+        },
+        exporting: {
+            enabled: false
         },
         title: {
             text: '',
