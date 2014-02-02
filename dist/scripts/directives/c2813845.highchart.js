@@ -17,7 +17,7 @@ angular.module('app.directives')
         chart: {
           renderTo: element[0],
           type: attrs.type || null,
-          height: attrs.height || 350,
+          height: attrs.height || 370,
           width: attrs.width
         },
         colors: [attrs.color]
