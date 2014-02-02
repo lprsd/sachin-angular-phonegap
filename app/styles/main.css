@@ -47,6 +47,7 @@ h2 {
 
 .hc-bars{
 	width: 100%;
+	min-height: 400px;
 	position: relative;
 	float: left;
 }
