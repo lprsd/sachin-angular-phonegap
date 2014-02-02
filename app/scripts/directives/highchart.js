@@ -65,7 +65,7 @@ angular.module('app.directives')
         $(".chartImage").attr("src", svg); 
         //console.log(svg)
         if(window.plugins != undefined){
-          window.plugins.socialsharing.share('Message, image and link', null, 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');  
+          window.plugins.socialsharing.share('Sachin is great because', '', svg, 'http://j.mp/sachins');  
         }
         else{
           window.open("http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fj.mp%2Fsachins&p[title]=Sachin%27s%20Stats&p[summary]=Sachin%20is%20great%20because:%20%23SachinStatsApp", '_blank')
