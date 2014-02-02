@@ -62,8 +62,8 @@ angular.module('app.directives')
         var base_image = new Image();
         svg = "data:image/svg+xml,"+svg;
         base_image.src = svg;
-        $(".chartImage").attr("src", svg); 
-        //console.log(svg)
+        //$(".chartImage").attr("src", svg); 
+        
         if(window.plugins != undefined){
           window.plugins.socialsharing.share('Sachin is great because', '', svg, 'http://j.mp/sachins');  
         }
