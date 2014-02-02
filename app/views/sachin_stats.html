@@ -22,12 +22,8 @@
 			        type="button" ng-repeat="item in charting_options.w_wo_options"
 			        class="btn btn-default">{{ item }}</span>
 				</div>
-	        	<div ng-show="chosen_option.without=='With Sachin'">
-	        		<chart chart-id="resultBucketsWithSachin"></chart>
-	        	</div>
-	        	<div ng-show="chosen_option.without=='Without Sachin'">
+	        		<chart chart-id="chartWithWithoutSachin"></chart>
             		<chart chart-id="resultBucketsWithoutSachin"></chart>
-            	</div>
         	</div>
         	<div ng-show="currentView=='/WonLostCenturiesInnning'"> 
 				<chart chart-id="winLoss"></chart>
@@ -53,12 +49,7 @@
 	        	</div>
 	       		<div class="subBar"><b>Sachin @ {{score}}</b><slider floor="0" ceiling="200" step="0.5" ng-model="score" translate="scoreText"></slider>
 		       	</div>
-		       	<div ng-show="chosen_option.findout=='Simple'">
-		        	<chart chart-id="wonLostAt"></chart>
-		        </div>	
-		        <div ng-show="chosen_option.findout=='Advanced'">
-		        	<chart chart-id="aboveBelowWonLostPercentAt"></chart>
-		        </div>	
+		       	<summarychart chart-id="findOutYourselfChart"></summarychart>
 	       	</div>
 	       	<div ng-show="currentView=='/FarewellSpeech'"> 
 				<iframe height="{{heightSize}}"

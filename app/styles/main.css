@@ -234,3 +234,9 @@ iframe {
 	box-shadow: none !important;
 	color: #000000 !important;
 }
+
+.summaryBar {
+	width: 260px;
+	position: relative;
+	margin: auto;
+}
