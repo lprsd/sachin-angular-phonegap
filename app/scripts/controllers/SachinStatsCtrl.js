@@ -715,8 +715,10 @@ angular.module('app.controllers')
     			$scope.winLoss = getWonLost(api_data, PieChartOptions);
     			$scope.winLossChart = get_win_loss_area_chart(api_data, AreaChartOptions);
     			$scope.resultBucketsWithSachin = getResultBuckets(api_data, PieChartOptions, 'with Sachin');
+    			$scope.resultBucketsWithoutSachin = $scope.resultBucketsWithSachin;
     			$scope.score = 100;
 				//$scope.scoreText = function(value){ console.log('hi'); return 'Sachin @ ' + value.toString(); };
+
     			$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt($scope.api_data, $scope.score, PieChartOptions);
 	        	$scope.wonLostAt = getWonLostAt($scope.api_data, $scope.score, PieChartOptions);
     			$scope.scoreWonLostPercent = function(score) {
@@ -733,6 +735,15 @@ angular.module('app.controllers')
 		        	if(newScore == oldScore) {console.log(newScore); return};
 		        	if($scope.wonLostAt) {
 		        		$scope.scoreWonLostPercent(+newScore);	
+		        	}
+		        });
+
+		        $scope.$watch(function() {return $scope.$parent.chosen_option.without}, function(value) {
+		        	if(!value) return;
+		        	if(value =='With Sachin') {
+		        		$scope.chartWithWithoutSachin = $scope.resultBucketsWithSachin;
+		        	} else {
+		        		$scope.chartWithWithoutSachin = $scope.resultBucketsWithoutSachin;
 		        	}
 		        });
 
