@@ -122,7 +122,6 @@ h2{
 .subBar {
 	position: relative;
 	margin: auto;
-	z-index: 10;
 	width: 275px;
 }
 
