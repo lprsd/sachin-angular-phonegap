@@ -254,3 +254,10 @@ iframe {
 	position: relative;
 	margin: auto;
 }
+
+.areaChartScroll{
+	position: relative;
+	float: left;
+	width: 92%;
+	margin-left: 4%;
+}
