@@ -718,23 +718,17 @@ angular.module('app.controllers')
     			$scope.scoreBucketsOdi = getScoreBuckets(api_data, PieChartOptions);
     			$scope.scoreBuckets = $scope.scoreBucketsOdi;
     			$scope.winLoss = getWonLost(api_data, PieChartOptions);
-    			$scope.centuryVsBattingOrder = getCenturyVsBattingOrder(api_data, PieChartOptions);
-    			$scope.winLoss = getWonLost(api_data, PieChartOptions);
+    			//Won Loss and Batting Order Charts too simple for this app
+    			//$scope.centuryVsBattingOrder = getCenturyVsBattingOrder(api_data, PieChartOptions);
+    			//$scope.winLoss = getWonLost(api_data, PieChartOptions);
     			$scope.winLossChart = get_win_loss_area_chart(api_data, AreaChartOptions);
     			$scope.resultBucketsWithSachin = getResultBuckets(api_data, PieChartOptions, 'with Sachin');
     			$scope.resultBucketsWithoutSachin = $scope.resultBucketsWithSachin;
     			$scope.score = 100;
-				//$scope.scoreText = function(value){ console.log('hi'); return 'Sachin @ ' + value.toString(); };
-
     			$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt(api_data, $scope.score, PieChartOptions);
 	        	$scope.wonLostAt = getWonLostAt(api_data, $scope.score, PieChartOptions);
 	        	$scope.findOutYourselfChart = $scope.wonLostAt;
     			$scope.scoreWonLostPercent = function(score) {
-    				if(isNaN(score) || score < 0) {
-    					alert('Enter valid score!');
-    					return;
-    				}
-
 		        	$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt(api_data, score, PieChartOptions);
 		        	$scope.wonLostAt = getWonLostAt(api_data, score, PieChartOptions);
 		        	if($scope.$parent.chosen_option.findout =='Simple') {
