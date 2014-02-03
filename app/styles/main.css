@@ -47,7 +47,7 @@ h2 {
 
 .hc-bars{
 	width: 100%;
-	//min-height: 370px;
+	min-height: 170px;
 	position: relative;
 	float: left;
 }
@@ -122,7 +122,7 @@ h2{
 .subBar {
 	position: relative;
 	margin: auto;
-	width: 275px;
+	width: 300px;
 }
 
 .bottomBar {
@@ -265,4 +265,8 @@ iframe {
 	float: left;
 	width: 92%;
 	margin-left: 4%;
+}
+
+.marginSlider{
+	margin-top: -15px;
 }
