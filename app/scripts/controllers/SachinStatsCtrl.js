@@ -715,8 +715,8 @@ angular.module('app.controllers')
 			$scope.score = 100;  
 
     		Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
-    			api_data = api_data;
-    			$scope.scoreBuckets = getScoreBuckets(api_data, PieChartOptions);
+    			$scope.scoreBucketsOdi = getScoreBuckets(api_data, PieChartOptions);
+    			$scope.scoreBuckets = $scope.scoreBucketsOdi;
     			$scope.winLoss = getWonLost(api_data, PieChartOptions);
     			$scope.centuryVsBattingOrder = getCenturyVsBattingOrder(api_data, PieChartOptions);
     			$scope.winLoss = getWonLost(api_data, PieChartOptions);
@@ -771,17 +771,30 @@ angular.module('app.controllers')
 
     		});
 
+			Data.get_local('scripts/lib/test/india_with_sachin.json').success(function(api_data){
+    			$scope.scoreBucketsTest = getScoreBuckets(api_data, PieChartOptions);
+    		});
+
+    		$scope.$watch(function(){ return $scope.$parent.chosen_option.format; }, function(value){
+		        if(!value) return;
+	    		if(value =='ODI') {
+	        		$scope.scoreBuckets = $scope.scoreBucketsOdi;
+	        	} else {
+	        		$scope.scoreBuckets = $scope.scoreBucketsTest;
+	        	}
+	        });
+
     		Data.get_local('scripts/lib/india_wo_sachin_odi.json').success(function(api_data){
     			$scope.resultBucketsWithoutSachin = getResultBuckets(api_data, PieChartOptions, 'without Sachin');
     		});
     
-        Data.get_local('scripts/lib/record_json.json').success(function(api_data){
-            $scope.recordChart = get_bubble_chart_data(api_data, colors, ChartOptions)
-        });
+	        Data.get_local('scripts/lib/record_json.json').success(function(api_data){
+	            $scope.recordChart = get_bubble_chart_data(api_data, colors, ChartOptions)
+	        });
 
-        Data.get_local('scripts/lib/sachin_odi_cumulative.json').success(function (api_data){
-        	$scope.areaChart = get_area_chart_data(api_data, AreaChartOptions);
-        });
+	        Data.get_local('scripts/lib/sachin_odi_cumulative.json').success(function (api_data){
+	        	$scope.areaChart = get_area_chart_data(api_data, AreaChartOptions);
+	        });
 
       });
 			
