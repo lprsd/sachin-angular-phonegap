@@ -13,8 +13,8 @@ angular.module('app.controllers')
       {name: 'Sachin <br/> vs <br/> Other Batsmen', url: '/RecordChart', class:'col-md-3'},
       {name: 'Win/Lost <br/> Areachart', url: '/WinLossChart', class:'col-md-3'},
       {name: 'Find Out <br/> Yourself', url: '/FindOutYourSelf', class:'col-md-3'},
-      {name: 'Farewell <br/> Speech', url: '/FarewellSpeech', class:'col-md-3'},
-      {name: 'Social <br/> Feed', url: '/SocialFeed', class:'col-md-3'}
+      {name: 'Farewell <br/> Speech', url: '/FarewellSpeech', class:'col-md-3'}
+      //{name: 'Social <br/> Feed', url: '/SocialFeed', class:'col-md-3'}
     ];
 
     $scope.$watch(function(){ return $location.path()}, function(value){
@@ -48,7 +48,7 @@ angular.module('app.controllers')
   .controller('SummaryCtrl', function($scope, Data, PieChartOptions){
 
     var get_series_data = function(api_data, chosen_json, chosen_attr){
-      var colorsArray = ['#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
+      var colorsArray = ['#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#AFA263', '#6AF9C4', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', 'orange'];
       var series_data = []
       var total_this_stat = $.map(api_data[chosen_json], function(x){return +x.Runs}).reduce(function(previousValue, currentValue){ return previousValue + currentValue;})
       console.log(total_this_stat);

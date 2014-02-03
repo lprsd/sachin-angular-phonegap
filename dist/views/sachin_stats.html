@@ -33,8 +33,10 @@
 	        <div ng-show="currentView=='/LifeTimeChart'"> 
 		        <chart chart-id="areaChart"></chart>
 	       	</div>
-	       	<div ng-show="currentView=='/WinLossChart'"> 
-		        <chart chart-id="winLossChart"></chart>
+	       	<div ng-show="currentView=='/WinLossChart'">
+	       		<div class="areaChartScroll"> 
+		        	<chart chart-id="winLossChart"></chart>
+		        </div>	
 	       	</div>
 	       	<div ng-show="currentView=='/FindOutYourSelf'">
 	       		<div class="bottomBar">	
@@ -54,14 +56,13 @@
 				<iframe height="{{heightSize}}" src="http://www.youtube.com/embed/CfCBWUkWzXM?autoplay=true" frameborder="0" allowfullscreen="">
 				</iframe>
 	       	</div>
-	       	<!-- <img class="chartImage"> -->
-	       	<div class="topHolder">
+        </div>
+        <div class="topHolder">
 	       		<div class="icon-container">
-	                <div fbshare="" sharetype="normal" class="facebook-icon"></div>
+	                <div fbshare="" sharetype="facebook" class="facebook-icon"></div>
 	                <div fbshare="" sharetype="normal" class="normal-share"></div>
-	                <div fbshare="" sharetype="normal" class="twitter-icon"></div>
+	                <div fbshare="" sharetype="twitter" class="twitter-icon"></div>
 	            </div>
 	       	</div>
-        </div>
 	</div>
 </div>
