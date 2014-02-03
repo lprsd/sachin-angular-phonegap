@@ -46,7 +46,6 @@ angular.module('app.controllers')
   })
 
   .controller('SummaryCtrl', function($scope, Data, PieChartOptions){
-
     var get_series_data = function(api_data, chosen_json, chosen_attr){
       var colorsArray = ['#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
       var series_data = []
@@ -166,13 +165,20 @@ angular.module('app.controllers')
 window.onload = window.onresize = window.onorientationchange = function(){
   sizeUI();
   sizeYoutube();
+  setChartSize();
 }
 
-var screenWidth, tileCount, tileSize, chartWidth, fontSize;
+var screenWidth, tileCount, tileSize, chartWidth, fontSize, screenHeight;
+
+function setChartSize(){
+  screenHeight = window.innerHeight;
+  var adder = $('.blackBackground ').filter(':visible').length;
+  var heightSize = screenHeight-(adder*45)-80;
+  $('.hc-bars').css({'height' : heightSize+'px'});
+}
 
 function sizeYoutube(){
   screenWidth = window.innerWidth;
-  console.log(screenWidth)
   var heightSize = screenWidth*66.66/100;
   $('iframe').css({'height' : heightSize+'px'});
   return heightSize;
