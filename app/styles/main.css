@@ -47,7 +47,7 @@ h2 {
 
 .hc-bars{
 	width: 100%;
-	min-height: 370px;
+	//min-height: 370px;
 	position: relative;
 	float: left;
 }
@@ -172,8 +172,8 @@ iframe {
 }
 
 .facebook-icon{
-	width: 30px;
-	height: 30px;
+	width: 25px;
+	height: 25px;
 	background: url(../images/f.png);
 	background-size: 100% 100%;
 	float: left;
@@ -181,8 +181,8 @@ iframe {
 }
 
 .twitter-icon{
-	width: 30px;
-	height: 30px;
+	width: 25px;
+	height: 25px;
 	background: url(../images/t.png) no-repeat;
 	background-size: 100% 100%;
 	float: right;
@@ -190,8 +190,8 @@ iframe {
 }
 
 .normal-share{
-	width: 30px;
-	height: 30px;
+	width: 25px;
+	height: 25px;
 	margin-left: 20px;
 	background: url(../images/sh.png) no-repeat;
 	background-size: 100% 100%;
