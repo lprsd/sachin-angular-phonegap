@@ -717,13 +717,13 @@ angular.module('app.controllers')
     		Data.get_local('scripts/lib/sachin_odi.json').success(function(api_data){
     			$scope.scoreBucketsOdi = getScoreBuckets(api_data, PieChartOptions);
     			$scope.scoreBuckets = $scope.scoreBucketsOdi;
-    			$scope.winLoss = getWonLost(api_data, PieChartOptions);
     			//Won Loss and Batting Order Charts too simple for this app
     			//$scope.centuryVsBattingOrder = getCenturyVsBattingOrder(api_data, PieChartOptions);
     			//$scope.winLoss = getWonLost(api_data, PieChartOptions);
-    			$scope.winLossChart = get_win_loss_area_chart(api_data, AreaChartOptions);
-    			$scope.resultBucketsWithSachin = getResultBuckets(api_data, PieChartOptions, 'with Sachin');
+    			$scope.resultBucketsWithSachinOdi = getResultBuckets(api_data, PieChartOptions, 'with Sachin');
+    			$scope.chartWithWithoutSachin = $scope.resultBucketsWithSachinOdi;
     			$scope.resultBucketsWithoutSachin = $scope.resultBucketsWithSachin;
+    			$scope.winLossChart = get_win_loss_area_chart(api_data, AreaChartOptions);
     			$scope.score = 100;
     			$scope.aboveBelowWonLostPercentAt = getAboveBelowWonLostPercentAt(api_data, $scope.score, PieChartOptions);
 	        	$scope.wonLostAt = getWonLostAt(api_data, $scope.score, PieChartOptions);
@@ -745,49 +745,55 @@ angular.module('app.controllers')
 		        	}
 		        });
 
-		        $scope.$watch(function() {return $scope.$parent.chosen_option.without}, function(value) {
-		        	if(!value) return;
-		        	if(value =='With Sachin') {
-		        		$scope.chartWithWithoutSachin = $scope.resultBucketsWithSachin;
-		        	} else {
-		        		$scope.chartWithWithoutSachin = $scope.resultBucketsWithoutSachin;
-		        	}
-		        });
-
-		        $scope.$watch(function() {return $scope.$parent.chosen_option.findout}, function(value) {
-		        	if(!value) return;
-		        	if(value =='Simple') {
-		        		$scope.findOutYourselfChart = $scope.wonLostAt;
-		        	} else {
-		        		$scope.findOutYourselfChart = $scope.aboveBelowWonLostPercentAt;
-		        	}
-		        });
-
     		});
 
 			Data.get_local('scripts/lib/test/india_with_sachin.json').success(function(api_data){
     			$scope.scoreBucketsTest = getScoreBuckets(api_data, PieChartOptions);
+    			$scope.resultBucketsWithSachinTest = getResultBuckets(api_data, PieChartOptions, 'with Sachin');
     		});
-
-    		$scope.$watch(function(){ return $scope.$parent.chosen_option.format; }, function(value){
-		        if(!value) return;
-	    		if(value =='ODI') {
-	        		$scope.scoreBuckets = $scope.scoreBucketsOdi;
-	        	} else {
-	        		$scope.scoreBuckets = $scope.scoreBucketsTest;
-	        	}
-	        });
 
     		Data.get_local('scripts/lib/india_wo_sachin_odi.json').success(function(api_data){
-    			$scope.resultBucketsWithoutSachin = getResultBuckets(api_data, PieChartOptions, 'without Sachin');
+    			$scope.resultBucketsWithoutSachinOdi = getResultBuckets(api_data, PieChartOptions, 'without Sachin');
     		});
-    
+
+    		Data.get_local('scripts/lib/test/india_wo_sachin.json').success(function(api_data){
+    			$scope.resultBucketsWithoutSachinTest = getResultBuckets(api_data, PieChartOptions, 'without Sachin');
+    		});
+
 	        Data.get_local('scripts/lib/record_json.json').success(function(api_data){
 	            $scope.recordChart = get_bubble_chart_data(api_data, colors, ChartOptions)
 	        });
 
 	        Data.get_local('scripts/lib/sachin_odi_cumulative.json').success(function (api_data){
 	        	$scope.areaChart = get_area_chart_data(api_data, AreaChartOptions);
+	        });
+
+	        $scope.$watch(function() {return $scope.$parent.chosen_option}, function(value) {
+	        	if(value.format =='ODI') {
+	        		$scope.scoreBuckets = $scope.scoreBucketsOdi;
+		        	if(value.without == 'With Sachin') {
+		        		$scope.chartWithWithoutSachin = $scope.resultBucketsWithSachinOdi;
+		        	} else {
+		        		$scope.chartWithWithoutSachin = $scope.resultBucketsWithoutSachinOdi;
+		        	}
+	        	} else {
+	        		$scope.scoreBuckets = $scope.scoreBucketsTest;
+	        		if(value.without == 'With Sachin') {
+		        		$scope.chartWithWithoutSachin = $scope.resultBucketsWithSachinTest;
+		        	} else {
+		        		$scope.chartWithWithoutSachin = $scope.resultBucketsWithoutSachinTest;
+		        	}
+	        	}
+	        	
+	        }, true);
+
+	        $scope.$watch(function() {return $scope.$parent.chosen_option.findout}, function(value) {
+	        	if(!value) return;
+	        	if(value =='Simple') {
+	        		$scope.findOutYourselfChart = $scope.wonLostAt;
+	        	} else {
+	        		$scope.findOutYourselfChart = $scope.aboveBelowWonLostPercentAt;
+	        	}
 	        });
 
       });
