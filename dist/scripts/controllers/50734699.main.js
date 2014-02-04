@@ -17,8 +17,8 @@ angular.module('app.controllers')
       {name: 'Sachin <br/> vs <br/> Other Batsmen', url: '/RecordChart', class:'col-md-3'},
       {name: 'Won/Lost <br/> Areachart', url: '/WinLossChart', class:'col-md-3'},
       {name: 'Find Out <br/> Yourself', url: '/FindOutYourSelf', class:'col-md-3'},
-      {name: 'Farewell <br/> Speech', url: '/FarewellSpeech', class:'col-md-3'}
-      //{name: 'Social <br/> Feed', url: '/SocialFeed', class:'col-md-3'}
+      {name: 'Farewell <br/> Speech', url: '/FarewellSpeech', class:'col-md-3'},
+      {name: 'Provide <br/> Feedback', url: '/Feedback', class:'col-md-3'}
     ];
 
     $scope.$watch(function(){ return $location.path()}, function(value){
