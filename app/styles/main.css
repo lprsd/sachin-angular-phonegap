@@ -26,11 +26,17 @@ h2 {
 	display: table;
 }
 
+.tile {
+	opacity: 0.7;
+}
+
 .container {
 	-webkit-backface-visibility: hidden;
 	-webkit-transform-origin: 0 0;
-	-webkit-transition:all 1.2s ease-in-out;
+	-webkit-transition: -webkit-transform 1.2s ease-in-out;
 	-webkit-perspective: 800px;
+	background: url(../images/sachin.jpg);
+    background-size: 100% 100%;
 }
 
 .flipped {
@@ -121,6 +127,7 @@ h2{
 
 .subBar {
 	position: relative;
+	top: -100px;
 	margin: auto;
 	width: 300px;
 }
@@ -269,4 +276,8 @@ iframe {
 
 .marginSlider{
 	margin-top: -15px;
+}
+
+svg {
+	opacity: 0.95;
 }
