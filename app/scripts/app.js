@@ -51,9 +51,9 @@ angular.module('feApp', ['app.controllers', 'app.services', 'app.directives', 'n
           controller: 'SachinStatsCtrl'
       })
       
-      .when('/SocialFeed', {
-        templateUrl: 'views/social_feed.html',
-        controller: 'SocialFeedCtrl'
+      .when('/Feedback', {
+        templateUrl: 'views/sachin_stats.html',
+        controller: 'SachinStatsCtrl'
       })
       .otherwise({
         redirectTo: '/'
