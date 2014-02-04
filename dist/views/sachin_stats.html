@@ -56,9 +56,15 @@
 				<iframe height="{{heightSize}}" src="http://www.youtube.com/embed/CfCBWUkWzXM?autoplay=true" frameborder="0" allowfullscreen="">
 				</iframe>
 	       	</div>
+
+	       	<div ng-show="currentView=='/Feedback'"> 
+				<h3>Provide us your valuable feedback:
+				<a href="mailto:lakshman@lakshmanprasad.com,pinakin.nmistry@gmail.com,aditya_sethi@hotmail.com?Subject=Sachin%20Stats%20Feedback" target="_top">
+				Send Feedback</a></h3>
+	       	</div>
         </div>
         <div class="topHolder">
-	       		<div class="icon-container">
+	       		<div class="icon-container" ng-hide="currentView=='/Feedback' || currentView=='/FarewellSpeech'">
 	                <div fbshare="" sharetype="facebook" class="facebook-icon"></div>
 	                <div fbshare="" sharetype="normal" class="normal-share"></div>
 	                <div fbshare="" sharetype="twitter" class="twitter-icon"></div>
