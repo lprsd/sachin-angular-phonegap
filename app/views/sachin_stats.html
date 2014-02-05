@@ -3,7 +3,7 @@
 		<div class="glyphicon glyphicon-home home-icon"></div>
 	</a>
 	<div class="appTitle">Sachin Stats</div>
-	<div class="goRight" ng-hide="currentView=='/FarewellSpeech'">
+	<div class="goRight" ng-show="currentView=='/ScoreBuckets'">
 		<span ng-model="chosen_option.format" btn-radio="'{{ item }}'" 
         ng-repeat="item in charting_options.format_options" type="button" 
         class="btn btn-default">{{ item }}</span>
@@ -64,9 +64,17 @@
 					frameborder="0" allowfullscreen>
 				</iframe>
 	       	</div>
+
+	       	<div ng-show="currentView=='/Feedback'"> 
+				<h3>
+					<a href="mailto:lakshman@lakshmanprasad.com,pinakin.nmistry@gmail.com,aditya_sethi@hotmail.com?Subject=Sachin%20Stats%20Feedback" target="_top">
+					Send Feedback</a>
+				</h3>
+	       	</div>
         </div>
         <div class="topHolder">
-	       		<div class="icon-container">
+	       		<div class="icon-container" 
+	       		ng-hide="currentView=='/Feedback' || currentView=='/FarewellSpeech'">
 	                <div fbshare sharetype="facebook" class="facebook-icon"></div>
 	                <div fbshare sharetype="normal" class="normal-share"></div>
 	                <div fbshare sharetype="twitter" class="twitter-icon"></div>

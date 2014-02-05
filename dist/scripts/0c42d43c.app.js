@@ -1,6 +1,13 @@
 angular.module('app.controllers', []);
 angular.module('app.services', []);
 angular.module('app.directives', []);
+var gaPlugin;
+function onDeviceReady() {
+  gaPlugin = window.plugins.gaPlugin;
+  gaPlugin.init(successHandler, errorHandler, 'UA-47678875-1', 10);
+  PushWoosh = window.plugins.pushwoosh;
+  PushWoosh.appCode = '93D13-D7F76';
+}
 angular.module('feApp', [
   'app.controllers',
   'app.services',
@@ -44,9 +51,9 @@ angular.module('feApp', [
     }).when('/FarewellSpeech', {
       templateUrl: 'views/sachin_stats.html',
       controller: 'SachinStatsCtrl'
-    }).when('/SocialFeed', {
-      templateUrl: 'views/social_feed.html',
-      controller: 'SocialFeedCtrl'
+    }).when('/Feedback', {
+      templateUrl: 'views/sachin_stats.html',
+      controller: 'SachinStatsCtrl'
     }).otherwise({ redirectTo: '/' });
   }
 ]);

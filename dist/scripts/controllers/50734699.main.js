@@ -2,8 +2,12 @@
 
 angular.module('app.controllers')
   .controller('MainCtrl', function ($scope, $location, $timeout) {
-    $scope.colors = ['#334D5C','#45b29d','#EFC94C','#E27A3F','#DF5A49', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
-    $scope.heightSize = sizeYoutube(); 
+    $scope.colors = ['#334D5C','#EFC94C','#45b29d','#E27A3F','#DF5A49', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
+    $scope.heightSize = sizeYoutube();
+    $scope.chartHeightSummary = setChartSize(2);
+    $scope.chartHeight1 = setChartSize(1);
+    $scope.chartHeight2 = setChartSize(0);
+    $scope.chartHeight = setChartSize(2)
     $scope.tiles = [
       {name: 'Career <br/> Summary', url: '/summary', class:'col-md-3'},
       {name: 'Score Buckets <br/> & <br/> Won/Lost Counts', url: '/ScoreBuckets', class:'col-md-3'},
@@ -11,10 +15,10 @@ angular.module('app.controllers')
       //{name: 'Won/Lost <br/> & <br/> Centuries vs Inning', url: '/WonLostCenturiesInnning', class:'col-md-3'},
       {name: 'Life Time <br/> Chart', url: '/LifeTimeChart', class:'col-md-3'},
       {name: 'Sachin <br/> vs <br/> Other Batsmen', url: '/RecordChart', class:'col-md-3'},
-      {name: 'Win/Lost <br/> Areachart', url: '/WinLossChart', class:'col-md-3'},
+      {name: 'Won/Lost <br/> Areachart', url: '/WinLossChart', class:'col-md-3'},
       {name: 'Find Out <br/> Yourself', url: '/FindOutYourSelf', class:'col-md-3'},
-      {name: 'Farewell <br/> Speech', url: '/FarewellSpeech', class:'col-md-3'}
-      //{name: 'Social <br/> Feed', url: '/SocialFeed', class:'col-md-3'}
+      {name: 'Farewell <br/> Speech', url: '/FarewellSpeech', class:'col-md-3'},
+      {name: 'Provide <br/> Feedback', url: '/Feedback', class:'col-md-3'}
     ];
 
     $scope.$watch(function(){ return $location.path()}, function(value){
@@ -46,7 +50,6 @@ angular.module('app.controllers')
   })
 
   .controller('SummaryCtrl', function($scope, Data, PieChartOptions){
-
     var get_series_data = function(api_data, chosen_json, chosen_attr){
       var colorsArray = ['#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#AFA263', '#6AF9C4', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', 'orange'];
       var series_data = []
@@ -166,13 +169,21 @@ angular.module('app.controllers')
 window.onload = window.onresize = window.onorientationchange = function(){
   sizeUI();
   sizeYoutube();
+  setChartSize($('.blackBackground ').filter(':visible').length);
 }
 
-var screenWidth, tileCount, tileSize, chartWidth, fontSize;
+var screenWidth, tileCount, tileSize, chartWidth, fontSize, screenHeight;
+
+function setChartSize(adder){
+  screenHeight = window.innerHeight;
+  var heightSize = screenHeight-(adder*45)-80;
+  $('.hc-bars').css({'height' : heightSize+'px'})
+  $('.container').css({'height' : heightSize+80+'px'})
+  return heightSize;
+}
 
 function sizeYoutube(){
   screenWidth = window.innerWidth;
-  console.log(screenWidth)
   var heightSize = screenWidth*66.66/100;
   $('iframe').css({'height' : heightSize+'px'});
   return heightSize;
@@ -181,6 +192,7 @@ function sizeYoutube(){
 function sizeUI() {
   fontSize = '24px';
   screenWidth = window.innerWidth;
+  screenWidth = screenWidth > 1024 ? 1024 : screenWidth;
   if(screenWidth < 320){
     tileCount = 2;
   } else {
@@ -197,4 +209,5 @@ function sizeUI() {
 
   $('h2').css({'font-size': fontSize});
   $('.col-md-3').css({'width': tileSize+'px', 'height': tileSize+'px'});
+  $('.tile').css({'visibility': 'visible'});
 }
