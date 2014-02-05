@@ -55,5 +55,5 @@
     </gap:plugin>
     <gap:plugin name="com.adobe.plugins.gaplugin" />
     <gap:plugin name="com.phonegap.plugin.statusbar" />
-    <access origin="*" subdomains="true" />
+    <access origin="*" />
 </widget>
