@@ -2,6 +2,12 @@ angular.module('app.controllers', []);
 angular.module('app.services', []);
 angular.module('app.directives', []);
 
+var gaPlugin;
+
+function onDeviceReady() {
+    gaPlugin = window.plugins.gaPlugin;
+    gaPlugin.init(successHandler, errorHandler, "UA-47678875-1", 10);
+}
 
 angular.module('feApp', ['app.controllers', 'app.services', 'app.directives', 'ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ui.bootstrap', 'uiSlider'])
   .config(function ($routeProvider) {
