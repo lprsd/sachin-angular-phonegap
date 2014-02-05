@@ -51,8 +51,6 @@
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
     <gap:plugin name="com.pushwoosh.plugins.pushwoosh">
         <param name="APP_ID" value="93D13-D7F76" />
-        <param name="PushWoosh.appCode" value="93D13-D7F76" />
-        <param name="appCode" value="93D13-D7F76" />
     </gap:plugin>
     <gap:plugin name="com.adobe.plugins.gaplugin" />
     <gap:plugin name="com.phonegap.plugin.statusbar" />
