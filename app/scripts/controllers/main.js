@@ -172,9 +172,9 @@ window.onload = window.onresize = window.onorientationchange = function(){
 var screenWidth, tileCount, tileSize, chartWidth, fontSize, screenHeight;
 
 function setChartSize(){
-  console.log('What the fuck is going on');
   screenHeight = window.innerHeight;
   var adder = $('.blackBackground ').filter(':visible').length;
+  console.log($('.blackBackground ').filter(':visible').length);
   var heightSize = screenHeight-(adder*45)-80;
   $('.hc-bars').css({'height' : heightSize+'px'})
   $('.container').css({'height' : heightSize+80+'px'})
