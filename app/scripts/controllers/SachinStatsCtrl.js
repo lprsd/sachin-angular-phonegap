@@ -265,11 +265,9 @@ function getWonLostByBuckets(matches){
 			case (result == 'won'):
 				if(won_lost_by.indexOf('wicket') > -1){
 					wonByBuckets[parseInt(won_lost_by) - 1]++;
-					console.log('wkts', parseInt(won_lost_by));
 				} else 
 				if(won_lost_by.indexOf('run') > -1){
 					var index = 9 + parseInt(parseInt(won_lost_by)/50);
-					console.log('runs', parseInt(parseInt(won_lost_by)/50), won_lost_by);
 					index = index > 14 ? 14 : index;
 					wonByBuckets[index]++;	
 				}
