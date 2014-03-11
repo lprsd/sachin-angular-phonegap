@@ -23,9 +23,10 @@ angular.module('app.directives')
         colors: [attrs.color]
       };
       var chart;
-      setChartSize();
         //Update when charts data changes
         scope.$watch(function() { return scope.chartData; }, function(value) {
+          if(!value) return;
+          setChartSize();
           if(!value) return;
             var deepCopy = true;
             var newSettings = {};
@@ -67,11 +68,11 @@ angular.module('app.directives')
         },
         colors: [attrs.color]
       };
-      setChartSize();
       var chart;
         //Update when charts data changes
         scope.$watch(function() { return scope.chartData; }, function(value) {
           if(!value) return;
+            setChartSize();
             var deepCopy = true;
             var newSettings = {};
             $.extend(deepCopy, newSettings, chartsDefaults, scope.chartData);
