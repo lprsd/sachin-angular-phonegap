@@ -37,6 +37,7 @@ h2 {
 	-webkit-perspective: 800px;
 	background: url(../images/sachin.jpg);
     background-size: 100% 100%;
+  min-height: 300px;
 }
 
 .flipped {
@@ -55,6 +56,7 @@ h2 {
 	width: 100%;
 	position: relative;
 	float: left;
+	min-height: 300px;
 }
 
 .centeredChart{
