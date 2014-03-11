@@ -23,6 +23,7 @@ angular.module('app.directives')
         colors: [attrs.color]
       };
       var chart;
+      setChartSize();
         //Update when charts data changes
         scope.$watch(function() { return scope.chartData; }, function(value) {
           if(!value) return;
@@ -66,6 +67,7 @@ angular.module('app.directives')
         },
         colors: [attrs.color]
       };
+      setChartSize();
       var chart;
         //Update when charts data changes
         scope.$watch(function() { return scope.chartData; }, function(value) {

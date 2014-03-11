@@ -4,10 +4,7 @@ angular.module('app.controllers')
   .controller('MainCtrl', function ($scope, $location, $timeout) {
     $scope.colors = ['#334D5C','#EFC94C','#45b29d','#E27A3F','#DF5A49', '#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC','#25ADA7','#A1D87F','#FF453C','#EFC94C','#AF709A','#FFD530', '#0E229B', '#A4A1CC', '#25ADA7'];
     $scope.heightSize = sizeYoutube();
-    $scope.chartHeightSummary = setChartSize(2);
-    $scope.chartHeight1 = setChartSize(1);
-    $scope.chartHeight2 = setChartSize(0);
-    $scope.chartHeight = setChartSize(2)
+    
     $scope.tiles = [
       {name: 'Career <br/> Summary', url: '/summary', class:'col-md-3'},
       {name: 'Score Buckets <br/> & <br/> Won/Lost Counts', url: '/ScoreBuckets', class:'col-md-3'},
@@ -169,13 +166,15 @@ angular.module('app.controllers')
 window.onload = window.onresize = window.onorientationchange = function(){
   sizeUI();
   sizeYoutube();
-  setChartSize($('.blackBackground ').filter(':visible').length);
+  setChartSize();
 }
 
 var screenWidth, tileCount, tileSize, chartWidth, fontSize, screenHeight;
 
-function setChartSize(adder){
+function setChartSize(){
   screenHeight = window.innerHeight;
+  var adder = $('.blackBackground ').filter(':visible').length;
+  console.log($('.blackBackground ').filter(':visible').length);
   var heightSize = screenHeight-(adder*45)-80;
   $('.hc-bars').css({'height' : heightSize+'px'})
   $('.container').css({'height' : heightSize+80+'px'})
