@@ -173,8 +173,9 @@ var screenWidth, tileCount, tileSize, chartWidth, fontSize, screenHeight;
 
 function setChartSize(){
   screenHeight = window.innerHeight;
-  var adder = $('.blackBackground ').filter(':visible').length;
-  console.log($('.blackBackground ').filter(':visible').length);
+  var adder = $('.blackBackground').parent().filter(':visible').length;
+  var slider = $('.marginSlider').filter(':visible').length;
+  adder = adder+slider;
   var heightSize = screenHeight-(adder*45)-80;
   $('.hc-bars').css({'height' : heightSize+'px'})
   $('.container').css({'height' : heightSize+80+'px'})
