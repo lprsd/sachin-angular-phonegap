@@ -252,7 +252,11 @@ function getWonLostByBuckets(matches){
 		var won_lost_by = matches[i].won_lost_by,
 			result = matches[i].result ? matches[i].result : matches[i].match_result;
 
+		won_lost_by = won_lost_by.indexOf('&') > -1 ? won_lost_by.split('&')[1] : won_lost_by; 
+
 		if("won lost".indexOf(result) == -1) continue;
+		if((won_lost_by.indexOf('run') == -1) && (won_lost_by.indexOf('wicket') == -1)) continue;
+		//console.log(won_lost_by, result)
 
 		if(result == 'won') wonLostByBuckets.won++; 
 		if(result == 'lost') wonLostByBuckets.lost++;
@@ -260,10 +264,12 @@ function getWonLostByBuckets(matches){
 		switch(true){
 			case (result == 'won'):
 				if(won_lost_by.indexOf('wicket') > -1){
-					wonByBuckets[parseInt(won_lost_by) - 1]++;	
+					wonByBuckets[parseInt(won_lost_by) - 1]++;
+					console.log('wkts', parseInt(won_lost_by));
 				} else 
 				if(won_lost_by.indexOf('run') > -1){
 					var index = 9 + parseInt(parseInt(won_lost_by)/50);
+					console.log('runs', parseInt(parseInt(won_lost_by)/50), won_lost_by);
 					index = index > 14 ? 14 : index;
 					wonByBuckets[index]++;	
 				}
@@ -749,6 +755,7 @@ angular.module('app.controllers')
 
 			Data.get_local('scripts/lib/test/india_with_sachin.json').success(function(api_data){
     			$scope.scoreBucketsTest = getScoreBuckets(api_data, PieChartOptions);
+    			console.log('$$$$$$$$$$$$$$$$$$$$$$$$$ TEST $$$$$$$$$$$$$$$$$$$$$$$$$$$$')
     			$scope.resultBucketsWithSachinTest = getResultBuckets(api_data, PieChartOptions, 'with Sachin');
     		});
 
